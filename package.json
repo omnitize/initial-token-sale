@@ -1,0 +1,34 @@
+{
+  "name": "initial-token-sale",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:be": "./node_modules/typescript/bin/tsc -p ./src/backend",
+    "build:fe": "webpack --config webpack.config.prod",
+    "start": "npm run build:be && npm run build:fe && node ./express.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omnitize/initial-token-sale.git"
+  },
+  "author": "gadiguy@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omnitize/initial-token-sale/issues"
+  },
+  "homepage": "https://github.com/omnitize/initial-token-sale#readme",
+  "dependencies": {
+    "@types/react": "^16.0.5",
+    "@types/react-dom": "^15.5.4",
+    "awesome-typescript-loader": "3.2.3",
+    "express": "4.15.4",
+    "react": "15.6.1",
+    "react-dom": "^15.6.1",
+    "stylelint-webpack-plugin": "0.9.0",
+    "typescript": "2.5.2",
+    "webpack": "3.5.5",
+    "webpack-merge": "4.1.0"
+  }
+}
