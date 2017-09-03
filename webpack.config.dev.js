@@ -19,7 +19,7 @@ module.exports = merge(commonConfig, {
   },
   devServer: {
     hot: true, // enable HMR on the server
-    contentBase: resolve(__dirname, 'public'), // match the output path
+    contentBase: resolve(__dirname, 'dist-dev'), // match the output path
     publicPath: '/' // match the output `publicPath`
   },
   devtool: 'cheap-module-eval-source-map',
