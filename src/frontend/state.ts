@@ -37,3 +37,5 @@ export class State {
 
 	transactions: Array<Transaction>;
 };
+
+export const state = new State();
