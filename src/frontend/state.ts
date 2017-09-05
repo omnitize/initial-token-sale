@@ -19,21 +19,22 @@ export class Transaction {
 	status: TxStatus;
 }
 
+export type FundAddresses = { [key: string]: string };
+
 export class State {
 
 	useCase: UserFlow;
 	stepNumber: number;
 
-	captchaToken: string;
+	sessionToken: string;
 
 	alreadyHaveWallet: boolean;
 
 	targetAddress: string;
-
-	targetBIP39: string;
+	targetMnemonicPhrase: string;
 	targetWallet: string;
 
-	fundAddresses: Map<string, string>;
+	fundAddresses: FundAddresses;
 
 	transactions: Array<Transaction>;
 };

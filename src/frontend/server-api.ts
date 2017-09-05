@@ -1,7 +1,7 @@
 
 import * as Promise from 'bluebird';
 
-import { TxStatus, Transaction } from './state';
+import { TxStatus, Transaction, FundAddresses } from './state';
 
 
 export function createSession(captcha: string): Promise<{ sessionToken: string }> {
@@ -14,11 +14,12 @@ export function createSession(captcha: string): Promise<{ sessionToken: string }
 }
 
 
-export function sendTargetAddress(sessionToken: string, targetAddress: string): Promise<{ fundAddresses: Map<string, string> }> {
+export function sendTargetAddress(sessionToken: string, targetAddress: string): Promise<{ fundAddresses: FundAddresses }> {
 	console.log('sendTargetAddress', sessionToken, targetAddress);
-	const fundAddresses = new Map<string, string>();
-	fundAddresses.set('BitCoin', '1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX');
-	fundAddresses.set('Ether', '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe');
+	const fundAddresses: FundAddresses = {
+		'bitcoin': '1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX',
+		'ether': '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe'
+	};
 	return new Promise(resolve => {
 		setTimeout(() => {
 			resolve({ fundAddresses });
