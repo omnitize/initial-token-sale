@@ -5,6 +5,9 @@ import { render } from 'react-dom';
 
 const rootEl = document.getElementById('root');
 
-render(<b>sdfasdfasdf</b>,
+render(
+    <div>
+
+            </div>,
     rootEl
 );
