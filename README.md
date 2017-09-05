@@ -1,4 +1,4 @@
-### initial-token-sale
+# initial-token-sale
 
 ## Contains
 
@@ -27,8 +27,8 @@ $ npm run dev
 ## Build
 
 ```
-# Front-end
 $ npm run build
-# Back-end
+(Front-end)
 $ npm run build
+(Back-end)
 ```
