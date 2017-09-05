@@ -1,10 +1,10 @@
 
-export enum UserFlow {
+export enum EUserFlow {
 	CONTRIBUTE,
 	CHECK_BALANCE
 };
 
-export enum TxStatus {
+export enum ETxStatus {
 	PENDING,
 	VERIFIED,
 	FINAL
@@ -16,12 +16,12 @@ export class Transaction {
 	currency: string;
 	price: number;
 	tokens: number;
-	status: TxStatus;
+	status: ETxStatus;
 }
 
 export class State {
 
-	useCase: UserFlow;
+	useCase: EUserFlow;
 	stepNumber: number;
 
 	captchaToken: string;

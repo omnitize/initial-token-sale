@@ -1,17 +1,18 @@
 import * as React from "react";
 import { IStep } from '../../models';
+import { ProveYouAreHuman, CheckWalletBalance, ViewWalletHistory } from '../../components';
 
 export const checkBalanceStepList: IStep[] = [
     {
         name: "Prove You Are Human",
-        component: <div/>
+        component: <ProveYouAreHuman/>
     },
     {
-        name: "Check Wallet's Balance",
-        component: <div/>
+        name: "Check Wallet Balance",
+        component: <CheckWalletBalance/>
     },
     {
-        name: "View Wallet Transaction History",
-        component: <div/>
+        name: "View Wallet History",
+        component: <ViewWalletHistory/>
     }
 ];

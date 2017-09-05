@@ -1,17 +1,18 @@
 import * as React from "react";
 import { IStep } from '../../models';
+import { GetStarted, WhereToSendFunds, SendFunds } from '../../components';
 
 export const contributeStepList: IStep[] = [
     {
         name: "Get Started",
-        component: <div/>
+        component: <GetStarted/>
     },
     {
-        name: "Indicate Where To Send Funds",
-        component: <div/>
+        name: "Where To Send Funds",
+        component: <WhereToSendFunds/>
     },
     {
         name: "Send Funds",
-        component: <div/>
+        component: <SendFunds/>
     }
 ];
