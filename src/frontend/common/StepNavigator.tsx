@@ -35,10 +35,14 @@ export class StepNavigator extends React.Component<IStepNavigatorProps, IStepNav
 
     render(): JSX.Element {
         const slideTransition = {
-            transform: `translateX(${-this.state.selectedStep * 100}vw)`,
-            width: "300vw",
+            position: "absolute",
+            left: 0,
+            top: 0,
+            zIndex: 1,
+            transform: `translateX(${-this.state.selectedStep * 100 / 3}%)`,
+            width: "300%",
             transition: "transform 200ms"
-        };
+        } as any;
         return (
             <div>
                 <div>
@@ -50,12 +54,14 @@ export class StepNavigator extends React.Component<IStepNavigatorProps, IStepNav
                     </button>)}
                 </div>
                 <div>{this.props.steps[this.state.selectedStep].name}</div>
-                <div style={ slideTransition }>
-                    {this.props.steps.map((step: IStep, i: number) =>
-                        <div key={`step-${i}`}
-                             style={{display: "inline-block", width: "100vw", height: "80vh"}}>
-                            {step.component}
-                        </div>)}
+                <div style={{position: "relative", width: "100%", minHeight: 768, overflow: "hidden"}}>
+                    <div style={ slideTransition }>
+                        {this.props.steps.map((step: IStep, i: number) =>
+                            <div key={`step-${i}`}
+                                 style={{display: "inline-block", width: `${100 / 3}%`}}>
+                                {step.component}
+                            </div>)}
+                    </div>
                 </div>
             </div>
         );
