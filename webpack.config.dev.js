@@ -20,7 +20,13 @@ module.exports = merge(commonConfig, {
   devServer: {
     hot: true, // enable HMR on the server
     contentBase: resolve(__dirname, 'dist-dev'), // match the output path
-    publicPath: '/' // match the output `publicPath`
+    publicPath: '/', // match the output `publicPath`
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000/api',
+        secure: false
+      }
+    }
   },
   devtool: 'cheap-module-eval-source-map',
   plugins: [
