@@ -1,27 +1,74 @@
 .its-main {
     display: inline-block;
     min-width: 320px;
+    width: 720px;
     max-width: 720px;
+    padding: 40px;
     background: #eeeeee;
+}
+
+.its-main h2 {
+    font-size: 32px;
+    margin: 10px;
+}
+
+.its-main h4 {
+    font-size: 24px;
+    margin: 8px;
+}
+
+.its-main p {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 8px;
+}
+
+.its-main ul {
+    margin: 8px;
+}
+
+.its-main ul li {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: left;
+    list-style-position: inside;
+    list-style-type: square;
+}
+
+.its-main label {
+    width: 100%;
+}
+
+.its-main input {
+    width: calc(100% - 20px);
+    border: 2px solid #212121;
+    padding: 4px;
+    margin: 4px;
 }
 
 .its-main button.its-button-step {
     display: inline-block;
     width: 60px;
     height: 60px;
-    font-size: 24;
+    margin: 4px;
+    font-size: 24px;
     border-radius: 40px;
-    background: #00C853;
+    background: none;
     border: none;
+    outline: none;
     cursor: pointer;
 }
 
 .its-main button.its-button-main {
     display: inline-block;
     border-radius: 4px;
-    padding: 4px;
+    min-width: 180px;
+    padding: 8px;
+    margin: 4px;
     background: #0091EA;
+    color: #eeeeee;
     border: none;
+    outline: none;
     cursor: pointer;
 }
 
@@ -32,9 +79,49 @@
     color: #0091EA;
     background: none;
     border: none;
+    outline: none;
     cursor: pointer;
 }
 
-.its-main .its-navigator-step {
+.its-main table {
+    width: 100%;
+}
+
+.its-main tbody {
+    padding: 4px;
+    border: #212121;
+    border-radius: 2px;
+}
+
+.its-main tr {
+    line-height: 1.5;
+}
+
+.its-main .its-navigator-steps {
+    width: 100%;
+}
+
+.its-main .its-navigator-steps__inner {
+    position: relative;
+    width: 100%;
+    min-height: 768px;
+    overflow: hidden;
+}
+
+.its-main .its-navigator-steps__slider {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 300%;
+    transition: transform 200ms;
+    z-index: 1;
+}
+
+.its-main .its-navigator-steps__step {
     display: inline-block;
+    vertical-align: top;
+}
+
+.its-main .its-check-wallet__text-button {
+    text-align: right
 }

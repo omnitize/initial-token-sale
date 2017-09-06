@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { walletHistoryContent as content } from '../data/text-data'
-import { ButtonMain, ButtonText } from '.';
+import { ButtonMain } from '.';
 
 interface IProps {}
 
@@ -31,10 +31,10 @@ export class WalletHistory extends React.Component<IProps, IState> {
                         </tr>
                     </tbody>
                 </table>
-                <ButtonText
+                <ButtonMain
                     onClick={this.handleDownloadWallet}>
                     {content.button}
-                </ButtonText>
+                </ButtonMain>
                 <ButtonMain
                     onClick={this.handlePrintWallet}>
                     {content.button2}

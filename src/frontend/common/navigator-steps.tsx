@@ -3,15 +3,18 @@ import { IStep } from '../models';
 import { isStringifiedEqual } from '../helpers/isStringifiedEqual';
 import { ButtonStep } from '.';
 
-interface INavigatorStepProps {
+interface INavigatorStepsProps {
     steps: IStep[]
 }
 
-interface INavigatorStepState {
+interface INavigatorStepsState {
     selectedStep: number
 }
 
-export class NavigatorStep extends React.Component<INavigatorStepProps, INavigatorStepState> {
+export class NavigatorSteps extends React.Component<INavigatorStepsProps, INavigatorStepsState> {
+
+    divisionSize = 100 / this.props.steps.length;
+    stepWidthStyle = {width: `${this.divisionSize}%`};
 
     public constructor(props?: any, context?: any) {
         super(props, context);
@@ -20,7 +23,7 @@ export class NavigatorStep extends React.Component<INavigatorStepProps, INavigat
         };
     }
 
-    componentWillReceiveProps(nextProps: INavigatorStepProps) {
+    componentWillReceiveProps(nextProps: INavigatorStepsProps) {
         if (!isStringifiedEqual(nextProps.steps, this.props.steps)) {
             this.setState({
                 selectedStep: 0
@@ -34,35 +37,39 @@ export class NavigatorStep extends React.Component<INavigatorStepProps, INavigat
         });
     };
 
+    slideTransitionStyle() {
+        return {
+            msTransform: `translateX(${-this.state.selectedStep * this.divisionSize}%)`,
+            OTransform: `translateX(${-this.state.selectedStep * this.divisionSize}%)`,
+            MozTransform: `translateX(${-this.state.selectedStep * this.divisionSize}%)`,
+            WebkitTransform: `translateX(${-this.state.selectedStep * this.divisionSize}%)`,
+            transform: `translateX(${-this.state.selectedStep * this.divisionSize}%)`
+        }
+    }
+
     render(): JSX.Element {
-        const slideTransition = {
-            position: "absolute",
-            left: 0,
-            top: 0,
-            zIndex: 1,
-            transform: `translateX(${-this.state.selectedStep * 100 / 3}%)`,
-            width: "300%",
-            transition: "transform 200ms"
-        } as any;
         return (
-            <div className="its-navigator-step">
+            <div className="its-navigator-steps">
                 <div>
                 {this.props.steps.map((_, i) =>
                     <ButtonStep
                         key={`step-nav-${i}`}
                         index={i}
+                        selectedStep={this.state.selectedStep}
                         onClick={() => this.handleStepNavClick(i)}>
                         {`${i + 1}`}
                     </ButtonStep>
                     )
                 }
                 </div>
-                <div>{this.props.steps[this.state.selectedStep].name}</div>
-                <div style={{position: "relative", width: "100%", minHeight: 768, overflow: "hidden"}}>
-                    <div style={ slideTransition }>
+                <div className="its-navigator-steps__inner">
+                    <div
+                        className="its-navigator-steps__slider"
+                        style={this.slideTransitionStyle()}>
                         {this.props.steps.map((step: IStep, i: number) =>
                             <div key={`step-${i}`}
-                                 style={{display: "inline-block", width: `${100 / 3}%`}}>
+                                 className="its-navigator-steps__step"
+                                 style={this.stepWidthStyle}>
                                 {step.component}
                             </div>)}
                     </div>
