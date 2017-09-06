@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { EUserFlow } from '../state';
 import { StepNavigator } from '../common/step-navigator';
-import {checkBalanceStepList} from '../data/user-cases/check-balance';
-import {contributeStepList} from '../data/user-cases/contribute';
-
+import { checkBalanceStepList, contributeStepList} from '../data/component-data';
 
 interface IMainProps {}
 

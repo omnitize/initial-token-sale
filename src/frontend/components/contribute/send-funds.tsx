@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { sendFundsContent as content } from '../../data/steps-page-data/contribute/send-funds'
-import {ViewWalletHistory} from '../check-balance-steps/view-wallet-history';
+import { sendFundsContent as content } from '../../data/text-data'
+import { WalletHistory } from '../../common';
 
 interface IProps {}
 
@@ -23,7 +23,7 @@ export class SendFunds extends React.Component<IProps, IState> {
                         </p>)}
                 </div>
                 {/*// TODO CREATE SEND FUNDS COMPONENT */}
-                <ViewWalletHistory/>
+                <WalletHistory/>
             </div>
         );
     }

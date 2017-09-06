@@ -1,6 +1,8 @@
-export { GetStarted } from "./contribute-steps";
-export { SendFunds } from "./contribute-steps";
-export { WhereToSendFunds } from "./contribute-steps";
-export { CheckWalletBalance } from "./check-balance-steps";
-export { ProveYouAreHuman } from "./check-balance-steps";
-export { ViewWalletHistory } from "./check-balance-steps";
+// contribute
+export { ContributeStart } from "./contribute";
+export { SendFunds } from "./contribute";
+export { WhereToSendFunds } from "./contribute";
+// check balance
+export { CheckBalanceStart } from "./check-balance";
+export { CheckWallet } from "./check-balance";
+export { ViewWalletHistory } from "./check-balance";

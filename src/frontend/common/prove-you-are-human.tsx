@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { proveYouAreHumanContent as content } from '../../data/steps-page-data/check-balance';
-
+import { proveYouAreHumanContent as content } from '../data/text-data';
 
 interface IProps {}
 

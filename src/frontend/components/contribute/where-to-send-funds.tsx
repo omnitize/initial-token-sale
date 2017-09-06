@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { checkWalletBalanceContent as content } from '../../data/steps-page-data/check-balance';
+import { whereToSendFundsContent as content } from '../../data/text-data'
 
 interface IProps {}
 
 interface IState {}
 
-export class CheckWalletBalance extends React.Component<IProps, IState> {
+export class WhereToSendFunds extends React.Component<IProps, IState> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
@@ -15,14 +15,8 @@ export class CheckWalletBalance extends React.Component<IProps, IState> {
         return (
             <div>
                 <h2>{content.heading}</h2>
+                <h4>{content.heading2}</h4>
                 <p>{content.paragraph}</p>
-                <label htmlFor={content.input.name}>
-                    {content.input.label}
-                    <input
-                        name={content.input.name}
-                        type={content.input.type}
-                    />
-                </label>
                 <button>{content.button}</button>
                 <button>{content.button2}</button>
             </div>

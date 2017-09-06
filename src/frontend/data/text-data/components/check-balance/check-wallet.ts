@@ -1,4 +1,4 @@
-export const checkWalletBalanceContent = {
+export const checkWalletContent = {
     heading: "Check your wallet's balance",
     paragraph: "You can check you wallet's balance by entering your address.",
     input: {

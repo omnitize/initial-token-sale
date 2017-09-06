@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {IStep} from '../models';
-import {isStringifiedEqual} from '../helpers/isStringifiedEqual';
+import { IStep } from '../models';
+import { isStringifiedEqual } from '../helpers/isStringifiedEqual';
 
 interface IStepNavigatorProps {
     steps: IStep[]

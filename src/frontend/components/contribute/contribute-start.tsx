@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { getStartedContent as content } from '../../data/steps-page-data/contribute';
-import { ProveYouAreHuman } from '../check-balance-steps/prove-you-are-human';
+import { contributeStartContent as content } from '../../data/text-data';
+import { ProveYouAreHuman } from '../../common/prove-you-are-human';
 
 interface IProps {}
 
 interface IState {}
 
-export class GetStarted extends React.Component<IProps, IState> {
+export class ContributeStart extends React.Component<IProps, IState> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

@@ -1,4 +1,4 @@
-export const getStartedContent = {
+export const contributeStartContent = {
     heading: "What you need to know to get started",
     list: [
         "You can a send funds in Bitcoin or Ethereum. The exchange rate is imported every 5 minutes from Poloniex.",

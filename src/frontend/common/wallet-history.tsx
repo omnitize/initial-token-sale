@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { viewWalletHistoryContent as content } from '../../data/steps-page-data/check-balance';
+import { walletHistoryContent as content } from '../data/text-data'
 
 interface IProps {}
 
 interface IState {}
 
-export class ViewWalletHistory extends React.Component<IProps, IState> {
+export class WalletHistory extends React.Component<IProps, IState> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
@@ -18,12 +18,12 @@ export class ViewWalletHistory extends React.Component<IProps, IState> {
                 {/*// TODO SEPARATE INTO WALLET HISTORY TABLE COMPONENT*/}
                 <table>
                     <tbody>
-                        <tr>
+                    <tr>
                         {content.tableColumns.map((columnHeading, i) =>
                             <th key={`${columnHeading}-${i}`}>
                                 {columnHeading}
                             </th>)}
-                        </tr>
+                    </tr>
                     </tbody>
                 </table>
                 <button>{content.button}</button>
