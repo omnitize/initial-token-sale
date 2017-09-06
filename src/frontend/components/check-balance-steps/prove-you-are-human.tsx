@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { proveYouAreHumanContent as content } from '../../data/steps-page-data/check-balance';
+
 
 interface IProps {}
 
@@ -13,8 +15,9 @@ export class ProveYouAreHuman extends React.Component<IProps, IState> {
     render(): JSX.Element {
         return (
             <div>
-                <h2>Prove you're a human being</h2>
-                <p>Before we begin, we need to make sure that you're not a bot. Hackers use bots to flood web sites with seemingly legitimate requests, in order to cause congestion and lock out legitimate users. The box below is Google's recaptcha, a tool that protects internet users from spam and abuse.</p>
+                <h2>{content.heading}</h2>
+                <p>{content.paragraph}</p>
+                {/*// TODO CAPTCHA COMPONENT*/}
             </div>
         );
     }

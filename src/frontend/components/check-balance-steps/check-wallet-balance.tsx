@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { checkWalletBalanceContent as content } from '../../data/steps-page-data/check-balance';
 
 interface IProps {}
 
@@ -13,8 +14,17 @@ export class CheckWalletBalance extends React.Component<IProps, IState> {
     render(): JSX.Element {
         return (
             <div>
-                <h2>Check your wallet's balance</h2>
-                <p>You can check you wallet's balance by entering your address.</p>
+                <h2>{content.heading}</h2>
+                <p>{content.paragraph}</p>
+                <label htmlFor={content.input.name}>
+                    {content.input.label}
+                    <input
+                        name={content.input.name}
+                        type={content.input.type}
+                    />
+                </label>
+                <button>{content.button}</button>
+                <button>{content.button2}</button>
             </div>
         );
     }
