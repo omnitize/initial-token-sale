@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:be": "./node_modules/typescript/bin/tsc -p ./src/backend",
+    "build:be": "node ./node_modules/typescript/bin/tsc -p ./src/backend",
     "build:fe": "webpack --config webpack.config.prod",
     "start": "npm run build:be && npm run build:fe && node ./express.js",
-    "dev": "npm run build:be && webpack-dev-server --config=webpack.config.dev.js"
+    "dev": "npm run build:be && webpack-dev-server --config=webpack.config.dev.js --hot --inline --progress --colors --open"
   },
   "repository": {
     "type": "git",
@@ -34,5 +34,8 @@
     "typescript": "2.5.2",
     "webpack": "3.5.5",
     "webpack-merge": "4.1.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.7.1"
   }
 }
