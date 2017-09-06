@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { checkWalletContent as content } from '../../data/text-data';
+import { ButtonMain } from '../../common';
 
 interface IProps {}
 
@@ -10,6 +11,9 @@ export class CheckWallet extends React.Component<IProps, IState> {
     public constructor(props?: any, context?: any) {
         super(props, context);
     }
+
+    handleNoWalletAddress = () => {};
+    handleContinue = () => {};
 
     render(): JSX.Element {
         return (
@@ -23,8 +27,16 @@ export class CheckWallet extends React.Component<IProps, IState> {
                         type={content.input.type}
                     />
                 </label>
-                <button>{content.button}</button>
-                <button>{content.button2}</button>
+                <ButtonMain
+                    onClick={this.handleNoWalletAddress}
+                >
+                    {content.button}
+                </ButtonMain>
+                <ButtonMain
+                    onClick={this.handleContinue}
+                >
+                    {content.button2}
+                </ButtonMain>
             </div>
         );
     }

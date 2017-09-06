@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Istok+Web');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Istok Web', sans-serif;
+}
+
+body {
+    background: #e0e0e0;
+    text-align: center;
+}

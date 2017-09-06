@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { EUserFlow } from '../models';
-import { StepNavigator } from '../common/step-navigator';
+import { NavigatorStep, ButtonMain } from '../common';
 import { checkBalanceStepList, contributeStepList } from '../data/component-data';
 
 interface IMainProps {}
@@ -35,10 +35,13 @@ export class Main extends React.Component<IMainProps, IMainState> {
     render(): JSX.Element {
         return (
             <div className="its-main">
-                <button onClick={this.toggleUseCase}>
-                    Toggle Use Case
-                </button>
-                <StepNavigator
+                <div>
+                    <ButtonMain
+                        onClick={this.toggleUseCase}>
+                        Toggle Use Case
+                    </ButtonMain>
+                </div>
+                <NavigatorStep
                     steps={this.steps()}
                 />
             </div>

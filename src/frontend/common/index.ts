@@ -1,3 +1,7 @@
 export { ProveYouAreHuman } from "./prove-you-are-human";
-export { StepNavigator } from "./step-navigator";
+export { NavigatorStep } from "./navigator-step";
 export { WalletHistory } from "./wallet-history";
+export { ButtonMain } from "./button-main";
+export { ButtonText } from "./button-text";
+export { ButtonStep } from "./button-step";
+

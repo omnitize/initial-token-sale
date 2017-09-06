@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { walletHistoryContent as content } from '../data/text-data'
+import { ButtonMain, ButtonText } from '.';
 
 interface IProps {}
 
@@ -11,6 +12,10 @@ export class WalletHistory extends React.Component<IProps, IState> {
         super(props, context);
     }
 
+    handleDownloadWallet = () => {};
+
+    handlePrintWallet = () => {};
+
     render(): JSX.Element {
         return (
             <div>
@@ -18,16 +23,22 @@ export class WalletHistory extends React.Component<IProps, IState> {
                 {/*// TODO SEPARATE INTO WALLET HISTORY TABLE COMPONENT*/}
                 <table>
                     <tbody>
-                    <tr>
+                        <tr>
                         {content.tableColumns.map((columnHeading, i) =>
                             <th key={`${columnHeading}-${i}`}>
                                 {columnHeading}
                             </th>)}
-                    </tr>
+                        </tr>
                     </tbody>
                 </table>
-                <button>{content.button}</button>
-                <button>{content.button2}</button>
+                <ButtonText
+                    onClick={this.handleDownloadWallet}>
+                    {content.button}
+                </ButtonText>
+                <ButtonMain
+                    onClick={this.handlePrintWallet}>
+                    {content.button2}
+                </ButtonMain>
             </div>
         );
     }

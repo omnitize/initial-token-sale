@@ -1,0 +1,40 @@
+.its-main {
+    display: inline-block;
+    min-width: 320px;
+    max-width: 720px;
+    background: #eeeeee;
+}
+
+.its-main button.its-button-step {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    font-size: 24;
+    border-radius: 40px;
+    background: #00C853;
+    border: none;
+    cursor: pointer;
+}
+
+.its-main button.its-button-main {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 4px;
+    background: #0091EA;
+    border: none;
+    cursor: pointer;
+}
+
+.its-main button.its-button-text {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 4px;
+    color: #0091EA;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.its-main .its-navigator-step {
+    display: inline-block;
+}

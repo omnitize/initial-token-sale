@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { IStep } from '../models';
 import { isStringifiedEqual } from '../helpers/isStringifiedEqual';
+import { ButtonStep } from '.';
 
-interface IStepNavigatorProps {
+interface INavigatorStepProps {
     steps: IStep[]
 }
 
-interface IStepNavigatorState {
+interface INavigatorStepState {
     selectedStep: number
 }
 
-export class StepNavigator extends React.Component<IStepNavigatorProps, IStepNavigatorState> {
+export class NavigatorStep extends React.Component<INavigatorStepProps, INavigatorStepState> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
@@ -19,7 +20,7 @@ export class StepNavigator extends React.Component<IStepNavigatorProps, IStepNav
         };
     }
 
-    componentWillReceiveProps(nextProps: IStepNavigatorProps) {
+    componentWillReceiveProps(nextProps: INavigatorStepProps) {
         if (!isStringifiedEqual(nextProps.steps, this.props.steps)) {
             this.setState({
                 selectedStep: 0
@@ -44,14 +45,17 @@ export class StepNavigator extends React.Component<IStepNavigatorProps, IStepNav
             transition: "transform 200ms"
         } as any;
         return (
-            <div>
+            <div className="its-navigator-step">
                 <div>
                 {this.props.steps.map((_, i) =>
-                    <button
+                    <ButtonStep
                         key={`step-nav-${i}`}
+                        index={i}
                         onClick={() => this.handleStepNavClick(i)}>
                         {`${i + 1}`}
-                    </button>)}
+                    </ButtonStep>
+                    )
+                }
                 </div>
                 <div>{this.props.steps[this.state.selectedStep].name}</div>
                 <div style={{position: "relative", width: "100%", minHeight: 768, overflow: "hidden"}}>
