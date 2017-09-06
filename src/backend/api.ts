@@ -37,12 +37,12 @@ export function setupApi(app: express.Application) {
 	app.use('/api/createSession', (req: express.Request, res: express.Response) => {
 		createSession((req.query as Params).captcha, req.connection.remoteAddress)
 		.then(obj => res.json(obj))
-		.catch(er => res.status(500)).send(er);
+		.catch(er => res.status(500).send(er));
 	});
 	app.use('/api/sendTargetAddress', (req: express.Request, res: express.Response) => {
 		sendTargetAddress((req.query as Params).sessionToken, (req.query as Params).targetAddress)
 		.then(obj => res.json(obj))
-		.catch(er => res.status(500)).send(er);
+		.catch(er => res.status(500).send(er));
 	});
 }
 
@@ -67,7 +67,7 @@ export function sendTargetAddress(sessionToken: string, targetAddress: string): 
 	return Promise.resolve()
 	.then(() => query('update sessions set target_address=? where session_id=? and ( target_address=? or target_address is NULL )', [ targetAddress, sessionToken, targetAddress ]))
 	.then(results => { if (results.affectedRows != 1) throw new Error('Invariant violation'); })
-	.then(() => query('insert into addresses_inc (session_id) values (?)', [ sessionToken ])
+	.then(() => query('insert into addresses_inc (session_id) values (?)', [ sessionToken ]))
 	.then(results => query('update addresses set session_id=? where id=?', [ sessionToken, results.insertId]))
 	.then(() => query('select * from addresses where session_id=?', [ sessionToken ]))
 	.then(results => { 
@@ -75,3 +75,6 @@ export function sendTargetAddress(sessionToken: string, targetAddress: string): 
 		return { fundAddresses: { 'bitcoin': results[0].bitcoin, 'ether': results[0].ether } }; 
 	});
 }
+
+
+
