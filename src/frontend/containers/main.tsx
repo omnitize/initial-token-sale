@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { EUserFlow } from '../state';
+import { EUserFlow } from '../models';
 import { StepNavigator } from '../common/step-navigator';
 import { checkBalanceStepList, contributeStepList} from '../data/component-data';
 
