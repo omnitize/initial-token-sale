@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createSession } from '../../server-api';
 import { state } from '../../state';
+import { config } from '../../config';
 
 const ReCAPTCHA = require('react-google-recaptcha').default;
 
@@ -23,7 +24,7 @@ export class GetStarted extends React.Component<IProps, IState> {
                 </ul>
                 <h2>Prove you're a human being</h2>
                 <p>Before we begin, we need to make sure that you're not a bot. Hackers use bots to flood web sites with seemingly legitimate requests, in order to cause congestion and lock out legitimate users. The box below is Google's recaptcha, a tool that protects internet users from spam and abuse.</p>
-                <ReCAPTCHA ref="recaptcha" sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" onChange={this.onCaptcha} />
+                <ReCAPTCHA ref="recaptcha" sitekey={ config.recaptchaSiteKey } onChange={ this.onCaptcha } />
             </div>            
         );
     }
