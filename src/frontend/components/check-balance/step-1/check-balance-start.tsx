@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { checkBalanceStartContent as content } from '../../data/text-data';
+import { checkBalanceStartContent as content } from '../../../data/text-data';
 
 interface IProps {}
 

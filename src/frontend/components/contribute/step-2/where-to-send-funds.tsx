@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { whereToSendFundsContent as content } from '../../data/text-data'
-import {ButtonMain} from '../../common/button-main';
+import { whereToSendFundsContent as content } from '../../../data/text-data'
+import {ButtonMain} from '../../../common/button-main';
 
 interface IProps {}
 

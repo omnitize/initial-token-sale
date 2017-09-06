@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { sendFundsContent as content } from '../../data/text-data'
-import { WalletHistory } from '../../common';
+import { sendFundsContent as content } from '../../../data/text-data'
+import { WalletHistory } from '../../../common';
 
 interface IProps {}
 

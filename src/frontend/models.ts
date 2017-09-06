@@ -6,6 +6,7 @@ export interface IUseCase {
 export interface IStep {
     name: string
     component: JSX.Element
+    subComponents?: JSX.Element[]
 }
 
 export enum EUserFlow {

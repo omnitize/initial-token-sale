@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { contributeStartContent as content } from '../../data/text-data';
-import { ProveYouAreHuman } from '../../common/prove-you-are-human';
+import { contributeStartContent as content } from '../../../data/text-data';
+import { ProveYouAreHuman } from '../../../common/prove-you-are-human';
 
 interface IProps {}
 
