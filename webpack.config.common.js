@@ -5,7 +5,7 @@ const {CheckerPlugin} = require('awesome-typescript-loader');
 
 module.exports = {
   resolve: {
-    extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.jsx'],
+    extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.jsx', '.css'],
   },
   context: resolve(__dirname, 'src'),
   module: {

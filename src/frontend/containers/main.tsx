@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { EUserFlow } from '../models';
 import { StepNavigator } from '../common/step-navigator';
-import { checkBalanceStepList, contributeStepList} from '../data/component-data';
+import { checkBalanceStepList, contributeStepList } from '../data/component-data';
 
 interface IMainProps {}
 
@@ -34,7 +34,7 @@ export class Main extends React.Component<IMainProps, IMainState> {
 
     render(): JSX.Element {
         return (
-            <div>
+            <div className="its-main">
                 <button onClick={this.toggleUseCase}>
                     Toggle Use Case
                 </button>

@@ -11,13 +11,13 @@ export interface IStep {
 export enum EUserFlow {
     CONTRIBUTE,
     CHECK_BALANCE
-};
+}
 
 export enum ETxStatus {
     PENDING,
     VERIFIED,
     FINAL
-};
+}
 
 export class Transaction {
     datetime: Date;
@@ -45,4 +45,4 @@ export class State {
     fundAddresses: Map<string, string>;
 
     transactions: Array<Transaction>;
-};
+}
