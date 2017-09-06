@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { useCaseList } from '../data/user-cases';
-import {EUserFlow} from '../state';
-import {StepNavigator} from '../common/StepNavigator';
+import { EUserFlow } from '../state';
+import { StepNavigator } from '../common/StepNavigator';
+import {checkBalanceStepList} from '../data/user-cases/check-balance';
+import {contributeStepList} from '../data/user-cases/contribute';
+
 
 interface IMainProps {}
 
@@ -26,15 +28,20 @@ export class Main extends React.Component<IMainProps, IMainState> {
         })
     };
 
+    private steps = () => {
+        return this.state.selectedUseCase === EUserFlow.CONTRIBUTE
+            ? contributeStepList
+            : checkBalanceStepList
+    };
+
     render(): JSX.Element {
         return (
             <div>
                 <button onClick={this.toggleUseCase}>
                     Toggle Use Case
                 </button>
-                <div>{useCaseList[this.state.selectedUseCase].name}</div>
                 <StepNavigator
-                    steps={useCaseList[this.state.selectedUseCase].steps}
+                    steps={this.steps()}
                 />
             </div>
         );
