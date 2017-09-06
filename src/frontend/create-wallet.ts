@@ -1,6 +1,7 @@
 
 
 export function createWallet(mnemonicPhrase?: string): { mnemonicPhrase: string, wallet: string, address: string } {
+	console.log('createWallet', mnemonicPhrase);
 
 	// get bip39 seed
 	// create HD wallet
@@ -12,5 +13,6 @@ export function createWallet(mnemonicPhrase?: string): { mnemonicPhrase: string,
 }
 
 export function checkMnemonic(mnemonicPhrase: string): boolean {
+	console.log('checkMnemonic', mnemonicPhrase);
 	return true;
 }

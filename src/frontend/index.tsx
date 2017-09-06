@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-//import { AppContainer } from "react-hot-loader";
-//import App from "./components/App";
+import { Main } from './containers/main';
 
-const rootEl = document.getElementById('root');
+const rootEl = document.body;
 
-render(<b>sdfasdfasdf</b>,
-    rootEl
+render(
+    <Main/>, rootEl
 );

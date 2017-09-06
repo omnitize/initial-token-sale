@@ -1,16 +1,11 @@
 
-import * as Promise from 'bluebird';
-
-import { TxStatus, Transaction, FundAddresses } from './state';
+import { ETxStatus, Transaction, FundAddresses } from './state';
 
 
 export function createSession(captcha: string): Promise<{ sessionToken: string }> {
-	console.log('createSession', captcha);
-	return new Promise(resolve => {
-		setTimeout(() => {
-			resolve({ sessionToken: '1234' });
-		}, 300);
-	});
+
+	return fetch(`/api/createSession?captcha=${captcha}`)
+	.then(response => response.json()) as Promise<{ sessionToken: string }>;
 }
 
 
@@ -36,7 +31,7 @@ export function loadTransactions(sessionToken: string, targetAddress: string): P
 			currency: 'BitCoin',
 			price: 0.003,
 			tokens: 0,
-			status: TxStatus.PENDING
+			status: ETxStatus.PENDING
 		},
 		{
 			datetime: new Date(),
@@ -44,7 +39,7 @@ export function loadTransactions(sessionToken: string, targetAddress: string): P
 			currency: 'Ether',
 			price: 0.01,
 			tokens: 16.008,
-			status: TxStatus.FINAL
+			status: ETxStatus.FINAL
 		},
 	];
 	return new Promise(resolve => {
