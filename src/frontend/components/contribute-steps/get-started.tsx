@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { getStartedContent as content } from '../../data/steps-page-data/contribute';
+import { ProveYouAreHuman } from '../check-balance-steps/prove-you-are-human';
 
 interface IProps {}
 
@@ -13,10 +15,14 @@ export class GetStarted extends React.Component<IProps, IState> {
     render(): JSX.Element {
         return (
             <div>
-                <h2>What you need to know to get started</h2>
+                <h2>{content.heading}</h2>
                 <ul>
-                    <li>You can a send funds in Bitcoin or Ethereum. The exchange rate is imported every 5 minutes from Poloniex.</li>
+                {content.list.map((listText, i) =>
+                    <li key={`list-${i}`}>
+                        {listText}
+                    </li>)}
                 </ul>
+                <ProveYouAreHuman/>
             </div>
         );
     }

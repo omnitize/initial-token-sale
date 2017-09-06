@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { whereToSendFundsContent as content } from '../../data/steps-page-data/contribute/where-to-send-funds'
 
 interface IProps {}
 
@@ -13,8 +14,11 @@ export class WhereToSendFunds extends React.Component<IProps, IState> {
     render(): JSX.Element {
         return (
             <div>
-                <h2>Lets us know where to send your tokens</h2>
-                <p>Welcome, human!</p>
+                <h2>{content.heading}</h2>
+                <h4>{content.heading2}</h4>
+                <p>{content.paragraph}</p>
+                <button>{content.button}</button>
+                <button>{content.button2}</button>
             </div>
         );
     }
