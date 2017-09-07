@@ -21,12 +21,14 @@ export enum ETxStatus {
 }
 
 export class Transaction {
-    datetime: Date;
+    created: Date;
     value: number;
     currency: string;
     price: number;
-    tokens: number;
+    tokensEarned: number;
+    tokensPaid: number;
     status: ETxStatus;
+    verifications: number;
 }
 
 export type FundAddresses = { [key: string]: string };

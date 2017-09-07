@@ -9,7 +9,7 @@
     "build:fe": "webpack --config webpack.config.prod",
     "build": "npm run build:be && npm run build:fe",
     "start": "npm run build && node ./express.js",
-    "dev": "npm run build:be && concurrently \"node ./express.js\" \"webpack-dev-server --config=webpack.config.dev.js --hot --inline --progress --colors --open\" "
+    "dev": "npm run build:be && concurrently --kill-others \"node ./express.js\" \"webpack-dev-server --config=webpack.config.dev.js --hot --inline --progress --colors --open\" "
   },
   "repository": {
     "type": "git",

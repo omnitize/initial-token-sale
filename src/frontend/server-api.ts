@@ -14,28 +14,6 @@ export function sendTargetAddress(sessionToken: string, targetAddress: string): 
 }
 
 export function loadTransactions(sessionToken: string, targetAddress: string): Promise<{ transactions: Array<Transaction> }> {
-	console.log('loadTransactions', sessionToken, targetAddress);
-	const transactions: Array<Transaction> = [
-		{
-			datetime: new Date(),
-			value: 13.3,
-			currency: 'BitCoin',
-			price: 0.003,
-			tokens: 0,
-			status: ETxStatus.PENDING
-		},
-		{
-			datetime: new Date(),
-			value: 18.01,
-			currency: 'Ether',
-			price: 0.01,
-			tokens: 16.008,
-			status: ETxStatus.FINAL
-		},
-	];
-	return new Promise(resolve => {
-		setTimeout(() => {
-			resolve({ transactions });
-		}, 300);
-	});
+	return fetch(`/api/loadTransactions?sessionToken=${sessionToken}&targetAddress=${targetAddress}`)
+	.then(response => response.json()) as Promise<{ transactions: Array<Transaction> }>;
 }

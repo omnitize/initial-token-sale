@@ -1,31 +1,12 @@
 import * as Promise from 'bluebird';
 import * as express from 'express';
 import { config } from './config';
+import { query } from './database';
 const fetch = require('node-fetch');
 const FormData = require('form-data');
 const crypto = require('crypto');
 const base64url = require('base64url');
-const mysql = require('mysql');
 
-const pool  = mysql.createPool({
-  connectionLimit: 10,
-  host: config.mysqlServer,
-  user: config.mysqlUsername,
-  password: config.mysqlPassword,
-  database: config.mysqlSchema
-});
-
-function query(sql: string, params: any): Promise<any> {
-	return new Promise((resolve, reject) => {
-		pool.query(sql, params, (error: any, results: Array<any>/*, fields: any */) => {
-			if(error) {
-				reject(error);
-			} else {
-				resolve(results);
-			}
-		});
-	});
-}
 
 interface Params {
 	captcha?: string;
@@ -44,6 +25,14 @@ export function setupApi(app: express.Application) {
 	});
 	app.use('/api/sendTargetAddress', (req: express.Request, res: express.Response) => {
 		sendTargetAddress((req.query as Params).sessionToken, (req.query as Params).targetAddress)
+		.then(obj => res.json(obj))
+		.catch(er => {
+			console.log(er);
+			res.status(500).send(er);
+		});
+	});
+	app.use('/api/loadTransactions', (req: express.Request, res: express.Response) => {
+		loadTransactions((req.query as Params).sessionToken, (req.query as Params).targetAddress)
 		.then(obj => res.json(obj))
 		.catch(er => {
 			console.log(er);
@@ -83,5 +72,17 @@ export function sendTargetAddress(sessionToken: string, targetAddress: string): 
 	});
 }
 
-
-
+export function loadTransactions(sessionToken: string, targetAddress: string): Promise<{ fundAddresses: { [key: string]: string } }> {
+	return Promise.resolve()
+	.then(() => query('select * from transactions where target_address=? and session_id=?', [ targetAddress, sessionToken ]))
+	.then(results => results.map(r => ({
+	    created: r.created,
+    	value: r.value,
+    	currency: r.currency,
+    	price: r.price,
+    	tokensEarned: r.tokens_earned,
+    	tokensPaid: r.tokens_paid,
+    	status: r.status,
+    	verifications: r.verifications
+	})));
+}
