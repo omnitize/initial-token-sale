@@ -1,4 +1,7 @@
-import { State } from './models';
+import {
+    EContributeSteps, ECheckBalanceSteps, EUserFlow, State, EWhereToSendFundsSubSteps,
+    ECheckWalletSubSteps
+} from './models';
 import { Main } from './containers/main';
 
 let state = new State();
@@ -19,7 +22,9 @@ export function setState(newState: Partial<State>) {
 }
 
 export function incrementStep() {
-    setState({ currentStep: state.currentStep + 1 });
+    const max = maxSteps();
+    const nextStep = state.currentStep === max ? state.currentStep : state.currentStep + 1;
+    setState({ currentStep: nextStep });
 }
 
 export function setStep(step: number) {
@@ -27,9 +32,22 @@ export function setStep(step: number) {
 }
 
 export function incrementSubStep() {
-    setState({ currentSubStep: state.currentSubStep + 1 });
+    const max = maxSubSteps();
+    console.log(max);
+    const nextSubStep = state.currentSubStep === max ? state.currentSubStep : state.currentSubStep + 1;
+    setState({ currentSubStep: nextSubStep });
 }
 
 export function setSubStep(step: number) {
     setState({ currentSubStep: step });
 }
+
+const maxSteps = () => {
+    const stepEnum = state.selectedUseCase === EUserFlow.CONTRIBUTE ? EContributeSteps : ECheckBalanceSteps;
+    return Object.keys(stepEnum).length / 2
+};
+
+const maxSubSteps = () => {
+    const subStepEnum = state.selectedUseCase === EUserFlow.CONTRIBUTE ? EWhereToSendFundsSubSteps : ECheckWalletSubSteps;
+    return Object.keys(subStepEnum).length / 2
+};

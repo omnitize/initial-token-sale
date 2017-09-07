@@ -26,15 +26,19 @@ export enum EContributeSteps {
     SEND_FUNDS
 }
 
+export enum ECheckBalanceSteps {
+    CHECK_BALANCE_START,
+    CHECK_WALLET,
+    VIEW_WALLET_HISTORY
+}
+
 export enum EWhereToSendFundsSubSteps {
     ALREADY_HAVE_WALLET,
     CREATE_WALLET
 }
 
-export enum ECheckBalanceSteps {
-    CHECK_BALANCE_START,
-    CHECK_WALLET,
-    VIEW_WALLET_HISTORY
+export enum ECheckWalletSubSteps {
+    RECLAIM_WALLET
 }
 
 export class Transaction {
