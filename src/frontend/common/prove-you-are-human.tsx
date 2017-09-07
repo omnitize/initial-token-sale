@@ -14,6 +14,7 @@ export class ProveYouAreHuman extends React.Component<IProps, IState> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
+        this.onCaptcha = this.onCaptcha.bind(this);
     }
 
     render(): JSX.Element {
@@ -26,7 +27,7 @@ export class ProveYouAreHuman extends React.Component<IProps, IState> {
         );
     }
 
-    private onCaptcha = (value: string) => {
+    private onCaptcha(value: string) {
         createSession(value)
         .then(({ sessionToken }) => {
             this.props.onSuccess(sessionToken);

@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { IStep } from '../models';
-import { isStringifiedEqual } from '../helpers/isStringifiedEqual';
 import { ButtonStep } from '.';
+import { setStep } from '../state';
 
 interface INavigatorStepsProps {
-    steps: IStep[]
+    steps: IStep[];
+    currentStep: number;
 }
 
 interface INavigatorStepsState {
-    selectedStep: number
 }
 
 export class NavigatorSteps extends React.Component<INavigatorStepsProps, INavigatorStepsState> {
@@ -18,33 +18,20 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, INavig
 
     public constructor(props?: any, context?: any) {
         super(props, context);
-        this.state = {
-            selectedStep: 0
-        };
     }
-
-    componentWillReceiveProps(nextProps: INavigatorStepsProps) {
-        if (!isStringifiedEqual(nextProps.steps, this.props.steps)) {
-            this.setState({
-                selectedStep: 0
-            });
-        }
-    }
-
-    private handleStepNavClick(i: number) {
-        this.setState({
-            selectedStep: i
-        });
-    };
 
     slideTransitionStyle() {
         return {
-            msTransform: `translateX(${-this.state.selectedStep * this.divisionSize}%)`,
-            OTransform: `translateX(${-this.state.selectedStep * this.divisionSize}%)`,
-            MozTransform: `translateX(${-this.state.selectedStep * this.divisionSize}%)`,
-            WebkitTransform: `translateX(${-this.state.selectedStep * this.divisionSize}%)`,
-            transform: `translateX(${-this.state.selectedStep * this.divisionSize}%)`
+            msTransform: `translateX(${-this.props.currentStep * this.divisionSize}%)`,
+            OTransform: `translateX(${-this.props.currentStep * this.divisionSize}%)`,
+            MozTransform: `translateX(${-this.props.currentStep * this.divisionSize}%)`,
+            WebkitTransform: `translateX(${-this.props.currentStep * this.divisionSize}%)`,
+            transform: `translateX(${-this.props.currentStep * this.divisionSize}%)`
         }
+    }
+
+    handleStepNavClick(step: number) {
+        setStep(step);
     }
 
     render(): JSX.Element {
@@ -55,7 +42,7 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, INavig
                     <ButtonStep
                         key={`step-nav-${i}`}
                         index={i}
-                        selectedStep={this.state.selectedStep}
+                        selectedStep={this.props.currentStep}
                         onClick={() => this.handleStepNavClick(i)}>
                         {`${i + 1}`}
                     </ButtonStep>
