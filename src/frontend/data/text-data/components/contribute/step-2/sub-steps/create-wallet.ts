@@ -4,10 +4,9 @@ export const createWalletContent = {
     buttonText: "Download my wallet as a file",
     paragraph3: "You can also copy your wallet's address and save it for future use. No need to keep your address secret, knowing it only allows checking the wallet's balance, but doesn't allow stealing from it.",
     heading: "Your wallet's address",
-    checkBoxInput: {
+    inputCheckbox: {
         name: "writtenMnemonicPhrase",
         label: "I have double checked the address and made sure it corresponds to a wallet that I own and control. I have in my possession the private and public key for this wallet, and have kept them in secret. I understand that if I enter the wrong address, my tokens may be irretrievably lost. I also understand that if anybody but me gain access to this wallet, they may steal my tokens. I agree that the operators of this web site cannot be held responsible for any such loss.",
-        type: "checkbox"
     },
     buttonMain: "Continue..."
 };

@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { } from ""
 import { alreadyHaveWalletContent as content } from '../../../../data/text-data';
-import { Input } from '../../../../common/input';
-import { ButtonMain } from '../../../../common/button-main';
+import { InputText, InputCheckbox, ButtonMain } from '../../../../common';
 
 interface IProps {}
 
@@ -18,9 +16,14 @@ export class AlreadyHaveWallet extends React.Component<IProps, IState> {
         return (
             <div>
                 <p>{content.paragraph}</p>
-                <Input
-                    name={content.textInput.name}
-                    type={content.textInput.type}
+                <InputText
+                    name={content.inputText.name}
+                    label={content.inputText.label}
+                    onChange={this.handleWalletAddressChange}
+                />
+                <InputCheckbox
+                    name={content.inputCheckbox.name}
+                    label={content.inputCheckbox.label}
                     onChange={this.handleWalletAddressChange}
                 />
                 <ButtonMain

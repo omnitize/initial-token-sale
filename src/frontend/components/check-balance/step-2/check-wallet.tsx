@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { checkWalletContent as content } from '../../../data/text-data';
 import { ButtonMain, ButtonText } from '../../../common';
-import { Input } from '../../../common/input';
+import { InputText } from '../../../common/input-text';
 import { ChangeEvent } from 'react';
 import { checkBalanceStepList } from '../../../data/component-data/check-balance';
 import { ECheckBalanceSteps, State } from '../../../models';
@@ -32,9 +32,8 @@ export class CheckWallet extends React.Component<ICheckWalletProps, ICheckWallet
                     <h2>{content.heading}</h2>
                     <p>{content.paragraph}</p>
                     <div>
-                        <Input
+                        <InputText
                             name={content.input.name}
-                            type={content.input.type}
                             label={content.input.label}
                             onChange={this.handleChange}
                         />

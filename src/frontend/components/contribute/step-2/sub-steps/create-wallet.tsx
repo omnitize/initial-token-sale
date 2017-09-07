@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { createWalletContent as content } from '../../../../data/text-data';
-import {ButtonText} from '../../../../common/button-text';
-import {ButtonMain} from '../../../../common/button-main';
+import { ButtonText, ButtonMain, InputCheckbox } from '../../../../common';
 
 interface IProps {}
 
@@ -22,6 +21,12 @@ export class CreateWallet extends React.Component<IProps, IState> {
                     {content.buttonText}
                 </ButtonText>
                 <p>{content.paragraph3}</p>
+                <h4>{content.heading}</h4>
+                <InputCheckbox
+                    name={content.inputCheckbox.name}
+                    label={content.inputCheckbox.label}
+                    onChange={this.handleWrittenMnemonicPhraseChange}
+                />
                 <ButtonMain onClick={this.handleContinue}>
                     {content.buttonMain}
                 </ButtonMain>
@@ -30,5 +35,6 @@ export class CreateWallet extends React.Component<IProps, IState> {
     }
 
     private handleDownloadClick = () => {};
+    private handleWrittenMnemonicPhraseChange = () => {};
     private handleContinue = () => {};
 }

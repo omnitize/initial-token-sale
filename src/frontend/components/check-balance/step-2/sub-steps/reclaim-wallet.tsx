@@ -2,7 +2,7 @@ import * as React from 'react';
 import { reclaimWalletContent as content } from '../../../../data/text-data'
 import { ButtonMain } from '../../../../common/button-main';
 import { ButtonText } from '../../../../common/button-text';
-import { Input } from '../../../../common/input';
+import { InputText } from '../../../../common/input-text';
 import { ChangeEvent } from 'react';
 import { setSubStep, incrementStep } from '../../../../state';
 
@@ -32,9 +32,8 @@ export class ReclaimWallet extends React.Component<IProps, IState> {
             <div>
                 <h2>{content.heading}</h2>
                 <p>{content.paragraph}</p>
-                <Input
+                <InputText
                     name={content.input.name}
-                    type={content.input.type}
                     label={content.input.label}
                     onChange={this.handleMnemonicPhraseChange}/>
                 <p>{content.paragraph2}</p>
