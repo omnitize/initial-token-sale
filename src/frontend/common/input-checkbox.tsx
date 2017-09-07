@@ -8,9 +8,7 @@ interface IProps {
     label?: string
 }
 
-interface IState {}
-
-export class InputCheckbox extends React.Component<IProps, IState> {
+export class InputCheckbox extends React.Component<IProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

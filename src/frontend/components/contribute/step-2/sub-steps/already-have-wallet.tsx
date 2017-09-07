@@ -4,9 +4,7 @@ import { InputText, InputCheckbox, ButtonMain } from '../../../../common';
 
 interface IProps {}
 
-interface IState {}
-
-export class AlreadyHaveWallet extends React.Component<IProps, IState> {
+export class AlreadyHaveWallet extends React.Component<IProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

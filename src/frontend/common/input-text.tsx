@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { ChangeEvent } from 'react';
 
 interface IProps {
     name: string
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
     placeholder?: string
     label?: string
 }

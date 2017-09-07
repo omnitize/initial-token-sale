@@ -4,17 +4,11 @@ import { ButtonMain } from '.';
 
 interface IProps {}
 
-interface IState {}
-
-export class WalletHistory extends React.Component<IProps, IState> {
+export class WalletHistory extends React.Component<IProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
     }
-
-    handleDownloadWallet = () => {};
-
-    handlePrintWallet = () => {};
 
     render(): JSX.Element {
         return (
@@ -42,4 +36,9 @@ export class WalletHistory extends React.Component<IProps, IState> {
             </div>
         );
     }
+
+    private handleDownloadWallet = () => {};
+
+    private handlePrintWallet = () => {};
+
 }

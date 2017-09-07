@@ -1,3 +1,1 @@
-export const checkWalletBalanceData = {
-
-};
+export const checkWalletBalanceData = {};

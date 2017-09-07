@@ -22,7 +22,11 @@ export class ProveYouAreHuman extends React.Component<IProps, IState> {
             <div>
                 <h2>{content.heading}</h2>
                 <p>{ content.paragraph }</p>
-                <ReCAPTCHA ref="recaptcha" sitekey={ config.recaptchaSiteKey } onChange={ this.onCaptcha } />
+                <ReCAPTCHA
+                    ref="recaptcha"
+                    sitekey={ config.recaptchaSiteKey }
+                    onChange={ this.onCaptcha }
+                />
             </div>
         );
     }

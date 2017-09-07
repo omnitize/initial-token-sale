@@ -6,9 +6,7 @@ interface IProps {
     onClick: (index: number) => void
 }
 
-interface IState {}
-
-export class ButtonStep extends React.Component<IProps, IState> {
+export class ButtonStep extends React.Component<IProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

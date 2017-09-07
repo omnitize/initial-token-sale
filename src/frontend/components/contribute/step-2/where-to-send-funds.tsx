@@ -4,9 +4,7 @@ import {ButtonMain} from '../../../common/button-main';
 
 interface IProps {}
 
-interface IState {}
-
-export class WhereToSendFunds extends React.Component<IProps, IState> {
+export class WhereToSendFunds extends React.Component<IProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

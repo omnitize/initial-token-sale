@@ -5,9 +5,7 @@ import { setState, incrementStep } from '../../../state';
 
 interface IProps {}
 
-interface IState {}
-
-export class ContributeStart extends React.Component<IProps, IState> {
+export class ContributeStart extends React.Component<IProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
@@ -23,12 +21,12 @@ export class ContributeStart extends React.Component<IProps, IState> {
                         {listText}
                     </li>)}
                 </ul>
-                <ProveYouAreHuman onSuccess={ this.onCaptchaSuccess } />
+                <ProveYouAreHuman onSuccess={ ContributeStart.onCaptchaSuccess } />
             </div>
         );
     }
 
-    private onCaptchaSuccess(sessionToken: string) {
+    static onCaptchaSuccess(sessionToken: string) {
         setState( { sessionToken });
         incrementStep();
     }

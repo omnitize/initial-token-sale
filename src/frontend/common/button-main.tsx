@@ -4,9 +4,7 @@ interface IProps {
     onClick: () => void
 }
 
-interface IState {}
-
-export class ButtonMain extends React.Component<IProps, IState> {
+export class ButtonMain extends React.Component<IProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

@@ -8,22 +8,14 @@ import { ECheckBalanceSteps, State } from '../../../models';
 import { incrementSubStep } from '../../../state';
 
 interface ICheckWalletProps {
-    state: State
+    state?: State
 }
 
-interface ICheckWalletState {}
-
-export class CheckWallet extends React.Component<ICheckWalletProps, ICheckWalletState> {
+export class CheckWallet extends React.Component<ICheckWalletProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
     }
-
-    handleNoWalletAddress = () => {};
-    handleContinue = () => {
-        incrementSubStep();
-    };
-    handleChange = (e: ChangeEvent<HTMLInputElement>) => {console.log(e)};
 
     render(): JSX.Element {
         return (
@@ -56,4 +48,12 @@ export class CheckWallet extends React.Component<ICheckWalletProps, ICheckWallet
             :   checkBalanceStepList[ECheckBalanceSteps.CHECK_WALLET].subComponents[this.props.state.currentSubStep]
         );
     }
+
+
+    private handleNoWalletAddress = () => {};
+    private handleContinue = () => {
+        incrementSubStep();
+    };
+    private handleChange = (e: ChangeEvent<HTMLInputElement>) => {console.log(e)};
+
 }

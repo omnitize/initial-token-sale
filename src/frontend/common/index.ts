@@ -1,8 +1,8 @@
-export { ProveYouAreHuman } from "./prove-you-are-human";
-export { NavigatorSteps } from "./navigator-steps";
-export { WalletHistory } from "./wallet-history";
 export { ButtonMain } from "./button-main";
-export { ButtonText } from "./button-text";
 export { ButtonStep } from "./button-step";
-export { InputText } from "./input-text";
+export { ButtonText } from "./button-text";
 export { InputCheckbox } from "./input-checkbox";
+export { InputText } from "./input-text";
+export { NavigatorSteps } from "./navigator-steps";
+export { ProveYouAreHuman } from "./prove-you-are-human";
+export { WalletHistory } from "./wallet-history";

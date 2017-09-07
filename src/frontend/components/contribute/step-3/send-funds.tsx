@@ -4,9 +4,7 @@ import { WalletHistory } from '../../../common';
 
 interface IProps {}
 
-interface IState {}
-
-export class SendFunds extends React.Component<IProps, IState> {
+export class SendFunds extends React.Component<IProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

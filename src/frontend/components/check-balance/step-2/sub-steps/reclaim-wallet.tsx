@@ -8,24 +8,13 @@ import { setSubStep, incrementStep } from '../../../../state';
 
 interface IProps {}
 
-interface IState {}
-
-export class ReclaimWallet extends React.Component<IProps, IState> {
+export class ReclaimWallet extends React.Component<IProps, any> {
 
     walletAddress = "xxxx";
 
     public constructor(props?: any, context?: any) {
         super(props, context);
     }
-
-    handleDownloadWalletClick = () => {};
-
-    handleContinueClick = () => {
-        setSubStep(-1);
-        incrementStep();
-    };
-
-    handleMnemonicPhraseChange = (e: ChangeEvent<HTMLInputElement>) => {console.log(e)};
 
     render(): JSX.Element {
         return (
@@ -35,7 +24,8 @@ export class ReclaimWallet extends React.Component<IProps, IState> {
                 <InputText
                     name={content.input.name}
                     label={content.input.label}
-                    onChange={this.handleMnemonicPhraseChange}/>
+                    onChange={this.handleMnemonicPhraseChange}
+                />
                 <p>{content.paragraph2}</p>
                 <ButtonText onClick={this.handleDownloadWalletClick}>
                     {content.buttonText}
@@ -55,4 +45,13 @@ export class ReclaimWallet extends React.Component<IProps, IState> {
             </div>
         );
     }
+
+    private handleDownloadWalletClick = () => {};
+
+    private handleContinueClick = () => {
+        setSubStep(-1);
+        incrementStep();
+    };
+
+    private handleMnemonicPhraseChange = (e: ChangeEvent<HTMLInputElement>) => {console.log(e)};
 }

@@ -4,9 +4,7 @@ import { NavigatorSteps, ButtonMain } from '../common';
 import { checkBalanceStepList, contributeStepList } from '../data/component-data';
 import { registerAppRoot, setState } from '../state';
 
-interface IMainProps {}
-
-export class Main extends React.Component<IMainProps, State> {
+export class Main extends React.Component<any, State> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

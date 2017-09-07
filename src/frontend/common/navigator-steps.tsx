@@ -8,10 +8,7 @@ interface INavigatorStepsProps {
     state: State;
 }
 
-interface INavigatorStepsState {
-}
-
-export class NavigatorSteps extends React.Component<INavigatorStepsProps, INavigatorStepsState> {
+export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
 
     divisionSize = 100 / this.props.steps.length;
     stepWidthStyle = {width: `${this.divisionSize}%`};
