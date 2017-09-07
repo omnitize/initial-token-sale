@@ -32,7 +32,7 @@ export function setupApi(app: express.Application) {
 		});
 	});
 	app.use('/api/loadTransactions', (req: express.Request, res: express.Response) => {
-		loadTransactions((req.query as Params).sessionToken, (req.query as Params).targetAddress)
+		loadTransactions((req.query as Params).targetAddress)
 		.then(obj => res.json(obj))
 		.catch(er => {
 			console.log(er);
@@ -72,9 +72,9 @@ export function sendTargetAddress(sessionToken: string, targetAddress: string): 
 	});
 }
 
-export function loadTransactions(sessionToken: string, targetAddress: string): Promise<{ fundAddresses: { [key: string]: string } }> {
+export function loadTransactions(targetAddress: string): Promise<{ fundAddresses: { [key: string]: string } }> {
 	return Promise.resolve()
-	.then(() => query('select * from transactions where target_address=? and session_id=?', [ targetAddress, sessionToken ]))
+	.then(() => query('select * from transactions where target_address=?', [ targetAddress ]))
 	.then(results => results.map(r => ({
 	    created: r.created,
     	value: r.value,
