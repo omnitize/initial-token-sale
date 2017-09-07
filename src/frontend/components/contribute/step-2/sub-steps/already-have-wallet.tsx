@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { alreadyHaveWalletContent as content } from '../../../../data/text-data';
 import { InputText, InputCheckbox, ButtonMain } from '../../../../common';
+import { setSubStep, incrementStep } from '../../../../state';
 
 interface IProps {}
 
@@ -33,6 +34,9 @@ export class AlreadyHaveWallet extends React.Component<IProps, any> {
     }
 
     private handleWalletAddressChange = () => {};
-    private handleContinue = () => {};
+    private handleContinue = () => {
+        setSubStep(-1);
+        incrementStep();
+    };
 
 }

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { IStep } from '../../models';
-import { CheckBalanceStart, CheckWallet, ViewWalletHistory } from '../../components';
-import { ReclaimWallet } from '../../components/check-balance/step-2/sub-steps/reclaim-wallet';
+import { CheckBalanceStart, CheckWallet, ReclaimWallet, ViewWalletHistory } from '../../components';
 
 export const checkBalanceStepList: IStep[] = [
     {

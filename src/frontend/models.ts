@@ -26,6 +26,11 @@ export enum EContributeSteps {
     SEND_FUNDS
 }
 
+export enum EWhereToSendFundsSubSteps {
+    ALREADY_HAVE_WALLET,
+    CREATE_WALLET
+}
+
 export enum ECheckBalanceSteps {
     CHECK_BALANCE_START,
     CHECK_WALLET,

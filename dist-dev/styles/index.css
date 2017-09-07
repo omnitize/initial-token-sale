@@ -46,6 +46,11 @@
     margin: 4px;
 }
 
+.its-main button {
+    font-size: 16px;
+    line-height: 22px;
+}
+
 .its-main button.its-button-step {
     display: inline-block;
     width: 60px;
@@ -63,7 +68,7 @@
     display: inline-block;
     border-radius: 4px;
     min-width: 180px;
-    padding: 8px;
+    padding: 8px 12px;
     margin: 4px;
     background: #0091EA;
     color: #eeeeee;
@@ -99,7 +104,8 @@
     position: relative;
     width: 100%;
     min-height: 768px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .its-main .its-navigator-steps__slider {
@@ -121,7 +127,14 @@
 }
 
 .its-wallet-history-table {
-    padding: 4px;
-    border: #212121;
+    border: 2px solid #212121;
     border-radius: 2px;
+}
+
+.its-prove-you-are-human {
+    text-align: center;
+}
+
+.its-prove-you-are-human__recaptcha {
+    display: inline-block;
 }

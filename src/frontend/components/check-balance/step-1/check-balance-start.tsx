@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { ProveYouAreHuman} from '../../../common/prove-you-are-human';
 import { incrementStep, setState } from '../../../state';
+import { State } from '../../../models';
 
-interface IProps {}
+interface IProps {
+    state?: State
+}
 
 export class CheckBalanceStart extends React.Component<IProps, any> {
 

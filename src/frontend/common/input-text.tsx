@@ -7,9 +7,7 @@ interface IProps {
     label?: string
 }
 
-interface IState {}
-
-export class InputText extends React.Component<IProps, IState> {
+export class InputText extends React.Component<IProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

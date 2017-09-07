@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createWalletContent as content } from '../../../../data/text-data';
 import { ButtonText, ButtonMain, InputCheckbox } from '../../../../common';
+import { incrementStep, setSubStep } from '../../../../state';
 
 interface IProps {}
 
@@ -36,5 +37,8 @@ export class CreateWallet extends React.Component<IProps, IState> {
 
     private handleDownloadClick = () => {};
     private handleWrittenMnemonicPhraseChange = () => {};
-    private handleContinue = () => {};
+    private handleContinue = () => {
+        setSubStep(-1);
+        incrementStep();
+    };
 }

@@ -2,8 +2,11 @@ import * as React from 'react';
 import { contributeStartContent as content } from '../../../data/text-data';
 import { ProveYouAreHuman } from '../../../common/prove-you-are-human';
 import { setState, incrementStep } from '../../../state';
+import { State } from '../../../models';
 
-interface IProps {}
+interface IProps {
+    state?: State
+}
 
 export class ContributeStart extends React.Component<IProps, any> {
 
