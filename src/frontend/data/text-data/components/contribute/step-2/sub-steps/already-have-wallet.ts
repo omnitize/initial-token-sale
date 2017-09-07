@@ -10,5 +10,5 @@ export const alreadyHaveWalletContent = {
         label: "I have double checked the address and made sure it corresponds to a wallet that I own and control. I have in my possession the private and public key for this wallet, and have kept them in secret. I understand that if I enter the wrong address, my tokens may be irretrievably lost. I also understand that if anybody but me gain access to this wallet, they may steal my tokens. I agree that the operators of this web site cannot be held responsible for any such loss.",
         type: "checkbox"
     },
-    button: "Continue"
+    buttonMain: "Continue"
 };
