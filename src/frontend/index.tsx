@@ -5,5 +5,5 @@ import { Main } from './containers/main';
 const rootEl = document.body;
 
 render(
-    <Main/>, rootEl
+    <Main />, rootEl
 );

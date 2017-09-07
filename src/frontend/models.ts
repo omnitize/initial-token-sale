@@ -9,6 +9,17 @@ export interface IStep {
     subComponents?: JSX.Element[]
 }
 
+export enum EUserFlow {
+    CONTRIBUTE,
+    CHECK_BALANCE
+}
+
+export enum ETxStatus {
+    PENDING,
+    VERIFIED,
+    FINAL
+}
+
 export enum EContributeSteps {
     CONTRIBUTE_START,
     WHERE_TO_SEND_FUNDS,
@@ -19,17 +30,6 @@ export enum ECheckBalanceSteps {
     CHECK_BALANCE_START,
     CHECK_WALLET,
     VIEW_WALLET_HISTORY
-}
-
-export enum EUserFlow {
-    CONTRIBUTE,
-    CHECK_BALANCE
-}
-
-export enum ETxStatus {
-    PENDING,
-    VERIFIED,
-    FINAL
 }
 
 export class Transaction {
@@ -45,21 +45,19 @@ export type FundAddresses = { [key: string]: string };
 
 export class State {
 
-    sessionToken: string; 
+    sessionToken: string = null;
 
-    useCase: EUserFlow;
-    stepNumber: number;
+    selectedUseCase: EUserFlow = EUserFlow.CONTRIBUTE;
+    currentStep: number = 0;
 
-    captchaToken: string;
+    alreadyHaveWallet: boolean = true;
 
-    alreadyHaveWallet: boolean;
+    targetAddress: string = null;
 
-    targetAddress: string;
+    targetBIP39: string = null;
+    targetWallet: string = null;
 
-    targetBIP39: string;
-    targetWallet: string;
+    fundAddresses: FundAddresses = {};
 
-    fundAddresses: Map<string, string>;
-
-    transactions: Array<Transaction>;
+    transactions: Array<Transaction> = [];
 }

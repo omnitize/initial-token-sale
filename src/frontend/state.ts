@@ -1,3 +1,27 @@
 import { State } from './models';
+import { Main } from './containers/main';
 
-export const state = new State();
+let state = new State();
+let appRoot: Main;
+
+export function registerAppRoot(root: Main) {
+	appRoot = root;
+}
+
+type Partial<T> = {
+    [P in keyof T]?: T[P];
+}
+
+export function setState(newState: Partial<State>) {
+	console.log('setState', state, newState);
+	Object.assign(state, newState);
+	appRoot.setState(state);
+}
+
+export function incrementStep() {
+	setState({ currentStep: state.currentStep + 1 });
+}
+
+export function setStep(step: number) {
+	setState({ currentStep: step });
+}

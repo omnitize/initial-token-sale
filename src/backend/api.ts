@@ -37,12 +37,18 @@ export function setupApi(app: express.Application) {
 	app.use('/api/createSession', (req: express.Request, res: express.Response) => {
 		createSession((req.query as Params).captcha, req.connection.remoteAddress)
 		.then(obj => res.json(obj))
-		.catch(er => res.status(500).send(er));
+		.catch(er => {
+			console.log(er);
+			res.status(500).send(er);
+		});
 	});
 	app.use('/api/sendTargetAddress', (req: express.Request, res: express.Response) => {
 		sendTargetAddress((req.query as Params).sessionToken, (req.query as Params).targetAddress)
 		.then(obj => res.json(obj))
-		.catch(er => res.status(500).send(er));
+		.catch(er => {
+			console.log(er);
+			res.status(500).send(er);
+		});
 	});
 }
 
@@ -55,8 +61,9 @@ export function createSession(captcha: string, remoteIp: string): Promise<{ sess
 		method: 'POST',
 		body: data
 	})
+	.then((response: any) => response.json())
 	.then((response: any) => {
-		if(!response.json().success) throw new Error('Captcha failed');
+		if(!response.success) throw new Error('Captcha failed: ' + JSON.stringify(response));
 		const sessionToken = base64url(crypto.randomBytes(config.sessionTokenSize));
 		return query('insert into sessions (session_id) values (?)', [ sessionToken ])
 		.then(() => { return { sessionToken }; });

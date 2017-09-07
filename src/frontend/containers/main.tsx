@@ -1,25 +1,24 @@
 import * as React from 'react';
-import { EUserFlow } from '../models';
+import { State, EUserFlow } from '../models';
 import { NavigatorSteps, ButtonMain } from '../common';
 import { checkBalanceStepList, contributeStepList } from '../data/component-data';
+import { registerAppRoot, setState } from '../state';
 
 interface IMainProps {}
 
-interface IMainState {
-    selectedUseCase: EUserFlow
-}
-
-export class Main extends React.Component<IMainProps, IMainState> {
+export class Main extends React.Component<IMainProps, State> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
-        this.state = {
-            selectedUseCase: EUserFlow.CONTRIBUTE
-        };
+    }
+
+    componentWillMount() {
+        registerAppRoot(this);
+        setState({});
     }
 
     private toggleUseCase = () => {
-        this.setState({
+        setState({
             selectedUseCase: this.state.selectedUseCase === EUserFlow.CONTRIBUTE
                 ? EUserFlow.CHECK_BALANCE
                 : EUserFlow.CONTRIBUTE
@@ -33,6 +32,7 @@ export class Main extends React.Component<IMainProps, IMainState> {
     };
 
     render(): JSX.Element {
+        console.log('Main.redner');
         return (
             <div className="its-main">
                 <div>
@@ -42,7 +42,8 @@ export class Main extends React.Component<IMainProps, IMainState> {
                     </ButtonMain>
                 </div>
                 <NavigatorSteps
-                    steps={this.steps()}
+                    currentStep={ this.state.currentStep }
+                    steps={ this.steps() }
                 />
             </div>
         );
