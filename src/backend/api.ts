@@ -75,7 +75,7 @@ export function sendTargetAddress(sessionToken: string, targetAddress: string): 
 export function loadTransactions(targetAddress: string): Promise<{ fundAddresses: { [key: string]: string } }> {
 	return Promise.resolve()
 	.then(() => query('select * from transactions where target_address=?', [ targetAddress ]))
-	.then(results => results.map(r => ({
+	.then(results => results.map((r: any) => ({
 	    created: r.created,
     	value: r.value,
     	currency: r.currency,
