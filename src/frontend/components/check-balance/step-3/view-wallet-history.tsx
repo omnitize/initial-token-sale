@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { WalletHistory } from '../../../common';
 
 interface IProps {}
 
 interface IState {}
 
-export class WhereToSendFunds extends React.Component<IProps, IState> {
+export class ViewWalletHistory extends React.Component<IProps, IState> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
@@ -13,8 +14,7 @@ export class WhereToSendFunds extends React.Component<IProps, IState> {
     render(): JSX.Element {
         return (
             <div>
-                <h2>Lets us know where to send your tokens</h2>
-                <p>Welcome, human!</p>
+                <WalletHistory/>
             </div>
         );
     }

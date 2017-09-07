@@ -1,5 +1,5 @@
 
-import { ETxStatus, Transaction, FundAddresses } from './state';
+import { ETxStatus, Transaction, FundAddresses } from './models';
 
 
 export function createSession(captcha: string): Promise<{ sessionToken: string }> {
