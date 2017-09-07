@@ -3,6 +3,8 @@ import { checkWalletContent as content } from '../../../data/text-data';
 import { ButtonMain, ButtonText } from '../../../common';
 import { Input } from '../../../common/input';
 import { ChangeEvent } from 'react';
+import { checkBalanceStepList } from '../../../data/component-data/check-balance';
+import { ECheckBalanceSteps } from '../../../models';
 
 interface ICheckWalletProps {}
 
@@ -20,13 +22,17 @@ export class CheckWallet extends React.Component<ICheckWalletProps, ICheckWallet
     }
 
     handleNoWalletAddress = () => {};
-    handleContinue = () => {};
+    handleContinue = () => {
+        this.setState({
+            subStepIndex: 0
+        })
+    };
     handleChange = (e: ChangeEvent<HTMLInputElement>) => {console.log(e)};
 
     render(): JSX.Element {
         return (
             this.state.subStepIndex === -1
-            &&  <div>
+            ?  <div>
                     <h2>{content.heading}</h2>
                     <p>{content.paragraph}</p>
                     <div>
@@ -52,6 +58,7 @@ export class CheckWallet extends React.Component<ICheckWalletProps, ICheckWallet
                         </ButtonMain>
                     </div>
                 </div>
+            :   checkBalanceStepList[ECheckBalanceSteps.CHECK_WALLET].subComponents[this.state.subStepIndex]
         );
     }
 }

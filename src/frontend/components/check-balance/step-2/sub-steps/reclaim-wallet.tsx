@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { reclaimWalletContent as content } from '../../../../data/text-data'
-import {ButtonMain} from '../../../../common/button-main';
-import {ButtonText} from '../../../../common/button-text';
-import {Input} from '../../../../common/input';
-import {ChangeEvent} from 'react';
+import { ButtonMain } from '../../../../common/button-main';
+import { ButtonText } from '../../../../common/button-text';
+import { Input } from '../../../../common/input';
+import { ChangeEvent } from 'react';
 
 interface IProps {}
 

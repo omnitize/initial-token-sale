@@ -9,6 +9,18 @@ export interface IStep {
     subComponents?: JSX.Element[]
 }
 
+export enum EContributeSteps {
+    CONTRIBUTE_START,
+    WHERE_TO_SEND_FUNDS,
+    SEND_FUNDS
+}
+
+export enum ECheckBalanceSteps {
+    CHECK_BALANCE_START,
+    CHECK_WALLET,
+    VIEW_WALLET_HISTORY
+}
+
 export enum EUserFlow {
     CONTRIBUTE,
     CHECK_BALANCE
