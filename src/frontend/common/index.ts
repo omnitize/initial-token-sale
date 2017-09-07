@@ -5,4 +5,4 @@ export { InputCheckbox } from "./input-checkbox";
 export { InputText } from "./input-text";
 export { NavigatorSteps } from "./navigator-steps";
 export { ProveYouAreHuman } from "./prove-you-are-human";
-export { WalletHistory } from "./wallet-history";
+export { WalletHistory } from "./wallet-history/wallet-history";

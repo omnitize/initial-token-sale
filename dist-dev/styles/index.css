@@ -87,12 +87,6 @@
     width: 100%;
 }
 
-.its-main tbody {
-    padding: 4px;
-    border: #212121;
-    border-radius: 2px;
-}
-
 .its-main tr {
     line-height: 1.5;
 }
@@ -124,4 +118,10 @@
 
 .its-main .its-check-wallet__text-button {
     text-align: right
+}
+
+.its-wallet-history-table {
+    padding: 4px;
+    border: #212121;
+    border-radius: 2px;
 }

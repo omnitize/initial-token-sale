@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { walletHistoryContent as content } from '../data/text-data'
-import { ButtonMain } from '.';
+import { walletHistoryContent as content } from '../../data/text-data'
+import { ButtonMain } from '../';
+import { WalletHistoryTable } from './wallet-history-table';
 
 interface IProps {}
 
@@ -14,17 +15,7 @@ export class WalletHistory extends React.Component<IProps, any> {
         return (
             <div>
                 <h2>{content.heading}</h2>
-                {/*// TODO SEPARATE INTO WALLET HISTORY TABLE COMPONENT*/}
-                <table>
-                    <tbody>
-                        <tr>
-                        {content.tableColumns.map((columnHeading, i) =>
-                            <th key={`${columnHeading}-${i}`}>
-                                {columnHeading}
-                            </th>)}
-                        </tr>
-                    </tbody>
-                </table>
+                <WalletHistoryTable/>
                 <ButtonMain
                     onClick={this.handleDownloadWallet}>
                     {content.button}
