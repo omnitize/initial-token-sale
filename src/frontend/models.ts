@@ -33,21 +33,21 @@ export type FundAddresses = { [key: string]: string };
 
 export class State {
 
-    sessionToken: string; 
+    sessionToken?: string; 
 
-    useCase: EUserFlow;
-    stepNumber: number;
+    useCase?: EUserFlow;
+    stepNumber?: number;
 
-    captchaToken: string;
+    captchaToken?: string;
 
-    alreadyHaveWallet: boolean;
+    alreadyHaveWallet?: boolean;
 
-    targetAddress: string;
+    targetAddress?: string;
 
-    targetBIP39: string;
-    targetWallet: string;
+    targetBIP39?: string;
+    targetWallet?: string;
 
-    fundAddresses: Map<string, string>;
+    fundAddresses?: Map<string, string>;
 
-    transactions: Array<Transaction>;
+    transactions?: Array<Transaction>;
 }

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { EUserFlow } from '../models';
 import { NavigatorSteps, ButtonMain } from '../common';
 import { checkBalanceStepList, contributeStepList } from '../data/component-data';
+import { registerAppRoot } from '../state';
 
 interface IMainProps {}
 
@@ -16,6 +17,10 @@ export class Main extends React.Component<IMainProps, IMainState> {
         this.state = {
             selectedUseCase: EUserFlow.CONTRIBUTE
         };
+    }
+
+    componentDidMount() {
+        registerAppRoot(this);
     }
 
     private toggleUseCase = () => {

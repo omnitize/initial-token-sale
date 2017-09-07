@@ -8,7 +8,7 @@
     "build:be": "node ./node_modules/typescript/bin/tsc -p ./src/backend",
     "build:fe": "webpack --config webpack.config.prod",
     "build": "npm run build:be && npm run build:fe",
-    "start": "npm run build:be && npm run build:fe && node ./express.js",
+    "start": "npm run build && node ./express.js",
     "dev": "npm run build:be && concurrently \"node ./express.js\" \"webpack-dev-server --config=webpack.config.dev.js --hot --inline --progress --colors --open\" "
   },
   "repository": {
@@ -38,12 +38,13 @@
     "react-google-recaptcha": "0.9.7"
   },
   "devDependencies": {
-    "webpack-dev-server": "2.7.1",
+    "awesome-typescript-loader": "3.2.3",
+    "concurrently": "3.5.0",
     "react-hot-loader": "1.3.1",
     "stylelint-webpack-plugin": "0.9.0",
     "typescript": "2.5.2",
     "webpack": "3.5.5",
-    "webpack-merge": "4.1.0",
-    "awesome-typescript-loader": "3.2.3"
+    "webpack-dev-server": "2.7.1",
+    "webpack-merge": "4.1.0"
   }
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { contributeStartContent as content } from '../../../data/text-data';
 import { ProveYouAreHuman } from '../../../common/prove-you-are-human';
+import { setState, incrementStep } from '../../../state';
 
 interface IProps {}
 
@@ -22,8 +23,13 @@ export class ContributeStart extends React.Component<IProps, IState> {
                         {listText}
                     </li>)}
                 </ul>
-                <ProveYouAreHuman/>
+                <ProveYouAreHuman onSuccess={ this.onCaptchaSuccess } />
             </div>
         );
+    }
+
+    private onCaptchaSuccess(sessionToken: string) {
+        setState( { sessionToken });
+        incrementStep();
     }
 }

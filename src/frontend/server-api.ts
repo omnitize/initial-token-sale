@@ -3,7 +3,6 @@ import { ETxStatus, Transaction, FundAddresses } from './models';
 
 
 export function createSession(captcha: string): Promise<{ sessionToken: string }> {
-
 	return fetch(`/api/createSession?captcha=${captcha}`)
 	.then(response => response.json()) as Promise<{ sessionToken: string }>;
 }
