@@ -15,5 +15,15 @@ export function sendTargetAddress(sessionToken: string, targetAddress: string): 
 
 export function loadTransactions(sessionToken: string, targetAddress: string): Promise<{ transactions: Array<Transaction> }> {
 	return fetch(`/api/loadTransactions?sessionToken=${sessionToken}&targetAddress=${targetAddress}`)
-	.then(response => response.json()) as Promise<{ transactions: Array<Transaction> }>;
+	.then(response => response.json())
+	.then(array => array.map((r: any) => ({
+	    created: r.created,
+    	value: r.value,
+    	currency: r.currency,
+    	price: r.price,
+    	tokensEarned: r.tokens_earned,
+    	tokensPaid: r.tokens_paid,
+    	status: ETxStatus[r.status],
+    	verifications: r.verifications		
+	}))) as Promise<{ transactions: Array<Transaction> }>;
 }
