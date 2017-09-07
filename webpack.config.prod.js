@@ -6,7 +6,9 @@ const {resolve} = require('path');
 const commonConfig = require('./webpack.config.common');
 
 module.exports = merge(commonConfig, {
-  entry: './frontend/index.tsx',
+  entry: [
+    './frontend/index.tsx'
+    ],
   output: {
     filename: 'bundle.min.js',
     path: resolve(__dirname, 'dist'),

@@ -29,7 +29,11 @@ export class Transaction {
     status: ETxStatus;
 }
 
+export type FundAddresses = { [key: string]: string };
+
 export class State {
+
+    sessionToken: string; 
 
     useCase: EUserFlow;
     stepNumber: number;
