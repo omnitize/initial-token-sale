@@ -32,7 +32,7 @@ export class Main extends React.Component<IMainProps, State> {
     };
 
     render(): JSX.Element {
-        console.log('Main.redner');
+        console.log('Main.render');
         return (
             <div className="its-main">
                 <div>
@@ -42,7 +42,7 @@ export class Main extends React.Component<IMainProps, State> {
                     </ButtonMain>
                 </div>
                 <NavigatorSteps
-                    currentStep={ this.state.currentStep }
+                    state={ this.state }
                     steps={ this.steps() }
                 />
             </div>

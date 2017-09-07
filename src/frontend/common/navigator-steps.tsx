@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { IStep } from '../models';
+import { IStep, State } from '../models';
 import { ButtonStep } from '.';
 import { setStep } from '../state';
 
 interface INavigatorStepsProps {
     steps: IStep[];
-    currentStep: number;
+    state: State;
 }
 
 interface INavigatorStepsState {
@@ -22,15 +22,15 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, INavig
 
     slideTransitionStyle() {
         return {
-            msTransform: `translateX(${-this.props.currentStep * this.divisionSize}%)`,
-            OTransform: `translateX(${-this.props.currentStep * this.divisionSize}%)`,
-            MozTransform: `translateX(${-this.props.currentStep * this.divisionSize}%)`,
-            WebkitTransform: `translateX(${-this.props.currentStep * this.divisionSize}%)`,
-            transform: `translateX(${-this.props.currentStep * this.divisionSize}%)`
+            msTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
+            OTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
+            MozTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
+            WebkitTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
+            transform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`
         }
     }
 
-    handleStepNavClick(step: number) {
+    static handleStepNavClick(step: number) {
         setStep(step);
     }
 
@@ -42,8 +42,8 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, INavig
                     <ButtonStep
                         key={`step-nav-${i}`}
                         index={i}
-                        selectedStep={this.props.currentStep}
-                        onClick={() => this.handleStepNavClick(i)}>
+                        selectedStep={this.props.state.currentStep}
+                        onClick={() => NavigatorSteps.handleStepNavClick(i)}>
                         {`${i + 1}`}
                     </ButtonStep>
                     )
@@ -57,7 +57,12 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, INavig
                             <div key={`step-${i}`}
                                  className="its-navigator-steps__step"
                                  style={this.stepWidthStyle}>
-                                {step.component}
+                                {React.cloneElement(
+                                    step.component,
+                                    {
+                                        state: this.props.state
+                                    }
+                                )}
                             </div>)}
                     </div>
                 </div>

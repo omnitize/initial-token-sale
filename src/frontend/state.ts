@@ -19,9 +19,17 @@ export function setState(newState: Partial<State>) {
 }
 
 export function incrementStep() {
-	setState({ currentStep: state.currentStep + 1 });
+    setState({ currentStep: state.currentStep + 1 });
 }
 
 export function setStep(step: number) {
-	setState({ currentStep: step });
+    setState({ currentStep: step });
+}
+
+export function incrementSubStep() {
+    setState({ currentSubStep: state.currentSubStep + 1 });
+}
+
+export function setSubStep(step: number) {
+    setState({ currentSubStep: step });
 }

@@ -49,6 +49,7 @@ export class State {
 
     selectedUseCase: EUserFlow = EUserFlow.CONTRIBUTE;
     currentStep: number = 0;
+    currentSubStep: number = -1;
 
     alreadyHaveWallet: boolean = true;
 

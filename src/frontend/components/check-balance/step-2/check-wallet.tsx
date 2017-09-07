@@ -4,34 +4,30 @@ import { ButtonMain, ButtonText } from '../../../common';
 import { Input } from '../../../common/input';
 import { ChangeEvent } from 'react';
 import { checkBalanceStepList } from '../../../data/component-data/check-balance';
-import { ECheckBalanceSteps } from '../../../models';
+import { ECheckBalanceSteps, State } from '../../../models';
+import { incrementSubStep } from '../../../state';
 
-interface ICheckWalletProps {}
-
-interface ICheckWalletState {
-    subStepIndex: number
+interface ICheckWalletProps {
+    state: State
 }
+
+interface ICheckWalletState {}
 
 export class CheckWallet extends React.Component<ICheckWalletProps, ICheckWalletState> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
-        this.state = {
-            subStepIndex: -1
-        };
     }
 
     handleNoWalletAddress = () => {};
     handleContinue = () => {
-        this.setState({
-            subStepIndex: 0
-        })
+        incrementSubStep();
     };
     handleChange = (e: ChangeEvent<HTMLInputElement>) => {console.log(e)};
 
     render(): JSX.Element {
         return (
-            this.state.subStepIndex === -1
+            this.props.state.currentSubStep === -1
             ?  <div>
                     <h2>{content.heading}</h2>
                     <p>{content.paragraph}</p>
@@ -58,7 +54,7 @@ export class CheckWallet extends React.Component<ICheckWalletProps, ICheckWallet
                         </ButtonMain>
                     </div>
                 </div>
-            :   checkBalanceStepList[ECheckBalanceSteps.CHECK_WALLET].subComponents[this.state.subStepIndex]
+            :   checkBalanceStepList[ECheckBalanceSteps.CHECK_WALLET].subComponents[this.props.state.currentSubStep]
         );
     }
 }

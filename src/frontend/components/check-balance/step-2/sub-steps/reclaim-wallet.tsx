@@ -4,6 +4,7 @@ import { ButtonMain } from '../../../../common/button-main';
 import { ButtonText } from '../../../../common/button-text';
 import { Input } from '../../../../common/input';
 import { ChangeEvent } from 'react';
+import { setSubStep, incrementStep } from '../../../../state';
 
 interface IProps {}
 
@@ -19,7 +20,10 @@ export class ReclaimWallet extends React.Component<IProps, IState> {
 
     handleDownloadWalletClick = () => {};
 
-    handleContinueClick = () => {};
+    handleContinueClick = () => {
+        setSubStep(-1);
+        incrementStep();
+    };
 
     handleMnemonicPhraseChange = (e: ChangeEvent<HTMLInputElement>) => {console.log(e)};
 
