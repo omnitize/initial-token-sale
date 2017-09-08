@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { WalletHistory } from '../../../common';
+import { State } from '../../../models';
 
-interface IProps {}
+interface IViewWalletHistoryProps {
+    state?: State
+}
 
-interface IState {}
-
-export class ViewWalletHistory extends React.Component<IProps, IState> {
+export class ViewWalletHistory extends React.Component<IViewWalletHistoryProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

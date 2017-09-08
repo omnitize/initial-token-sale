@@ -46,6 +46,11 @@
     margin: 4px;
 }
 
+.its-main button {
+    font-size: 16px;
+    line-height: 22px;
+}
+
 .its-main button.its-button-step {
     display: inline-block;
     width: 60px;
@@ -63,7 +68,7 @@
     display: inline-block;
     border-radius: 4px;
     min-width: 180px;
-    padding: 8px;
+    padding: 8px 12px;
     margin: 4px;
     background: #0091EA;
     color: #eeeeee;
@@ -87,12 +92,6 @@
     width: 100%;
 }
 
-.its-main tbody {
-    padding: 4px;
-    border: #212121;
-    border-radius: 2px;
-}
-
 .its-main tr {
     line-height: 1.5;
 }
@@ -105,7 +104,8 @@
     position: relative;
     width: 100%;
     min-height: 768px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .its-main .its-navigator-steps__slider {
@@ -113,7 +113,6 @@
     left: 0;
     top: 0;
     width: 300%;
-    transition: transform 200ms;
     z-index: 1;
 }
 
@@ -124,4 +123,33 @@
 
 .its-main .its-check-wallet__text-button {
     text-align: right
+}
+
+.its-main .its-wallet-history-table {
+    border: 2px solid #212121;
+    border-radius: 2px;
+}
+
+.its-main .its-prove-you-are-human {
+    text-align: center;
+}
+
+.its-main .its-prove-you-are-human__recaptcha {
+    display: inline-block;
+}
+
+.its-main .--its-transition-transform {
+    -webkit-transition: transform 200ms;
+    -ms-transition: transform 200ms;
+    -o-transition: transform 200ms;
+    -moz-transition: transform 200ms;
+    transition: transform 200ms;
+}
+
+.its-main .--its-transition-opacity {
+    -webkit-transition: opacity 200ms;
+    -ms-transition: opacity 200ms;
+    -o-transition: opacity 200ms;
+    -moz-transition: opacity 200ms;
+    transition: opacity 200ms;
 }

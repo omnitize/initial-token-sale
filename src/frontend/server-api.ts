@@ -1,4 +1,3 @@
-
 import { ETxStatus, Transaction, FundAddresses } from './models';
 
 
