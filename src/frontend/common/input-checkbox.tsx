@@ -4,7 +4,7 @@ interface IInputCheckboxProps {
     name: string
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
     placeholder?: string
-    value?: boolean
+    value: boolean
     paragraph?: string
 }
 
@@ -14,31 +14,33 @@ export class InputCheckbox extends React.Component<IInputCheckboxProps, any> {
         super(props, context);
     }
 
-    renderInput() {
-        const { name, onChange, placeholder } = this.props;
-
-        return  <input
-                    className="its-input-checkbox__input"
-                    name={name}
-                    type={"checkbox"}
-                    onChange={onChange}
-                    checked={true}
-                    placeholder={!!placeholder ? placeholder : null}
-                />
-    }
-
     render(): JSX.Element {
+        const { name, value, paragraph, placeholder } = this.props;
+
         return (
             <div className="its-input-checkbox">
-                {this.renderInput()}
+                <input
+                    className="its-input-checkbox__input"
+                    id="its-input-checkbox__input"
+                    name={name}
+                    type={"checkbox"}
+                    onChange={this.handleChange}
+                    checked={value}
+                    placeholder={!!placeholder ? placeholder : null}
+                />
                 <label
                     className="its-input-checkbox__label"
-                    htmlFor={this.props.name}>
+                    htmlFor={"its-input-checkbox__input"}>
                 </label>
                 <div className="its-input-checkbox__paragraph">
-                    {!!this.props.paragraph ? <p>{this.props.paragraph}</p> : null}
+                    {!!paragraph ? <p>{paragraph}</p> : null}
                 </div>
             </div>
         );
+    }
+
+    private handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        console.log("InputCheckbox.handleChange: " + e.currentTarget.checked);
+        this.props.onChange(e);
     }
 }

@@ -61,12 +61,20 @@ export class State {
     currentSubStep: number = -1;
     currentSubStepMounted: number = -1;
 
+    walletAddress: string = "";
+
+    pmnemonicPhrase: string = "";
+
+    isDoubleCheckedAddress: boolean = false;
+
+    isWrittenMnemonicPhrase: boolean = false;
+
     alreadyHaveWallet: boolean = true;
 
-    targetAddress: string = null;
+    targetAddress: string | null = null;
 
-    targetBIP39: string = null;
-    targetWallet: string = null;
+    targetBIP39: string | null = null;
+    targetWallet: string | null = null;
 
     fundAddresses: FundAddresses = {};
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createWalletContent as content } from '../../../../data/text-data';
 import { ButtonText, ButtonMain, InputCheckbox } from '../../../../common';
-import { incrementStep, setSubStep, setSubStepMounted } from '../../../../state';
+import { incrementStep, setSubStep, setSubStepMounted, checkWrittenMnemonicPhrase } from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 
 interface ICreateWalletProps {
@@ -33,6 +33,7 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                 <InputCheckbox
                     name={content.inputCheckbox.name}
                     paragraph={content.inputCheckbox.paragraph}
+                    value={this.props.state.isWrittenMnemonicPhrase}
                     onChange={this.handleWrittenMnemonicPhraseChange}
                 />
                 <ButtonMain onClick={this.handleContinue}>
@@ -50,7 +51,11 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
     }
 
     private handleDownloadClick = () => {};
-    private handleWrittenMnemonicPhraseChange = () => {};
+
+    private handleWrittenMnemonicPhraseChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        checkWrittenMnemonicPhrase(e.currentTarget.checked);
+    };
+
     private handleContinue = () => {
         setSubStep(-1);
         incrementStep();

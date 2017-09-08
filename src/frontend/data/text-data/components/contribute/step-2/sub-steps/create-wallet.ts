@@ -6,7 +6,7 @@ export const createWalletContent = {
     heading: "Your wallet's address",
     inputCheckbox: {
         name: "writtenMnemonicPhrase",
-        paragraph: "I have double checked the address and made sure it corresponds to a wallet that I own and control. I have in my possession the private and public key for this wallet, and have kept them in secret. I understand that if I enter the wrong address, my tokens may be irretrievably lost. I also understand that if anybody but me gain access to this wallet, they may steal my tokens. I agree that the operators of this web site cannot be held responsible for any such loss.",
+        paragraph: "I have written down my mnemonic phrase and put it somewhere safe. I understand that if I lose my mnemonic phrase, I will not be able to reclaim my wallet if I ever lose it. I also understand that anybody who gains access to the mnemonic phrase will be able to steal my tokens, and the operators of this website cannot be held responsible for such loss.",
     },
     buttonMain: "Continue..."
 };

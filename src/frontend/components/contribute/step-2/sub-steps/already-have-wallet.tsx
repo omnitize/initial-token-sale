@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { alreadyHaveWalletContent as content } from '../../../../data/text-data';
 import { InputText, InputCheckbox, ButtonMain } from '../../../../common';
-import { setSubStep, incrementStep, setSubStepMounted } from '../../../../state';
+import { setSubStep, incrementStep, setSubStepMounted, typeWalletAddress, checkDoubleCheckedAddress } from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 
 interface IAlreadyHaveWalletProps {
@@ -26,13 +26,15 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
                 <p>{content.paragraph}</p>
                 <InputText
                     name={content.inputText.name}
+                    value={this.props.state.walletAddress}
                     label={content.inputText.label}
                     onChange={this.handleWalletAddressChange}
                 />
                 <InputCheckbox
                     name={content.inputCheckbox.name}
+                    value={this.props.state.isDoubleCheckedAddress}
                     paragraph={content.inputCheckbox.paragraph}
-                    onChange={this.handleWalletAddressChange}
+                    onChange={this.handleDoubleCheckedAddressChange}
                 />
                 <ButtonMain
                     onClick={this.handleContinue}>
@@ -49,7 +51,14 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
         }
     }
 
-    private handleWalletAddressChange = () => {};
+    private handleWalletAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        typeWalletAddress(e.currentTarget.value);
+    };
+
+    private handleDoubleCheckedAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        checkDoubleCheckedAddress(e.currentTarget.checked);
+    };
+
     private handleContinue = () => {
         setSubStep(-1);
         incrementStep();
