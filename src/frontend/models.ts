@@ -21,6 +21,27 @@ export enum ETxStatus {
     error
 }
 
+export enum EContributeSteps {
+    CONTRIBUTE_START,
+    WHERE_TO_SEND_FUNDS,
+    SEND_FUNDS
+}
+
+export enum ECheckBalanceSteps {
+    CHECK_BALANCE_START,
+    CHECK_WALLET,
+    VIEW_WALLET_HISTORY
+}
+
+export enum EWhereToSendFundsSubSteps {
+    ALREADY_HAVE_WALLET,
+    CREATE_WALLET
+}
+
+export enum ECheckWalletSubSteps {
+    RECLAIM_WALLET
+}
+
 export class Transaction {
     created: Date;
     value: number;
@@ -40,6 +61,8 @@ export class State {
 
     selectedUseCase: EUserFlow = EUserFlow.CONTRIBUTE;
     currentStep: number = 0;
+    currentSubStep: number = -1;
+    currentSubStepMounted: number = -1;
 
     alreadyHaveWallet: boolean = true;
 

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { IStep } from '../../models';
-import { ContributeStart, WhereToSendFunds, ReclaimWallet, SendFunds } from '../../components';
+import { ContributeStart, WhereToSendFunds, AlreadyHaveWallet, CreateWallet, SendFunds
+} from '../../components';
 
 export const contributeStepList: IStep[] = [
     {
@@ -11,7 +12,8 @@ export const contributeStepList: IStep[] = [
         name: "Where To Send Funds",
         component: <WhereToSendFunds/>,
         subComponents: [
-            <ReclaimWallet/>
+            <AlreadyHaveWallet/>,
+            <CreateWallet/>
         ]
     },
     {

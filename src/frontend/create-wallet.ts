@@ -1,5 +1,3 @@
-
-
 export function createWallet(mnemonicPhrase?: string): { mnemonicPhrase: string, wallet: string, address: string } {
 	console.log('createWallet', mnemonicPhrase);
 

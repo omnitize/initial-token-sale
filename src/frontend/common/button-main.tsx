@@ -1,12 +1,10 @@
 import * as React from 'react';
 
-interface IProps {
+interface IButtonMainProps {
     onClick: () => void
 }
 
-interface IState {}
-
-export class ButtonMain extends React.Component<IProps, IState> {
+export class ButtonMain extends React.Component<IButtonMainProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

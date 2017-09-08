@@ -2,9 +2,7 @@ import * as React from 'react';
 
 interface IProps {}
 
-interface IState {}
-
-export class Empty extends React.Component<IProps, IState> {
+export class Empty extends React.Component<IProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

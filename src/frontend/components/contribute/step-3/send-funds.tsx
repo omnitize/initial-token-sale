@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { sendFundsContent as content } from '../../../data/text-data'
 import { WalletHistory } from '../../../common';
+import { State } from '../../../models';
 
-interface IProps {}
+interface ISendFundsProps {
+    state?: State
+}
 
-interface IState {}
-
-export class SendFunds extends React.Component<IProps, IState> {
+export class SendFunds extends React.Component<ISendFundsProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

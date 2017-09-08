@@ -4,13 +4,13 @@ const ReCAPTCHA = require('react-google-recaptcha').default;
 import { config } from '../config';
 import { createSession } from '../server-api';
 
-interface IProps {
+interface IProveYouAreHumanProps {
     onSuccess: (sessionToken: string) => void;
 }
 
 interface IState {}
 
-export class ProveYouAreHuman extends React.Component<IProps, IState> {
+export class ProveYouAreHuman extends React.Component<IProveYouAreHumanProps, IState> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
@@ -19,10 +19,16 @@ export class ProveYouAreHuman extends React.Component<IProps, IState> {
 
     render(): JSX.Element {
         return (
-            <div>
+            <div className="its-prove-you-are-human">
                 <h2>{content.heading}</h2>
                 <p>{ content.paragraph }</p>
-                <ReCAPTCHA ref="recaptcha" sitekey={ config.recaptchaSiteKey } onChange={ this.onCaptcha } />
+                <div className="its-prove-you-are-human__recaptcha">
+                    <ReCAPTCHA
+                        ref="recaptcha"
+                        sitekey={ config.recaptchaSiteKey }
+                        onChange={ this.onCaptcha }
+                    />
+                </div>
             </div>
         );
     }
@@ -31,6 +37,7 @@ export class ProveYouAreHuman extends React.Component<IProps, IState> {
         createSession(value)
         .then(({ sessionToken }) => {
             this.props.onSuccess(sessionToken);
-        });
+        })
+        .catch((err) => console.log(err));
     }
 }

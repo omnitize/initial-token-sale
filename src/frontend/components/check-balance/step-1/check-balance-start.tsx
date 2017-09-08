@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { checkBalanceStartContent as content } from '../../../data/text-data';
+import { ProveYouAreHuman} from '../../../common/prove-you-are-human';
+import { incrementStep, setState } from '../../../state';
+import { State } from '../../../models';
 
-interface IProps {}
+interface ICheckBalanceStartProps {
+    state?: State
+}
 
-interface IState {}
-
-export class CheckBalanceStart extends React.Component<IProps, IState> {
+export class CheckBalanceStart extends React.Component<ICheckBalanceStartProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
@@ -14,10 +16,13 @@ export class CheckBalanceStart extends React.Component<IProps, IState> {
     render(): JSX.Element {
         return (
             <div>
-                <h2>{content.heading}</h2>
-                <p>{content.paragraph}</p>
-                {/*// TODO CAPTCHA COMPONENT*/}
+                <ProveYouAreHuman onSuccess={ CheckBalanceStart.onCaptchaSuccess }/>
             </div>
         );
+    }
+
+    static onCaptchaSuccess(sessionToken: string) {
+        setState( { sessionToken });
+        incrementStep();
     }
 }

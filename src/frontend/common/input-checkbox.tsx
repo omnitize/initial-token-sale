@@ -1,29 +1,27 @@
 import * as React from 'react';
-import {ChangeEvent} from 'react';
 
-interface IProps {
+interface IInputCheckboxProps {
     name: string
-    type: string
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
     placeholder?: string
+    value?: boolean
     label?: string
 }
 
-interface IState {}
-
-export class Input extends React.Component<IProps, IState> {
+export class InputCheckbox extends React.Component<IInputCheckboxProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
     }
 
     renderInput() {
-        const { name, type, onChange, placeholder } = this.props;
+        const { name, value, onChange, placeholder } = this.props;
 
         return  <input
                     name={name}
-                    type={type}
+                    type={"checkbox"}
                     onChange={onChange}
+                    checked={value}
                     placeholder={!!placeholder ? placeholder : null}
                 />
     }
