@@ -10,7 +10,9 @@ export const checkBalanceStepList: IStep[] = [
     {
         name: "Check Wallet",
         component: <CheckWallet/>,
-        subComponents: [<ReclaimWallet/>]
+        subComponents: [
+            <ReclaimWallet/>
+        ]
     },
     {
         name: "View Wallet History",

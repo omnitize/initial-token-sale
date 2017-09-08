@@ -5,11 +5,11 @@ import { State, EContributeSteps, EWhereToSendFundsSubSteps } from '../../../mod
 import { contributeStepList } from '../../../data/component-data';
 import { setSubStep } from '../../../state';
 
-interface IProps {
+interface IWhereToSendFundsProps {
     state?: State
 }
 
-export class WhereToSendFunds extends React.Component<IProps, any> {
+export class WhereToSendFunds extends React.Component<IWhereToSendFundsProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

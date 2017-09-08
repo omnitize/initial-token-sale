@@ -3,9 +3,9 @@ import { walletHistoryContent as content } from '../../data/text-data'
 import { ButtonMain } from '../';
 import { WalletHistoryTable } from './wallet-history-table';
 
-interface IProps {}
+interface IWalletHistoryProps {}
 
-export class WalletHistory extends React.Component<IProps, any> {
+export class WalletHistory extends React.Component<IWalletHistoryProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

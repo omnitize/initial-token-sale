@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { walletHistoryContent as content } from '../../data/text-data'
 
-interface IProps {}
+interface IWalletHistoryTableProps {}
 
-export class WalletHistoryTable extends React.Component<IProps, any> {
+export class WalletHistoryTable extends React.Component<IWalletHistoryTableProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

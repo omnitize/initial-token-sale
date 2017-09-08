@@ -3,11 +3,11 @@ import { ProveYouAreHuman} from '../../../common/prove-you-are-human';
 import { incrementStep, setState } from '../../../state';
 import { State } from '../../../models';
 
-interface IProps {
+interface ICheckBalanceStartProps {
     state?: State
 }
 
-export class CheckBalanceStart extends React.Component<IProps, any> {
+export class CheckBalanceStart extends React.Component<ICheckBalanceStartProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

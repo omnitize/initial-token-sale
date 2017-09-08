@@ -7,11 +7,11 @@ import { ChangeEvent } from 'react';
 import { setSubStep, setSubStepMounted, incrementStep } from '../../../../state';
 import { ECheckWalletSubSteps, State } from '../../../../models';
 
-interface IProps {
+interface IReclaimWalletProps {
     state?: State
 }
 
-export class ReclaimWallet extends React.Component<IProps, any> {
+export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
 
     walletAddress = "xxxx";
 

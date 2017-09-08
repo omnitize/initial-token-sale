@@ -4,4 +4,6 @@ export {
     //contribute
     contributeStartContent, sendFundsContent, alreadyHaveWalletContent, createWalletContent, whereToSendFundsContent
 } from "./components";
-export { walletHistoryContent, proveYouAreHumanContent } from "./shared";
+export {
+    walletHistoryContent, proveYouAreHumanContent
+} from "./shared";

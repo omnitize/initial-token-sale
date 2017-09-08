@@ -4,11 +4,11 @@ import { ProveYouAreHuman } from '../../../common/prove-you-are-human';
 import { setState, incrementStep } from '../../../state';
 import { State } from '../../../models';
 
-interface IProps {
+interface IContributeStartProps {
     state?: State
 }
 
-export class ContributeStart extends React.Component<IProps, any> {
+export class ContributeStart extends React.Component<IContributeStartProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

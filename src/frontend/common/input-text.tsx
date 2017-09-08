@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-interface IProps {
+interface IInputTextProps {
     name: string
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
     placeholder?: string
     label?: string
 }
 
-export class InputText extends React.Component<IProps, any> {
+export class InputText extends React.Component<IInputTextProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

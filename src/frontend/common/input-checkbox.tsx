@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-interface IProps {
+interface IInputCheckboxProps {
     name: string
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
     placeholder?: string
@@ -8,7 +8,7 @@ interface IProps {
     label?: string
 }
 
-export class InputCheckbox extends React.Component<IProps, any> {
+export class InputCheckbox extends React.Component<IInputCheckboxProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

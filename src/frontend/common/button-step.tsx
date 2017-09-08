@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-interface IProps {
+interface IButtonStepProps {
     index: number
     selectedStep: number
     onClick: (index: number) => void
 }
 
-export class ButtonStep extends React.Component<IProps, any> {
+export class ButtonStep extends React.Component<IButtonStepProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

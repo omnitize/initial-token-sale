@@ -4,11 +4,11 @@ import { InputText, InputCheckbox, ButtonMain } from '../../../../common';
 import { setSubStep, incrementStep, setSubStepMounted } from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 
-interface IProps {
+interface IAlreadyHaveWalletProps {
     state?: State
 }
 
-export class AlreadyHaveWallet extends React.Component<IProps, any> {
+export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);

@@ -4,13 +4,13 @@ const ReCAPTCHA = require('react-google-recaptcha').default;
 import { config } from '../config';
 import { createSession } from '../server-api';
 
-interface IProps {
+interface IProveYouAreHumanProps {
     onSuccess: (sessionToken: string) => void;
 }
 
 interface IState {}
 
-export class ProveYouAreHuman extends React.Component<IProps, IState> {
+export class ProveYouAreHuman extends React.Component<IProveYouAreHumanProps, IState> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
