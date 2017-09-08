@@ -48,7 +48,7 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
                 </div>
                 <div className="its-navigator-steps__inner">
                     <div
-                        className="its-navigator-steps__slider"
+                        className="its-navigator-steps__slider --its-transition-transform"
                         style={this.slideTransitionStyle()}>
                         {this.props.steps.map((step: IStep, i: number) =>
                             <div key={`step-${i}`}

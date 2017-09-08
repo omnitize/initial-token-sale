@@ -27,19 +27,23 @@ export function incrementStep() {
     setState({ currentStep: nextStep });
 }
 
-export function setStep(step: number) {
-    setState({ currentStep: step });
+export function setStep(nextStep: number) {
+    setState({ currentStep: nextStep });
 }
 
 export function incrementSubStep() {
     const max = maxSubSteps();
-    console.log(max);
     const nextSubStep = state.currentSubStep === max ? state.currentSubStep : state.currentSubStep + 1;
     setState({ currentSubStep: nextSubStep });
 }
 
-export function setSubStep(step: number) {
-    setState({ currentSubStep: step });
+export function setSubStep(nextSubStep: number) {
+    setState({ currentSubStep: nextSubStep });
+}
+
+export function setSubStepMounted(nextSubStepMounted: number) {
+    setTimeout(() => setState({ currentSubStepMounted: nextSubStepMounted }), 0);
+    // creates enough delay to register as CSS transition
 }
 
 const maxSteps = () => {

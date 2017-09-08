@@ -1,21 +1,28 @@
 import * as React from 'react';
 import { createWalletContent as content } from '../../../../data/text-data';
 import { ButtonText, ButtonMain, InputCheckbox } from '../../../../common';
-import { incrementStep, setSubStep } from '../../../../state';
+import { incrementStep, setSubStep, setSubStepMounted } from '../../../../state';
+import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 
-interface IProps {}
+interface IProps {
+    state?: State
+}
 
-interface IState {}
-
-export class CreateWallet extends React.Component<IProps, IState> {
+export class CreateWallet extends React.Component<IProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
     }
 
+    componentDidMount() {
+        setSubStepMounted(EWhereToSendFundsSubSteps.CREATE_WALLET)
+    }
+
     render(): JSX.Element {
         return (
-            <div>
+            <div
+                className="its-create-wallet --its-transition-opacity"
+                style={this.slideTransitionStyle()}>
                 <p>{content.paragraph}</p>
                 <p>{content.paragraph2}</p>
                 <ButtonText onClick={this.handleDownloadClick}>
@@ -33,6 +40,13 @@ export class CreateWallet extends React.Component<IProps, IState> {
                 </ButtonMain>
             </div>
         );
+    }
+
+    private slideTransitionStyle() {
+        const isMounted = this.props.state.currentSubStepMounted === EWhereToSendFundsSubSteps.CREATE_WALLET;
+        return {
+            opacity: isMounted ? 1 : 0
+        }
     }
 
     private handleDownloadClick = () => {};

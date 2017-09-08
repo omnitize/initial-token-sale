@@ -113,7 +113,6 @@
     left: 0;
     top: 0;
     width: 300%;
-    transition: transform 200ms;
     z-index: 1;
 }
 
@@ -126,15 +125,37 @@
     text-align: right
 }
 
-.its-wallet-history-table {
+.its-main .its-wallet-history-table {
     border: 2px solid #212121;
     border-radius: 2px;
 }
 
-.its-prove-you-are-human {
+.its-main .its-prove-you-are-human {
     text-align: center;
 }
 
-.its-prove-you-are-human__recaptcha {
+.its-main .its-prove-you-are-human__recaptcha {
     display: inline-block;
+}
+
+.its-where-to-send-funds__main {
+    position: relative;
+    background: #eeeeee;
+    z-index: 2;
+}
+
+.its-main .--its-transition-transform {
+    -webkit-transition: transform 200ms;
+    -ms-transition: transform 200ms;
+    -o-transition: transform 200ms;
+    -moz-transition: transform 200ms;
+    transition: transform 200ms;
+}
+
+.its-main .--its-transition-opacity {
+    -webkit-transition: opacity 200ms;
+    -ms-transition: opacity 200ms;
+    -o-transition: opacity 200ms;
+    -moz-transition: opacity 200ms;
+    transition: opacity 200ms;
 }

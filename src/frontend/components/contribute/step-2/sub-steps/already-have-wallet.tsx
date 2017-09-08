@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { alreadyHaveWalletContent as content } from '../../../../data/text-data';
 import { InputText, InputCheckbox, ButtonMain } from '../../../../common';
-import { setSubStep, incrementStep } from '../../../../state';
+import { setSubStep, incrementStep, setSubStepMounted } from '../../../../state';
+import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 
-interface IProps {}
+interface IProps {
+    state?: State
+}
 
 export class AlreadyHaveWallet extends React.Component<IProps, any> {
 
@@ -11,9 +14,15 @@ export class AlreadyHaveWallet extends React.Component<IProps, any> {
         super(props, context);
     }
 
+    componentDidMount() {
+        setSubStepMounted(EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET)
+    }
+
     render(): JSX.Element {
         return (
-            <div>
+            <div
+                className="its-already-have-wallet --its-transition-opacity"
+                style={this.slideTransitionStyle()}>
                 <p>{content.paragraph}</p>
                 <InputText
                     name={content.inputText.name}
@@ -31,6 +40,13 @@ export class AlreadyHaveWallet extends React.Component<IProps, any> {
                 </ButtonMain>
             </div>
         );
+    }
+
+    private slideTransitionStyle() {
+        const isMounted = this.props.state.currentSubStepMounted === EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET;
+        return {
+            opacity: isMounted ? 1 : 0
+        }
     }
 
     private handleWalletAddressChange = () => {};
