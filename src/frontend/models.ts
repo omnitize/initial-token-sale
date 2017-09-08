@@ -64,8 +64,7 @@ export class State {
     alreadyHaveWallet: boolean = true;
 
     targetAddress: string = null;
-
-    targetBIP39: string = null;
+    targetMnemonicPhrase: string = null;
     targetWallet: string = null;
 
     fundAddresses: FundAddresses = {};

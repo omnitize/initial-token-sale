@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { alreadyHaveWalletContent as content } from '../../../../data/text-data';
 import { InputText, InputCheckbox, ButtonMain } from '../../../../common';
-import { setSubStep, incrementStep, setSubStepMounted } from '../../../../state';
+import { setSubStep, incrementStep, setSubStepMounted, setState } from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
+import { sendTargetAddress } from '../../../../server-api';
 
 interface IAlreadyHaveWalletProps {
     state?: State
@@ -25,14 +26,15 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
                 style={this.fadeTransitionStyle()}>
                 <p>{content.paragraph}</p>
                 <InputText
+                    value={this.props.state.targetAddress}
                     name={content.inputText.name}
                     label={content.inputText.label}
-                    onChange={this.handleWalletAddressChange}
+                    onChange={this.handleChange}
                 />
                 <InputCheckbox
                     name={content.inputCheckbox.name}
                     label={content.inputCheckbox.label}
-                    onChange={this.handleWalletAddressChange}
+                    onChange={()=>null}
                 />
                 <ButtonMain
                     onClick={this.handleContinue}>
@@ -49,10 +51,16 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
         }
     }
 
-    private handleWalletAddressChange = () => {};
-    private handleContinue = () => {
-        setSubStep(-1);
-        incrementStep();
+    private handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setState({ targetAddress: event.target.value });
     };
 
+    private handleContinue = () => {
+        return sendTargetAddress(this.props.state.sessionToken, this.props.state.targetAddress)
+        .then(() => {
+            setSubStep(-1);
+            incrementStep();
+        });
+    };
 }
+

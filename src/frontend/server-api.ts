@@ -1,11 +1,9 @@
 import { ETxStatus, Transaction, FundAddresses } from './models';
 
-
 export function createSession(captcha: string): Promise<{ sessionToken: string }> {
 	return fetch(`/api/createSession?captcha=${captcha}`)
 	.then(response => response.json()) as Promise<{ sessionToken: string }>;
 }
-
 
 export function sendTargetAddress(sessionToken: string, targetAddress: string): Promise<{ fundAddresses: FundAddresses }> {
 	return fetch(`/api/sendTargetAddress?sessionToken=${sessionToken}&targetAddress=${targetAddress}`)
