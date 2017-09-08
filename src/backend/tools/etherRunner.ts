@@ -55,15 +55,32 @@ function writeTransactionsToDatabase(targetAddress: string, transactions: Array<
 	});
 }
 
-function getActiveAddresses(): Promise<Array<string>> {
-	return query('select ether from addresses where session_id is not NULL')
-	.then(response.map((r.any) => r.ether));
+function getActiveAddresses(): Promise<Array<{ address: string, targetAddress: string }>> {
+	return query('select target_address, ether from addresses where session_id is not NULL')
+	.then(response.map((r.any) => ({ address: r.ether, targetAddress: r.targetAddress }) ));
+}
+
+function processAddress(address: string): Promise<void> {
+	return Promise.resolve()
+	.then(() => listTransactionsByAddress(address))
+	.then((transactions) => writeTransactionsToDatabase(transactions));
 }
 
 function etherRunner() {
-
 	return Promise.resolve()
 	.then(() => getActiveAddresses())
-	.then((addresses: Array<string>) => Promise.all(addresses.map(addr => listTransactionsByAddress(addr).then(trs => writeTransactionsToDatabase()))
+	.then((addresses: Array<{ address: string, targetAddress: string }>) => {
+		let p = Promise.resolve();
+		addresses.forEach(({ address, targetAddress }) => {
+			p = p.then(() => listTransactionsByAddress(address))
+			.then((transactions: Array<EtherScanTransaction>) => writeTransactionsToDatabase(targetAddress, transactions))
+			.catch((error: any) => console.log(error))
+			.wait(100);
+		});
+		return p;
+	});
 }
+
+
+
 
