@@ -13,7 +13,9 @@ export class Config {
 
 	etherScanApiKey = 'B22IXM9T92V6BSNFSE14ICXQJVS8NRZ7FA';
 	etherMinimumConfirmations = 6;
+
+	tokenDiscountPercent = 50;	
+	tokenPriceInEther = 0.01;
 };
 
 export const config = new Config();
-
