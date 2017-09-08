@@ -31,7 +31,7 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
                 />
                 <InputCheckbox
                     name={content.inputCheckbox.name}
-                    label={content.inputCheckbox.label}
+                    paragraph={content.inputCheckbox.paragraph}
                     onChange={this.handleWalletAddressChange}
                 />
                 <ButtonMain

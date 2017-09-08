@@ -32,7 +32,7 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                 <h4>{content.heading}</h4>
                 <InputCheckbox
                     name={content.inputCheckbox.name}
-                    label={content.inputCheckbox.label}
+                    paragraph={content.inputCheckbox.paragraph}
                     onChange={this.handleWrittenMnemonicPhraseChange}
                 />
                 <ButtonMain onClick={this.handleContinue}>

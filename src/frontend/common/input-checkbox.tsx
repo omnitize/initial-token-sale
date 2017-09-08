@@ -5,7 +5,7 @@ interface IInputCheckboxProps {
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
     placeholder?: string
     value?: boolean
-    label?: string
+    paragraph?: string
 }
 
 export class InputCheckbox extends React.Component<IInputCheckboxProps, any> {
@@ -15,26 +15,30 @@ export class InputCheckbox extends React.Component<IInputCheckboxProps, any> {
     }
 
     renderInput() {
-        const { name, value, onChange, placeholder } = this.props;
+        const { name, onChange, placeholder } = this.props;
 
         return  <input
+                    className="its-input-checkbox__input"
                     name={name}
                     type={"checkbox"}
                     onChange={onChange}
-                    checked={value}
+                    checked={true}
                     placeholder={!!placeholder ? placeholder : null}
                 />
     }
 
     render(): JSX.Element {
         return (
-            !!this.props.label
-                ?   <label htmlFor={this.props.name}>
-                        {this.props.label}
-                        {this.renderInput()}
-                    </label>
-                :   this.renderInput()
-
+            <div className="its-input-checkbox">
+                {this.renderInput()}
+                <label
+                    className="its-input-checkbox__label"
+                    htmlFor={this.props.name}>
+                </label>
+                <div className="its-input-checkbox__paragraph">
+                    {!!this.props.paragraph ? <p>{this.props.paragraph}</p> : null}
+                </div>
+            </div>
         );
     }
 }
