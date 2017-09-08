@@ -45,8 +45,21 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
                             </ButtonMain>
                         </div>
                     </div>
-                :   checkBalanceStepList[ECheckBalanceSteps.CHECK_WALLET].subComponents[this.props.state.currentSubStep]
+                :   this.renderSubStep()
         );
+    }
+
+    static subSteps(): JSX.Element[] {
+        return checkBalanceStepList[ECheckBalanceSteps.CHECK_WALLET].subComponents;
+    }
+
+    private renderSubStep() {
+        return React.cloneElement(
+            CheckWallet.subSteps()[this.props.state.currentSubStep],
+            {
+                state: this.props.state
+            }
+        )
     }
 
     private handleNoWalletAddress = () => {};

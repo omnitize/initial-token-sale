@@ -22,7 +22,7 @@ export class CreateWallet extends React.Component<IProps, any> {
         return (
             <div
                 className="its-create-wallet --its-transition-opacity"
-                style={this.slideTransitionStyle()}>
+                style={this.fadeTransitionStyle()}>
                 <p>{content.paragraph}</p>
                 <p>{content.paragraph2}</p>
                 <ButtonText onClick={this.handleDownloadClick}>
@@ -42,7 +42,7 @@ export class CreateWallet extends React.Component<IProps, any> {
         );
     }
 
-    private slideTransitionStyle() {
+    private fadeTransitionStyle() {
         const isMounted = this.props.state.currentSubStepMounted === EWhereToSendFundsSubSteps.CREATE_WALLET;
         return {
             opacity: isMounted ? 1 : 0

@@ -22,7 +22,7 @@ export class AlreadyHaveWallet extends React.Component<IProps, any> {
         return (
             <div
                 className="its-already-have-wallet --its-transition-opacity"
-                style={this.slideTransitionStyle()}>
+                style={this.fadeTransitionStyle()}>
                 <p>{content.paragraph}</p>
                 <InputText
                     name={content.inputText.name}
@@ -42,7 +42,7 @@ export class AlreadyHaveWallet extends React.Component<IProps, any> {
         );
     }
 
-    private slideTransitionStyle() {
+    private fadeTransitionStyle() {
         const isMounted = this.props.state.currentSubStepMounted === EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET;
         return {
             opacity: isMounted ? 1 : 0

@@ -20,8 +20,17 @@ export class Main extends React.Component<any, State> {
             selectedUseCase: this.state.selectedUseCase === EUserFlow.CONTRIBUTE
                 ? EUserFlow.CHECK_BALANCE
                 : EUserFlow.CONTRIBUTE
-        })
+        });
+        Main.reset();
     };
+
+    static reset() {
+        setState({
+            currentStep: 0,
+            currentSubStep: -1,
+            currentSubStepMounted: -1
+        });
+    }
 
     private steps = () => {
         return this.state.selectedUseCase === EUserFlow.CONTRIBUTE

@@ -18,7 +18,7 @@ export class WhereToSendFunds extends React.Component<IProps, any> {
     render(): JSX.Element {
         return (
             <div>
-                <div className="its-where-to-send-funds__main">
+                <div>
                     <h2>{content.heading}</h2>
                     <h4>{content.heading2}</h4>
                     <p>{content.paragraph}</p>

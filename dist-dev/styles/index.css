@@ -138,12 +138,6 @@
     display: inline-block;
 }
 
-.its-where-to-send-funds__main {
-    position: relative;
-    background: #eeeeee;
-    z-index: 2;
-}
-
 .its-main .--its-transition-transform {
     -webkit-transition: transform 200ms;
     -ms-transition: transform 200ms;

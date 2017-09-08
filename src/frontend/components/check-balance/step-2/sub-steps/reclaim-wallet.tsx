@@ -4,9 +4,12 @@ import { ButtonMain } from '../../../../common/button-main';
 import { ButtonText } from '../../../../common/button-text';
 import { InputText } from '../../../../common/input-text';
 import { ChangeEvent } from 'react';
-import { setSubStep, incrementStep } from '../../../../state';
+import { setSubStep, setSubStepMounted, incrementStep } from '../../../../state';
+import { ECheckWalletSubSteps, State } from '../../../../models';
 
-interface IProps {}
+interface IProps {
+    state?: State
+}
 
 export class ReclaimWallet extends React.Component<IProps, any> {
 
@@ -16,9 +19,15 @@ export class ReclaimWallet extends React.Component<IProps, any> {
         super(props, context);
     }
 
+    componentDidMount() {
+        setSubStepMounted(ECheckWalletSubSteps.RECLAIM_WALLET)
+    }
+
     render(): JSX.Element {
         return (
-            <div>
+            <div
+                className="its-reclaim-wallet --its-transition-opacity"
+                style={this.fadeTransitionStyle()}>
                 <h2>{content.heading}</h2>
                 <p>{content.paragraph}</p>
                 <InputText
@@ -44,6 +53,13 @@ export class ReclaimWallet extends React.Component<IProps, any> {
                 </ButtonMain>
             </div>
         );
+    }
+
+    private fadeTransitionStyle() {
+        const isMounted = this.props.state.currentSubStepMounted === ECheckWalletSubSteps.RECLAIM_WALLET;
+        return {
+            opacity: isMounted ? 1 : 0
+        }
     }
 
     private handleDownloadWalletClick = () => {};
