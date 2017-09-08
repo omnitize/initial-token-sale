@@ -10,6 +10,9 @@ export class Config {
 	mysqlUsername = process.env.MYSQL_USERNAME || 'admin';
 	mysqlPassword = process.env.MYSQL_PASSWORD || 'admin123';
 	mysqlSchema = process.env.MYSQL_SCHEMA || 'omnitize_dev';
+
+	etherScanApiKey = 'B22IXM9T92V6BSNFSE14ICXQJVS8NRZ7FA';
+	etherMinimumConfirmations = 6;
 };
 
 export const config = new Config();

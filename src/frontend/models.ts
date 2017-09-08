@@ -15,9 +15,10 @@ export enum EUserFlow {
 }
 
 export enum ETxStatus {
-    PENDING,
-    VERIFIED,
-    FINAL
+    pending,
+    confirmed,
+    paid,
+    error
 }
 
 export class Transaction {
