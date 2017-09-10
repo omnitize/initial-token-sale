@@ -51,6 +51,11 @@
     line-height: 22px;
 }
 
+.its-main button {
+    font-size: 16px;
+    line-height: 22px;
+}
+
 .its-main button.its-button-step {
     display: inline-block;
     width: 60px;
@@ -68,7 +73,10 @@
     display: inline-block;
     border-radius: 4px;
     min-width: 180px;
+<<<<<<< HEAD
     max-width: 50%;
+=======
+>>>>>>> master
     padding: 8px 12px;
     margin: 4px;
     background: #0091EA;
@@ -154,6 +162,7 @@
     -moz-transition: opacity 200ms;
     transition: opacity 200ms;
 }
+<<<<<<< HEAD
 
 .its-main .its-input-checkbox {
     position: relative;
@@ -208,3 +217,5 @@
 .its-main input[type=checkbox]:checked + .its-input-checkbox__label:after {
     opacity: 1;
 }
+=======
+>>>>>>> master

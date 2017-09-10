@@ -15,9 +15,31 @@ export enum EUserFlow {
 }
 
 export enum ETxStatus {
-    PENDING,
-    VERIFIED,
-    FINAL
+    pending,
+    confirmed,
+    paid,
+    error
+}
+
+export enum EContributeSteps {
+    CONTRIBUTE_START,
+    WHERE_TO_SEND_FUNDS,
+    SEND_FUNDS
+}
+
+export enum ECheckBalanceSteps {
+    CHECK_BALANCE_START,
+    CHECK_WALLET,
+    VIEW_WALLET_HISTORY
+}
+
+export enum EWhereToSendFundsSubSteps {
+    ALREADY_HAVE_WALLET,
+    CREATE_WALLET
+}
+
+export enum ECheckWalletSubSteps {
+    RECLAIM_WALLET
 }
 
 export enum EContributeSteps {
@@ -42,12 +64,14 @@ export enum ECheckWalletSubSteps {
 }
 
 export class Transaction {
-    datetime: Date;
+    created: Date;
     value: number;
     currency: string;
     price: number;
-    tokens: number;
+    tokensEarned: number;
+    tokensPaid: number;
     status: ETxStatus;
+    verifications: number;
 }
 
 export type FundAddresses = { [key: string]: string };
@@ -60,6 +84,7 @@ export class State {
     currentStep: number = 0;
     currentSubStep: number = -1;
     currentSubStepMounted: number = -1;
+<<<<<<< HEAD
 
     walletAddress: string = "";
 
@@ -75,6 +100,14 @@ export class State {
 
     targetBIP39: string | null = null;
     targetWallet: string | null = null;
+=======
+
+    alreadyHaveWallet: boolean = true;
+
+    targetAddress: string = null;
+    targetMnemonicPhrase: string = null;
+    targetWallet: string = null;
+>>>>>>> master
 
     fundAddresses: FundAddresses = {};
 

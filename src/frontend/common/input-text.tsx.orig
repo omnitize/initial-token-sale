@@ -1,9 +1,15 @@
 import * as React from 'react';
 
 interface IInputTextProps {
+<<<<<<< HEAD:src/frontend/common/input-text.tsx
     name: string
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
     value: string
+=======
+    value: string;
+    name: string
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+>>>>>>> master:src/frontend/common/input-text.tsx
     placeholder?: string
     label?: string
 }
@@ -15,12 +21,20 @@ export class InputText extends React.Component<IInputTextProps, any> {
     }
 
     renderInput() {
+<<<<<<< HEAD:src/frontend/common/input-text.tsx
         const { name, value, onChange, placeholder } = this.props;
+=======
+        const { value, name, onChange, placeholder } = this.props;
+>>>>>>> master:src/frontend/common/input-text.tsx
 
         return  <input
+                    value={value}
                     name={name}
                     type={"text"}
+<<<<<<< HEAD:src/frontend/common/input-text.tsx
                     value={value}
+=======
+>>>>>>> master:src/frontend/common/input-text.tsx
                     onChange={onChange}
                     placeholder={!!placeholder ? placeholder : null}
                 />

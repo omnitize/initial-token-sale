@@ -4,8 +4,13 @@ interface IInputCheckboxProps {
     name: string
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
     placeholder?: string
+<<<<<<< HEAD
     value: boolean
     paragraph?: string
+=======
+    value?: boolean
+    label?: string
+>>>>>>> master
 }
 
 export class InputCheckbox extends React.Component<IInputCheckboxProps, any> {
@@ -14,6 +19,7 @@ export class InputCheckbox extends React.Component<IInputCheckboxProps, any> {
         super(props, context);
     }
 
+<<<<<<< HEAD
     render(): JSX.Element {
         const { name, value, paragraph, placeholder } = this.props;
 
@@ -42,5 +48,29 @@ export class InputCheckbox extends React.Component<IInputCheckboxProps, any> {
     private handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         console.log("InputCheckbox.handleChange: " + e.currentTarget.checked);
         this.props.onChange(e);
+=======
+    renderInput() {
+        const { name, value, onChange, placeholder } = this.props;
+
+        return  <input
+                    name={name}
+                    type={"checkbox"}
+                    onChange={onChange}
+                    checked={value}
+                    placeholder={!!placeholder ? placeholder : null}
+                />
+    }
+
+    render(): JSX.Element {
+        return (
+            !!this.props.label
+                ?   <label htmlFor={this.props.name}>
+                        {this.props.label}
+                        {this.renderInput()}
+                    </label>
+                :   this.renderInput()
+
+        );
+>>>>>>> master
     }
 }
