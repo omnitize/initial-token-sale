@@ -1,7 +1,7 @@
 
 import * as Promise from 'bluebird';
-import { config } from './config';
-import { query } from './database';
+//import { config } from '../config';
+import { query } from '../database';
 const fetch = require('node-fetch');
 
 export function getRates(): Promise<any> {
