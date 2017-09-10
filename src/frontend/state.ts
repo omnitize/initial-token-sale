@@ -3,8 +3,9 @@ import {
     ECheckWalletSubSteps
 } from './models';
 import { Main } from './containers/main';
-const { generateMnemonic, EthHdWallet } = require('eth-hd-wallet');
 const bip39 = require('bip39');
+const Wallet = require('ethereumjs-wallet');
+const hdkey = require('ethereumjs-wallet/hdkey');
 
 let state = new State();
 let appRoot: Main;
@@ -26,15 +27,17 @@ export function setState(newState: Partial<State>) {
 export function createWallet(mnemonicPhrase?: string) {
 
     if(!mnemonicPhrase) {
-        mnemonicPhrase = generateMnemonic();
+        mnemonicPhrase = bip39.generateMnemonic();
     }
- 
-    const wallet = EthHdWallet.fromMnemonic(mnemonicPhrase);
 
+    const wallet = hdkey.fromMasterSeed(bip39.mnemonicToSeed(mnemonicPhrase)).getWallet();
+    const v3String = wallet.toV3String('password');
+    const address = wallet.getAddressString();
+       
     setState({
-        targetAddress: wallet.generateAddresses(1)[0],
+        targetAddress: address,
         targetMnemonicPhrase: mnemonicPhrase,
-        targetWallet: JSON.stringify(wallet)
+        targetWallet: v3String
     });
 }
 
