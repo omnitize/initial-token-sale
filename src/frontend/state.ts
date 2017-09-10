@@ -11,7 +11,7 @@ let state = new State();
 let appRoot: Main;
 
 export function registerAppRoot(root: Main) {
-    appRoot = root;
+	appRoot = root;
 }
 
 type Partial<T> = {
@@ -25,15 +25,12 @@ export function setState(newState: Partial<State>) {
 }
 
 export function createWallet(mnemonicPhrase?: string) {
-
     if(!mnemonicPhrase) {
         mnemonicPhrase = bip39.generateMnemonic();
     }
-
     const wallet = hdkey.fromMasterSeed(bip39.mnemonicToSeed(mnemonicPhrase)).getWallet();
     const v3String = wallet.toV3String('password');
-    const address = wallet.getAddressString();
-       
+    const address = wallet.getAddressString();  
     setState({
         targetAddress: address,
         targetMnemonicPhrase: mnemonicPhrase,
@@ -45,6 +42,7 @@ export function checkMnemonic(mnemonicPhrase: string): boolean {
     return bip39.validateMnemonic(mnemonicPhrase);
 }
 
+// s t e p  n a v i g a t i o n
 export function incrementStep() {
     const max = maxSteps();
     const nextStep = state.currentStep === max ? state.currentStep : state.currentStep + 1;
@@ -78,4 +76,30 @@ const maxSteps = () => {
 const maxSubSteps = () => {
     const subStepEnum = state.selectedUseCase === EUserFlow.CONTRIBUTE ? EWhereToSendFundsSubSteps : ECheckWalletSubSteps;
     return Object.keys(subStepEnum).length / 2
+};
+
+// i n p u t s
+// t e x t
+export const typeWalletAddress = (nextWalletAddress: string) => {
+    setState({
+        walletAddress: nextWalletAddress
+    });
+};
+
+export const typePnemonicPhrase = (nextPnemonicPhrase: string) => {
+    setState({
+        pmnemonicPhrase: nextPnemonicPhrase
+    });
+};
+// c h e c k b o x
+export const checkDoubleCheckedAddress = (nextIsDoubleCheckedAddress: boolean) => {
+    setState({
+        isDoubleCheckedAddress: nextIsDoubleCheckedAddress
+    });
+};
+
+export const checkWrittenMnemonicPhrase = (nextIsWrittenMnemonicPhrase: boolean) => {
+    setState({
+        isWrittenMnemonicPhrase: nextIsWrittenMnemonicPhrase
+    });
 };

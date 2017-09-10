@@ -2,9 +2,10 @@ import * as React from 'react';
 import { checkWalletContent as content } from '../../../data/text-data';
 import { ButtonMain, ButtonText } from '../../../common';
 import { InputText } from '../../../common/input-text';
+import { ChangeEvent } from 'react';
 import { checkBalanceStepList } from '../../../data/component-data/check-balance';
 import { ECheckBalanceSteps, State } from '../../../models';
-import { incrementSubStep, setState } from '../../../state';
+import { incrementSubStep } from '../../../state';
 
 interface ICheckWalletProps {
     state?: State
@@ -24,7 +25,7 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
                         <p>{content.paragraph}</p>
                         <div>
                             <InputText
-                                value={this.props.state.targetAddress}
+                                value=""
                                 name={content.input.name}
                                 label={content.input.label}
                                 onChange={this.handleChange}
@@ -66,9 +67,6 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
     private handleContinue = () => {
         incrementSubStep();
     };
-
-    private handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setState({ targetAddress: event.target.value });
-    };
+    private handleChange = (e: ChangeEvent<HTMLInputElement>) => {console.log(e)};
 
 }

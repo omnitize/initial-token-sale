@@ -31,7 +31,7 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                 <h2>{content.heading}</h2>
                 <p>{content.paragraph}</p>
                 <InputText
-                    value={this.props.state.targetMnemonicPhrase}
+                    value=""
                     name={content.input.name}
                     label={content.input.label}
                     onChange={this.handleMnemonicPhraseChange}
