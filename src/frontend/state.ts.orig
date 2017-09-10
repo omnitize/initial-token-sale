@@ -1,0 +1,117 @@
+import {
+    EContributeSteps, ECheckBalanceSteps, EUserFlow, State, EWhereToSendFundsSubSteps,
+    ECheckWalletSubSteps
+} from './models';
+import { Main } from './containers/main';
+const { generateMnemonic, EthHdWallet } = require('eth-hd-wallet');
+const bip39 = require('bip39');
+
+let state = new State();
+let appRoot: Main;
+
+export function registerAppRoot(root: Main) {
+    appRoot = root;
+}
+
+type Partial<T> = {
+    [P in keyof T]?: T[P];
+}
+
+export function setState(newState: Partial<State>) {
+    console.log('setState', state, newState);
+    Object.assign(state, newState);
+    appRoot.setState(state);
+}
+
+export function createWallet(mnemonicPhrase?: string) {
+
+    if(!mnemonicPhrase) {
+        mnemonicPhrase = generateMnemonic();
+    }
+ 
+    const wallet = EthHdWallet.fromMnemonic(mnemonicPhrase);
+
+    setState({
+        targetAddress: wallet.generateAddresses(1)[0],
+        targetMnemonicPhrase: mnemonicPhrase,
+        targetWallet: JSON.stringify(wallet)
+    });
+}
+
+export function checkMnemonic(mnemonicPhrase: string): boolean {
+    return bip39.validateMnemonic(mnemonicPhrase);
+}
+
+// s t e p  n a v i g a t i o n
+export function incrementStep() {
+    const max = maxSteps();
+    const nextStep = state.currentStep === max ? state.currentStep : state.currentStep + 1;
+    setState({ currentStep: nextStep });
+<<<<<<< HEAD
+}
+
+export function setStep(nextStep: number) {
+    setState({ currentStep: nextStep });
+}
+
+=======
+}
+
+export function setStep(nextStep: number) {
+    setState({ currentStep: nextStep });
+}
+
+>>>>>>> master
+export function incrementSubStep() {
+    const max = maxSubSteps();
+    const nextSubStep = state.currentSubStep === max ? state.currentSubStep : state.currentSubStep + 1;
+    setState({ currentSubStep: nextSubStep });
+}
+
+export function setSubStep(nextSubStep: number) {
+    setState({ currentSubStep: nextSubStep });
+}
+
+export function setSubStepMounted(nextSubStepMounted: number) {
+    setTimeout(() => setState({ currentSubStepMounted: nextSubStepMounted }), 0);
+    // creates enough delay to register as CSS transition
+}
+
+const maxSteps = () => {
+    const stepEnum = state.selectedUseCase === EUserFlow.CONTRIBUTE ? EContributeSteps : ECheckBalanceSteps;
+    return Object.keys(stepEnum).length / 2
+};
+
+const maxSubSteps = () => {
+    const subStepEnum = state.selectedUseCase === EUserFlow.CONTRIBUTE ? EWhereToSendFundsSubSteps : ECheckWalletSubSteps;
+    return Object.keys(subStepEnum).length / 2
+};
+<<<<<<< HEAD
+
+// i n p u t s
+// t e x t
+export const typeWalletAddress = (nextWalletAddress: string) => {
+    setState({
+        walletAddress: nextWalletAddress
+    });
+};
+
+export const typePnemonicPhrase = (nextPnemonicPhrase: string) => {
+    setState({
+        pmnemonicPhrase: nextPnemonicPhrase
+    });
+};
+// c h e c k b o x
+export const checkDoubleCheckedAddress = (nextIsDoubleCheckedAddress: boolean) => {
+    setState({
+        isDoubleCheckedAddress: nextIsDoubleCheckedAddress
+    });
+};
+
+export const checkWrittenMnemonicPhrase = (nextIsWrittenMnemonicPhrase: boolean) => {
+    setState({
+        isWrittenMnemonicPhrase: nextIsWrittenMnemonicPhrase
+    });
+};
+=======
+>>>>>>> master

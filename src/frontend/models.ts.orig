@@ -1,0 +1,115 @@
+export interface IUseCase {
+    name: string
+    steps: IStep[]
+}
+
+export interface IStep {
+    name: string
+    component: JSX.Element
+    subComponents?: JSX.Element[]
+}
+
+export enum EUserFlow {
+    CONTRIBUTE,
+    CHECK_BALANCE
+}
+
+export enum ETxStatus {
+    pending,
+    confirmed,
+    paid,
+    error
+}
+
+export enum EContributeSteps {
+    CONTRIBUTE_START,
+    WHERE_TO_SEND_FUNDS,
+    SEND_FUNDS
+}
+
+export enum ECheckBalanceSteps {
+    CHECK_BALANCE_START,
+    CHECK_WALLET,
+    VIEW_WALLET_HISTORY
+}
+
+export enum EWhereToSendFundsSubSteps {
+    ALREADY_HAVE_WALLET,
+    CREATE_WALLET
+}
+
+export enum ECheckWalletSubSteps {
+    RECLAIM_WALLET
+}
+
+export enum EContributeSteps {
+    CONTRIBUTE_START,
+    WHERE_TO_SEND_FUNDS,
+    SEND_FUNDS
+}
+
+export enum ECheckBalanceSteps {
+    CHECK_BALANCE_START,
+    CHECK_WALLET,
+    VIEW_WALLET_HISTORY
+}
+
+export enum EWhereToSendFundsSubSteps {
+    ALREADY_HAVE_WALLET,
+    CREATE_WALLET
+}
+
+export enum ECheckWalletSubSteps {
+    RECLAIM_WALLET
+}
+
+export class Transaction {
+    created: Date;
+    value: number;
+    currency: string;
+    price: number;
+    tokensEarned: number;
+    tokensPaid: number;
+    status: ETxStatus;
+    verifications: number;
+}
+
+export type FundAddresses = { [key: string]: string };
+
+export class State {
+
+    sessionToken: string = null;
+
+    selectedUseCase: EUserFlow = EUserFlow.CONTRIBUTE;
+    currentStep: number = 0;
+    currentSubStep: number = -1;
+    currentSubStepMounted: number = -1;
+<<<<<<< HEAD
+
+    walletAddress: string = "";
+
+    pmnemonicPhrase: string = "";
+
+    isDoubleCheckedAddress: boolean = false;
+
+    isWrittenMnemonicPhrase: boolean = false;
+
+    alreadyHaveWallet: boolean = true;
+
+    targetAddress: string | null = null;
+
+    targetBIP39: string | null = null;
+    targetWallet: string | null = null;
+=======
+
+    alreadyHaveWallet: boolean = true;
+
+    targetAddress: string = null;
+    targetMnemonicPhrase: string = null;
+    targetWallet: string = null;
+>>>>>>> master
+
+    fundAddresses: FundAddresses = {};
+
+    transactions: Array<Transaction> = [];
+}
