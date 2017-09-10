@@ -3,12 +3,14 @@ import {
     ECheckWalletSubSteps
 } from './models';
 import { Main } from './containers/main';
+const { generateMnemonic, EthHdWallet } = require('eth-hd-wallet');
+const bip39 = require('bip39');
 
 let state = new State();
 let appRoot: Main;
 
 export function registerAppRoot(root: Main) {
-	appRoot = root;
+    appRoot = root;
 }
 
 type Partial<T> = {
@@ -16,9 +18,28 @@ type Partial<T> = {
 }
 
 export function setState(newState: Partial<State>) {
-	console.log('setState', state, newState);
-	Object.assign(state, newState);
-	appRoot.setState(state);
+    console.log('setState', state, newState);
+    Object.assign(state, newState);
+    appRoot.setState(state);
+}
+
+export function createWallet(mnemonicPhrase?: string) {
+
+    if(!mnemonicPhrase) {
+        mnemonicPhrase = generateMnemonic();
+    }
+ 
+    const wallet = EthHdWallet.fromMnemonic(mnemonicPhrase);
+
+    setState({
+        targetAddress: wallet.generateAddresses(1)[0],
+        targetMnemonicPhrase: mnemonicPhrase,
+        targetWallet: JSON.stringify(wallet)
+    });
+}
+
+export function checkMnemonic(mnemonicPhrase: string): boolean {
+    return bip39.validateMnemonic(mnemonicPhrase);
 }
 
 export function incrementStep() {

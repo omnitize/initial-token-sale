@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 interface IInputTextProps {
+    value: string;
     name: string
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
     placeholder?: string
@@ -14,9 +15,10 @@ export class InputText extends React.Component<IInputTextProps, any> {
     }
 
     renderInput() {
-        const { name, onChange, placeholder } = this.props;
+        const { value, name, onChange, placeholder } = this.props;
 
         return  <input
+                    value={value}
                     name={name}
                     type={"text"}
                     onChange={onChange}
