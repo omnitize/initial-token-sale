@@ -18,9 +18,22 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
 
     componentDidMount() {
         setSubStepMounted(EWhereToSendFundsSubSteps.CREATE_WALLET)
+        if(!this.props.state.targetWallet) {
+            setTimeout(createWallet, 100);
+        }
     }
 
     render(): JSX.Element {
+        debugger;
+        if(!this.props.state.targetWallet) {
+            return (
+                <div
+                    className="its-create-wallet --its-transition-opacity"
+                    style={this.fadeTransitionStyle()}>
+                    <p>{content.pleaseWait}</p>
+                </div>
+            );
+        }
         return (
             <div
                 className="its-create-wallet --its-transition-opacity"
