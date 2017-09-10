@@ -13,7 +13,6 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
-        createWallet();
     }
 
     componentDidMount() {
