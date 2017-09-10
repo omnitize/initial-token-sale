@@ -50,7 +50,15 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
         }
     }
 
-    private handleDownloadClick = () => {};
+    private handleDownloadClick = () => {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(this.props.state.targetWallet));
+        element.setAttribute('download', `UTC-${this.props.state.targetAddress}`);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    };
 
     private handleWrittenMnemonicPhraseChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         checkWrittenMnemonicPhrase(e.currentTarget.checked);
