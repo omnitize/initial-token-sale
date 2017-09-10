@@ -4,7 +4,6 @@ import {
 } from './models';
 import { Main } from './containers/main';
 const bip39 = require('bip39');
-const Wallet = require('ethereumjs-wallet');
 const hdkey = require('ethereumjs-wallet/hdkey');
 
 let state = new State();
@@ -88,9 +87,10 @@ export const typeWalletAddress = (nextWalletAddress: string) => {
 
 export const typePnemonicPhrase = (nextPnemonicPhrase: string) => {
     setState({
-        pmnemonicPhrase: nextPnemonicPhrase
+        targetMnemonicPhrase: nextPnemonicPhrase
     });
 };
+
 // c h e c k b o x
 export const checkDoubleCheckedAddress = (nextIsDoubleCheckedAddress: boolean) => {
     setState({

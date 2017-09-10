@@ -63,8 +63,6 @@ export class State {
 
     walletAddress: string = "";
 
-    pmnemonicPhrase: string = "";
-
     isDoubleCheckedAddress: boolean = false;
 
     isWrittenMnemonicPhrase: boolean = false;
@@ -73,7 +71,8 @@ export class State {
 
     targetAddress: string | null = null;
 
-    targetBIP39: string | null = null;
+    targetMnemonicPhrase: string | null = null;
+    
     targetWallet: string | null = null;
 
     fundAddresses: FundAddresses = {};
