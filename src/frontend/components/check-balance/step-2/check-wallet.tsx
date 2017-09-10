@@ -25,6 +25,7 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
                         <p>{content.paragraph}</p>
                         <div>
                             <InputText
+                                value=""
                                 name={content.input.name}
                                 label={content.input.label}
                                 onChange={this.handleChange}

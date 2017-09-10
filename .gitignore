@@ -4,4 +4,5 @@ dist/*
 .idea/
 coverage/
 src/**/*.jsx
+*.orig
 __tests__/**/*.jsx
