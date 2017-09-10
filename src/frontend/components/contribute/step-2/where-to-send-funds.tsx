@@ -59,8 +59,8 @@ export class WhereToSendFunds extends React.Component<IWhereToSendFundsProps, an
     private handleAlreadyHaveWallet = () => {
         setSubStep(EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET);
     };
+
     private handleCreateWallet = () => {
         setSubStep(EWhereToSendFundsSubSteps.CREATE_WALLET);
     };
-
 }

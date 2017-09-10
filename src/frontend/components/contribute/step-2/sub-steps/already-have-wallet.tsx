@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { alreadyHaveWalletContent as content } from '../../../../data/text-data';
 import { InputText, InputCheckbox, ButtonMain } from '../../../../common';
-import { setSubStep, incrementStep, setSubStepMounted, typeWalletAddress, checkDoubleCheckedAddress } from '../../../../state';
+import { setSubStep, incrementStep, setSubStepMounted, typeWalletAddress, checkDoubleCheckedAddress, setState } from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
+import { sendTargetAddress } from '../../../../server-api';
 
 interface IAlreadyHaveWalletProps {
     state?: State
@@ -12,11 +13,36 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
 
     public constructor(props?: any, context?: any) {
         super(props, context);
+        this.handleContinue = this.handleContinue.bind(this);
     }
 
     componentDidMount() {
         setSubStepMounted(EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET)
     }
+
+    private fadeTransitionStyle() {
+        const isMounted = this.props.state.currentSubStepMounted === EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET;
+        return {
+            opacity: isMounted ? 1 : 0
+        }
+    }
+
+    private handleWalletAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        typeWalletAddress(e.currentTarget.value);
+    };
+
+    private handleDoubleCheckedAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        checkDoubleCheckedAddress(e.currentTarget.checked);
+    };
+
+    private handleContinue() {
+        return sendTargetAddress(this.props.state.sessionToken, this.props.state.targetAddress)
+        .then(({ fundAddresses }) => {
+            setState({ fundAddresses });
+            setSubStep(-1);
+            incrementStep();
+        });
+    };
 
     render(): JSX.Element {
         return (
@@ -38,30 +64,11 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
                 />
                 <ButtonMain
                     onClick={this.handleContinue}>
-                    {content.buttonMain}
+                    {content.buttonMain} >
                 </ButtonMain>
             </div>
         );
     }
-
-    private fadeTransitionStyle() {
-        const isMounted = this.props.state.currentSubStepMounted === EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET;
-        return {
-            opacity: isMounted ? 1 : 0
-        }
-    }
-
-    private handleWalletAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        typeWalletAddress(e.currentTarget.value);
-    };
-
-    private handleDoubleCheckedAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        checkDoubleCheckedAddress(e.currentTarget.checked);
-    };
-
-    private handleContinue = () => {
-        setSubStep(-1);
-        incrementStep();
-    };
-
 }
+
+

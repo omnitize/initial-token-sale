@@ -50,7 +50,11 @@ export class Transaction {
     status: ETxStatus;
 }
 
-export type FundAddresses = { [key: string]: string };
+export class FundAddress { 
+    currency: string; 
+    address: string;
+    price: number 
+}
 
 export class State {
 
@@ -75,7 +79,7 @@ export class State {
     
     targetWallet: string | null = null;
 
-    fundAddresses: FundAddresses = {};
+    fundAddresses: Array<FundAddress> = [];
 
     transactions: Array<Transaction> = [];
 }

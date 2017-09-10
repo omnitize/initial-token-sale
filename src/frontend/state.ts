@@ -103,3 +103,4 @@ export const checkWrittenMnemonicPhrase = (nextIsWrittenMnemonicPhrase: boolean)
         isWrittenMnemonicPhrase: nextIsWrittenMnemonicPhrase
     });
 };
+

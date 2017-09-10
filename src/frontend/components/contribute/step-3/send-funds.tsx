@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { sendFundsContent as content } from '../../../data/text-data'
 import { WalletHistory } from '../../../common';
-import { State } from '../../../models';
+import { State, FundAddress } from '../../../models';
+import { CurrencyAddress } from './currency-address';
 
 interface ISendFundsProps {
     state?: State
@@ -11,6 +12,12 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
+    }
+
+    renderFundAddresses() {
+        return this.props.state.fundAddresses.map(
+            (fa: FundAddress) => <CurrencyAddress currency={fa.currency} price={fa.price} address={fa.address} ></CurrencyAddress>
+        );
     }
 
     render(): JSX.Element {
@@ -23,8 +30,8 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
                             {paragraph}
                         </p>)}
                 </div>
-                {/*// TODO CREATE SEND FUNDS COMPONENT */}
-                <WalletHistory/>
+                <div>{ this.renderFundAddresses() }</div>
+                <WalletHistory state={this.props.state} />
             </div>
         );
     }

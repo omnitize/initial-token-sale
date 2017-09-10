@@ -59,16 +59,33 @@ export function createSession(captcha: string, remoteIp: string): Promise<{ sess
 	});
 }
 
-export function sendTargetAddress(sessionToken: string, targetAddress: string): Promise<{ fundAddresses: { [key: string]: string } }> {
+export function sendTargetAddress(sessionToken: string, targetAddress: string): Promise<{ fundAddresses: Array<{ currency: string, address: string, price: number }> }> {
 	return Promise.resolve()
 	.then(() => query('update sessions set target_address=? where session_id=? and ( target_address=? or target_address is NULL )', [ targetAddress, sessionToken, targetAddress ]))
 	.then(results => { if (results.affectedRows != 1) throw new Error('Invariant violation'); })
 	.then(() => query('insert into addresses_inc (session_id) values (?)', [ sessionToken ]))
 	.then(results => query('update addresses set session_id=? where id=?', [ sessionToken, results.insertId]))
 	.then(() => query('select * from addresses where session_id=?', [ sessionToken ]))
-	.then(results => { 
+	.then(results => {
 		if(results.length != 1) throw new Error('Invariant violation');
-		return { fundAddresses: { 'bitcoin': results[0].bitcoin, 'ether': results[0].ether } }; 
+		return query('select * from rates order by created desc limit 1', [])
+		.then(rates => {
+			if(rates.length != 1) throw new Error('Invariant violation');
+			return { 
+				fundAddresses: [
+					{
+						currency: 'ether',
+						address: results[0].ether,
+						price: 1.0
+					},
+					{
+						currency: 'bitcoin',
+						address: results[0].bitcoin,
+						price: rates[0].bitcoin
+					}				
+				]
+			}; 
+		});
 	});
 }
 
