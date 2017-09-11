@@ -13,8 +13,6 @@ export class WalletHistory extends React.Component<IWalletHistoryProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
-        this.handleDownloadClick = this.handleDownloadClick.bind(this);
-        this.handlePrintWallet = this.handlePrintWallet.bind(this);
     }
 
     renderButtonsIfWalletCreated(): JSX.Element {
