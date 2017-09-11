@@ -16,7 +16,6 @@ export class Main extends React.Component<any, State> {
     }
 
     render(): JSX.Element {
-        console.log('Main.render');
         return (
             <div className="its-main">
                 <div>

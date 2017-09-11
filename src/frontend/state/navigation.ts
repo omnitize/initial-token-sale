@@ -9,10 +9,11 @@ import {
 export function incrementStep() {
     const max = maxSteps();
     const nextStep = state.currentStep === max ? state.currentStep : state.currentStep + 1;
-    setState({ currentStep: nextStep });
+    setStep(nextStep);
 }
 
 export function setStep(nextStep: number) {
+    resetScroll();
     setState({ currentStep: nextStep });
 }
 
@@ -20,10 +21,11 @@ export function setStep(nextStep: number) {
 export function incrementSubStep() {
     const max = maxSubSteps();
     const nextSubStep = state.currentSubStep === max ? state.currentSubStep : state.currentSubStep + 1;
-    setState({ currentSubStep: nextSubStep });
+    setSubStep(nextSubStep);
 }
 
 export function setSubStep(nextSubStep: number) {
+    resetScroll();
     setState({ currentSubStep: nextSubStep });
 }
 
@@ -41,3 +43,5 @@ const maxSubSteps = () => {
     const subStepEnum = state.selectedUseCase === EUserFlow.CONTRIBUTE ? EWhereToSendFundsSubSteps : ECheckWalletSubSteps;
     return Object.keys(subStepEnum).length / 2
 };
+
+const resetScroll = () => window.scroll(0, 0);
