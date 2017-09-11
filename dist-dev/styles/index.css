@@ -78,6 +78,24 @@
     cursor: pointer;
 }
 
+.its-main button.its-button-main.--selected {
+    -webkit-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    -moz-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    -o-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    -ms-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    -webkit-transition: box-shadow 800ms;
+    -ms-transition: box-shadow 800ms;
+    -o-transition: box-shadow 800ms;
+    -moz-transition: box-shadow 800ms;
+    transition: box-shadow 800ms;
+}
+
+.its-main button.its-button-main.--unselected {
+    opacity: 0.5;
+    background: #212121;
+}
+
 .its-main button.its-button-text {
     display: inline-block;
     border-radius: 4px;

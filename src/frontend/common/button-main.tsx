@@ -2,6 +2,8 @@ import * as React from 'react';
 
 interface IButtonMainProps {
     onClick: () => void
+    isSelected?: boolean
+    isUnselected?: boolean
 }
 
 export class ButtonMain extends React.Component<IButtonMainProps, any> {
@@ -11,11 +13,12 @@ export class ButtonMain extends React.Component<IButtonMainProps, any> {
     }
 
     render(): JSX.Element {
+        const { children, onClick, isSelected, isUnselected } = this.props;
         return (
             <button
-                className="its-button-main"
-                onClick={this.props.onClick}>
-                {this.props.children}
+                className={`its-button-main ${isSelected ? "--selected" : ""} ${isUnselected ? "--unselected" : ""}`}
+                onClick={onClick}>
+                {children}
             </button>
         );
     }
