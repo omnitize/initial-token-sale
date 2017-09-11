@@ -13,43 +13,20 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
 
     public constructor(props?: any, context?: any) {
         super(props, context);
-        this.handleContinue = this.handleContinue.bind(this);
     }
 
     componentDidMount() {
         setSubStepMounted(EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET)
     }
 
-    private fadeTransitionStyle() {
-        const isMounted = this.props.state.currentSubStepMounted === EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET;
-        return {
-            opacity: isMounted ? 1 : 0
-        }
-    }
-
-    private handleWalletAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        typeWalletAddress(e.currentTarget.value);
-    };
-
-    private handleDoubleCheckedAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        checkDoubleCheckedAddress(e.currentTarget.checked);
-    };
-
-    private handleContinue() {
-        return sendTargetAddress(this.props.state.sessionToken, this.props.state.targetAddress)
-        .then(({ fundAddresses }) => {
-            setState({ fundAddresses });
-            setSubStep(-1);
-            incrementStep();
-        });
-    };
-
     render(): JSX.Element {
         return (
             <div
                 className="its-already-have-wallet --its-transition-opacity"
                 style={this.fadeTransitionStyle()}>
-                <p>{content.paragraph}</p>
+                <p>
+                    {content.paragraph}
+                </p>
                 <InputText
                     name={content.inputText.name}
                     value={this.props.state.walletAddress}
@@ -69,6 +46,30 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
             </div>
         );
     }
+
+    private fadeTransitionStyle() {
+        const isMounted = this.props.state.currentSubStepMounted === EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET;
+        return {
+            opacity: isMounted ? 1 : 0
+        }
+    }
+
+    private handleWalletAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        typeWalletAddress(e.currentTarget.value);
+    };
+
+    private handleDoubleCheckedAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        checkDoubleCheckedAddress(e.currentTarget.checked);
+    };
+
+    private handleContinue = () => {
+        return sendTargetAddress(this.props.state.sessionToken, this.props.state.targetAddress)
+            .then(({ fundAddresses }) => {
+                setState({ fundAddresses });
+                setSubStep(-1);
+                incrementStep();
+            });
+    };
 }
 
 

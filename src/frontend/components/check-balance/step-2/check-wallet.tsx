@@ -21,8 +21,12 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
         return (
             this.props.state.currentSubStep === -1
                 ?  <div>
-                        <h2>{content.heading}</h2>
-                        <p>{content.paragraph}</p>
+                        <h2>
+                            {content.heading}
+                        </h2>
+                        <p>
+                            {content.paragraph}
+                        </p>
                         <div>
                             <InputText
                                 value=""
@@ -64,9 +68,11 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
     }
 
     private handleNoWalletAddress = () => {};
+
     private handleContinue = () => {
         incrementSubStep();
     };
+
     private handleChange = (e: ChangeEvent<HTMLInputElement>) => {console.log(e)};
 
 }

@@ -12,21 +12,6 @@ export class ButtonStep extends React.Component<IButtonStepProps, any> {
         super(props, context);
     }
 
-    handleClick = () => {
-        this.props.onClick(this.props.index);
-    };
-
-    backgroundStyle() {
-        const { selectedStep, index } = this.props;
-        return {
-            background: selectedStep === index
-                ? "#00E676"
-                : selectedStep > index
-                    ? "#00C853"
-                    : "transparent"
-        }
-    }
-
     render(): JSX.Element {
         return (
             <button
@@ -36,5 +21,20 @@ export class ButtonStep extends React.Component<IButtonStepProps, any> {
                 {this.props.children}
             </button>
         );
+    }
+
+    private handleClick = () => {
+        this.props.onClick(this.props.index);
+    };
+
+    private backgroundStyle() {
+        const { selectedStep, index } = this.props;
+        return {
+            background: selectedStep === index
+                ? "#00E676"
+                : selectedStep > index
+                    ? "#00C853"
+                    : "transparent"
+        }
     }
 }

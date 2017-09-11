@@ -26,8 +26,12 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
             <div
                 className="its-reclaim-wallet --its-transition-opacity"
                 style={this.fadeTransitionStyle()}>
-                <h2>{content.heading}</h2>
-                <p>{content.paragraph}</p>
+                <h2>
+                    {content.heading}
+                </h2>
+                <p>
+                    {content.paragraph}
+                </p>
                 <InputText
                     value=""
                     name={content.input.name}
@@ -38,7 +42,9 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                 <ButtonText onClick={this.handleDownloadWalletClick}>
                     {content.buttonText}
                 </ButtonText>
-                <p>{content.paragraph3}</p>
+                <p>
+                    {content.paragraph3}
+                </p>
                 <div>
                     <h4>
                         {content.heading2}

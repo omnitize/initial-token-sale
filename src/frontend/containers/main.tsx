@@ -15,6 +15,24 @@ export class Main extends React.Component<any, State> {
         setState({});
     }
 
+    render(): JSX.Element {
+        console.log('Main.render');
+        return (
+            <div className="its-main">
+                <div>
+                    <ButtonMain
+                        onClick={this.toggleUseCase}>
+                        Toggle Use Case
+                    </ButtonMain>
+                </div>
+                <NavigatorSteps
+                    state={ this.state }
+                    steps={ this.steps() }
+                />
+            </div>
+        );
+    }
+
     private toggleUseCase = () => {
         setState({
             selectedUseCase: this.state.selectedUseCase === EUserFlow.CONTRIBUTE
@@ -37,22 +55,4 @@ export class Main extends React.Component<any, State> {
             ? contributeStepList
             : checkBalanceStepList
     };
-
-    render(): JSX.Element {
-        console.log('Main.render');
-        return (
-            <div className="its-main">
-                <div>
-                    <ButtonMain
-                        onClick={this.toggleUseCase}>
-                        Toggle Use Case
-                    </ButtonMain>
-                </div>
-                <NavigatorSteps
-                    state={ this.state }
-                    steps={ this.steps() }
-                />
-            </div>
-        );
-    }
 }

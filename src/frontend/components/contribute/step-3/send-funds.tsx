@@ -14,18 +14,6 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
         super(props, context);
     }
 
-    renderFundAddresses() {
-        return this.props.state.fundAddresses.map(
-            (fa: FundAddress, i: number) =>
-                <CurrencyAddress
-                    key={`fa-${i}`}
-                    currency={fa.currency}
-                    price={fa.price}
-                    address={fa.address}
-                />
-        );
-    }
-
     render(): JSX.Element {
         return (
             <div>
@@ -47,4 +35,17 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
             </div>
         );
     }
+
+    private renderFundAddresses() {
+        return this.props.state.fundAddresses.map(
+            (fa: FundAddress, i: number) =>
+                <CurrencyAddress
+                    key={`fa-${i}`}
+                    currency={fa.currency}
+                    price={fa.price}
+                    address={fa.address}
+                />
+        );
+    }
+
 }

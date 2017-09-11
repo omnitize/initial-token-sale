@@ -17,20 +17,6 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
         super(props, context);
     }
 
-    slideTransitionStyle() {
-        return {
-            msTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            OTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            MozTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            WebkitTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            transform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`
-        }
-    }
-
-    static handleStepNavClick(step: number) {
-        setStep(step);
-    }
-
     render(): JSX.Element {
         return (
             <div className="its-navigator-steps">
@@ -66,4 +52,19 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
             </div>
         );
     }
+
+    private slideTransitionStyle() {
+        return {
+            msTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
+            OTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
+            MozTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
+            WebkitTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
+            transform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`
+        }
+    }
+
+    static handleStepNavClick(step: number) {
+        setStep(step);
+    }
+
 }

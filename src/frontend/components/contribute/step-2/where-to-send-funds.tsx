@@ -22,9 +22,15 @@ export class WhereToSendFunds extends React.Component<IWhereToSendFundsProps, an
         return (
             <div>
                 <div>
-                    <h2>{content.heading}</h2>
-                    <h4>{content.heading2}</h4>
-                    <p>{content.paragraph}</p>
+                    <h2>
+                        {content.heading}
+                    </h2>
+                    <h4>
+                        {content.heading2}
+                    </h4>
+                    <p>
+                        {content.paragraph}
+                    </p>
                     <ButtonMain
                         isSelected={currentSubStep === EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET}
                         isUnselected={isOptionSelected && currentSubStep !== EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET}
