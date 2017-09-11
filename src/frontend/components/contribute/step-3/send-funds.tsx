@@ -18,7 +18,7 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
         return this.props.state.fundAddresses.map(
             (fa: FundAddress, i: number) =>
                 <CurrencyAddress
-                    key={`CurrencyAddress-${i}`}
+                    key={`fa-${i}`}
                     currency={fa.currency}
                     price={fa.price}
                     address={fa.address}
@@ -29,15 +29,21 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
     render(): JSX.Element {
         return (
             <div>
-                <h2>{content.heading}</h2>
+                <h2>
+                    {content.heading}
+                </h2>
                 <div>
                     {content.paragraphs.map((paragraph, i) =>
                         <p key={`paragraph-${i}`}>
                             {paragraph}
                         </p>)}
                 </div>
-                <div>{ this.renderFundAddresses() }</div>
-                <WalletHistory state={this.props.state} />
+                <div>
+                    { this.renderFundAddresses() }
+                </div>
+                <WalletHistory
+                    state={this.props.state}
+                />
             </div>
         );
     }

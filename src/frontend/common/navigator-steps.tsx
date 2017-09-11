@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IStep, State } from '../models';
 import { ButtonStep } from '.';
-import { setStep } from '../state';
+import { setStep } from '../state/index';
 
 interface INavigatorStepsProps {
     steps: IStep[];

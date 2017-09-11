@@ -3,7 +3,7 @@ import { whereToSendFundsContent as content } from '../../../data/text-data'
 import { ButtonMain } from '../../../common/button-main';
 import { State, EContributeSteps, EWhereToSendFundsSubSteps } from '../../../models';
 import { contributeStepList } from '../../../data/component-data';
-import { setSubStep } from '../../../state';
+import { setSubStep } from '../../../state/index';
 
 interface IWhereToSendFundsProps {
     state?: State

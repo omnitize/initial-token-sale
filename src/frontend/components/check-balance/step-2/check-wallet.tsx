@@ -5,7 +5,7 @@ import { InputText } from '../../../common/input-text';
 import { ChangeEvent } from 'react';
 import { checkBalanceStepList } from '../../../data/component-data/check-balance';
 import { ECheckBalanceSteps, State } from '../../../models';
-import { incrementSubStep } from '../../../state';
+import { incrementSubStep } from '../../../state/index';
 
 interface ICheckWalletProps {
     state?: State

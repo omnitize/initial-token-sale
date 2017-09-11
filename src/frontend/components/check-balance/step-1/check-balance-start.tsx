@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ProveYouAreHuman} from '../../../common/prove-you-are-human';
-import { incrementStep, setState } from '../../../state';
+import { incrementStep, setState } from '../../../state/index';
 import { State } from '../../../models';
 
 interface ICheckBalanceStartProps {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createWalletContent as content } from '../../../../data/text-data';
 import { ButtonText, ButtonMain, InputCheckbox } from '../../../../common';
 import { incrementStep, setSubStep, setSubStepMounted, checkWrittenMnemonicPhrase, createWallet, setState
-} from '../../../../state';
+} from '../../../../state/index';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
 import { downloadWallet } from '../../../../utils/downloadWallet';
@@ -26,7 +26,7 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
 
     render(): JSX.Element {
         const { targetMnemonicPhrase, targetAddress, isWrittenMnemonicPhrase } = this.props.state;
-        debugger;
+
         if(!this.props.state.targetWallet) {
             return (
                 <div
@@ -40,14 +40,22 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
             <div
                 className="its-create-wallet --its-transition-opacity"
                 style={this.fadeTransitionStyle()}>
-                <p>{content.paragraph}</p>
+                <p>
+                    {content.paragraph}
+                </p>
                 {targetMnemonicPhrase}
-                <p>{content.paragraph2}</p>
+                <p>
+                    {content.paragraph2}
+                </p>
                 <ButtonText onClick={this.handleDownloadClick}>
                     {content.buttonText}
                 </ButtonText>
-                <p>{content.paragraph3}</p>
-                <h4>{content.heading}</h4>
+                <p>
+                    {content.paragraph3}
+                </p>
+                <h4>
+                    {content.heading}
+                </h4>
                 {targetAddress}
                 <InputCheckbox
                     name={content.inputCheckbox.name}

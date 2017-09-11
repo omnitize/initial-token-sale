@@ -2,7 +2,7 @@ import * as React from 'react';
 import { State, EUserFlow } from '../models';
 import { NavigatorSteps, ButtonMain } from '../common';
 import { checkBalanceStepList, contributeStepList } from '../data/component-data';
-import { registerAppRoot, setState } from '../state';
+import { registerAppRoot, setState } from '../state/index';
 
 export class Main extends React.Component<any, State> {
 

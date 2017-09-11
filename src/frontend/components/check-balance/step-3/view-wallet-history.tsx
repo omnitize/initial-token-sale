@@ -15,7 +15,9 @@ export class ViewWalletHistory extends React.Component<IViewWalletHistoryProps, 
     render(): JSX.Element {
         return (
             <div>
-                <WalletHistory/>
+                <WalletHistory
+                    state={this.props.state}
+                />
             </div>
         );
     }
