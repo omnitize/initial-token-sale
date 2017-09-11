@@ -79,9 +79,9 @@ const maxSubSteps = () => {
 
 // i n p u t s
 // t e x t
-export const typeWalletAddress = (nextWalletAddress: string) => {
+export const typeWalletAddress = (nextTargetAddress: string) => {
     setState({
-        walletAddress: nextWalletAddress
+        targetAddress: nextTargetAddress
     });
 };
 

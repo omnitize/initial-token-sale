@@ -15,10 +15,10 @@
         "preserveConstEnums": true,
         "sourceMap": true,
         "skipLibCheck": true,
-        "outDir": "../../dist/src/backend"
+        "outDir": "../../dist/src"
     },
     "include": [
-        "./**/*.ts"
+        "**/*.ts"
     ],
     "exclude": [
     ]
