@@ -64,7 +64,7 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
                 />
                 <ButtonMain
                     onClick={this.handleContinue}>
-                    {content.buttonMain} >
+                    {content.buttonMain}
                 </ButtonMain>
             </div>
         );

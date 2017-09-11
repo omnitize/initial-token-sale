@@ -208,3 +208,11 @@
 .its-main input[type=checkbox]:checked + .its-input-checkbox__label:after {
     opacity: 1;
 }
+
+.its-main .background-highlight {
+    width: calc(100% - 32px);
+    padding: 8px 12px;
+    margin: 4px;
+    background: rgba(0,145,234, 0.5);
+    color: #eeeeee;
+}

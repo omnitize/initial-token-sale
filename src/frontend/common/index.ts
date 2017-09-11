@@ -5,5 +5,6 @@ export { InputCheckbox } from "./input-checkbox";
 export { InputText } from "./input-text";
 export { NavigatorSteps } from "./navigator-steps";
 export { ProveYouAreHuman } from "./prove-you-are-human";
+export { BackgroundHighlight } from "./background-highlight";
 export { WalletHistory } from "./wallet-history/wallet-history";
 export { spinner } from './spinner';
