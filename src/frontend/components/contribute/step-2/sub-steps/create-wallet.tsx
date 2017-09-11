@@ -6,6 +6,7 @@ import { incrementStep, setSubStep, setSubStepMounted, checkWrittenMnemonicPhras
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
 import { downloadWallet } from '../../../../utils/downloadWallet';
+import { BackgroundHighlight } from '../../../../common';
 
 interface ICreateWalletProps {
     state?: State
@@ -18,7 +19,7 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
     }
 
     componentDidMount() {
-        setSubStepMounted(EWhereToSendFundsSubSteps.CREATE_WALLET)
+        setSubStepMounted(EWhereToSendFundsSubSteps.CREATE_WALLET);
         if(!this.props.state.targetWallet) {
             setTimeout(createWallet, 100);
         }
@@ -47,6 +48,11 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                 <p>
                     {content.paragraph2}
                 </p>
+                <p>{content.paragraph}</p>
+                <BackgroundHighlight>
+                    {this.props.state.targetMnemonicPhrase}
+                </BackgroundHighlight>
+                <p>{content.paragraph2}</p>
                 <ButtonText onClick={this.handleDownloadClick}>
                     {content.buttonText}
                 </ButtonText>
@@ -57,6 +63,15 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                     {content.heading}
                 </h4>
                 {targetAddress}
+                <p>
+                    {content.paragraph3}
+                </p>
+                <h4>
+                    {content.heading}
+                </h4>
+                <BackgroundHighlight>
+                    {this.props.state.targetAddress}
+                </BackgroundHighlight>
                 <InputCheckbox
                     name={content.inputCheckbox.name}
                     paragraph={content.inputCheckbox.paragraph}
