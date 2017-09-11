@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { createWalletContent as content } from '../../../../data/text-data';
 import { ButtonText, ButtonMain, InputCheckbox } from '../../../../common';
-import { incrementStep, setSubStep, setSubStepMounted, checkWrittenMnemonicPhrase, createWallet, setState } from '../../../../state';
+import { incrementStep, setSubStep, setSubStepMounted, checkWrittenMnemonicPhrase, createWallet, setState
+} from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
+import { downloadWallet } from '../../../../utils/downloadWallet';
 
 interface ICreateWalletProps {
     state?: State
@@ -23,6 +25,7 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
     }
 
     render(): JSX.Element {
+        const { targetMnemonicPhrase, targetAddress, isWrittenMnemonicPhrase } = this.props.state;
         debugger;
         if(!this.props.state.targetWallet) {
             return (
@@ -38,18 +41,18 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                 className="its-create-wallet --its-transition-opacity"
                 style={this.fadeTransitionStyle()}>
                 <p>{content.paragraph}</p>
-                {this.props.state.targetMnemonicPhrase}
+                {targetMnemonicPhrase}
                 <p>{content.paragraph2}</p>
                 <ButtonText onClick={this.handleDownloadClick}>
                     {content.buttonText}
                 </ButtonText>
                 <p>{content.paragraph3}</p>
                 <h4>{content.heading}</h4>
-                {this.props.state.targetAddress}
+                {targetAddress}
                 <InputCheckbox
                     name={content.inputCheckbox.name}
                     paragraph={content.inputCheckbox.paragraph}
-                    value={this.props.state.isWrittenMnemonicPhrase}
+                    value={isWrittenMnemonicPhrase}
                     onChange={this.handleWrittenMnemonicPhraseChange}
                 />
                 <ButtonMain onClick={this.handleContinue}>
@@ -67,13 +70,7 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
     }
 
     private handleDownloadClick = () => {
-        var element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(this.props.state.targetWallet));
-        element.setAttribute('download', `UTC-${this.props.state.targetAddress}`);
-        element.style.display = 'none';
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
+        downloadWallet(this.props.state.targetWallet, this.props.state.targetAddress);
     };
 
     private handleWrittenMnemonicPhraseChange = (e: React.ChangeEvent<HTMLInputElement>) => {

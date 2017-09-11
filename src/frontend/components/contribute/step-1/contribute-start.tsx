@@ -17,7 +17,9 @@ export class ContributeStart extends React.Component<IContributeStartProps, any>
     render(): JSX.Element {
         return (
             <div>
-                <h2>{content.heading}</h2>
+                <h2>
+                    {content.heading}
+                </h2>
                 <ul>
                 {content.list.map((listText, i) =>
                     <li key={`list-${i}`}>
