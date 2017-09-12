@@ -2,8 +2,8 @@ import * as React from 'react';
 import { reclaimWalletContent as content } from '../../../../data/text-data'
 import { ButtonMain, ButtonText, InputText } from '../../../../common';
 import { ChangeEvent } from 'react';
-import { ECheckWalletSubSteps, State } from '../../../../models';
 import { setSubStepMounted, reclaimWalletContinue } from '../../../../state/index';
+import { ECheckWalletSubSteps, State } from '../../../../models';
 
 interface IReclaimWalletProps {
     state?: State
