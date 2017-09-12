@@ -46,7 +46,7 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                         {content.heading2}
                     </h4>
                     <span className="its-reclaim-wallet__wallet-address">
-                        {this.walletAddress}
+                        {this.state.targetAddress}
                     </span>
                 </div>
                 <ButtonMain onClick={this.handleContinueClick}>
