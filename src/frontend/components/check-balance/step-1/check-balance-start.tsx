@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ProveYouAreHuman} from '../../../common/prove-you-are-human';
-import { incrementStep, setState } from '../../../state';
+import { handleCaptchaSuccess } from '../../../state/index';
 import { State } from '../../../models';
 
 interface ICheckBalanceStartProps {
@@ -16,13 +16,12 @@ export class CheckBalanceStart extends React.Component<ICheckBalanceStartProps, 
     render(): JSX.Element {
         return (
             <div>
-                <ProveYouAreHuman onSuccess={ CheckBalanceStart.onCaptchaSuccess }/>
+                <ProveYouAreHuman onSuccess={ CheckBalanceStart.handleCaptchaSuccess }/>
             </div>
         );
     }
 
-    static onCaptchaSuccess(sessionToken: string) {
-        setState( { sessionToken });
-        incrementStep();
+    static handleCaptchaSuccess(sessionToken: string) {
+        handleCaptchaSuccess(sessionToken);
     }
 }

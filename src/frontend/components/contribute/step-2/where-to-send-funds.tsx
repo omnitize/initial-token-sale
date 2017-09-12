@@ -3,7 +3,7 @@ import { whereToSendFundsContent as content } from '../../../data/text-data'
 import { ButtonMain } from '../../../common/button-main';
 import { State, EContributeSteps, EWhereToSendFundsSubSteps } from '../../../models';
 import { contributeStepList } from '../../../data/component-data';
-import { setSubStep } from '../../../state';
+import { setSubStep } from '../../../state/index';
 
 interface IWhereToSendFundsProps {
     state?: State
@@ -16,24 +16,37 @@ export class WhereToSendFunds extends React.Component<IWhereToSendFundsProps, an
     }
 
     render(): JSX.Element {
+        const currentSubStep = this.props.state.currentSubStep;
+        const isOptionSelected = currentSubStep > -1;
+
         return (
             <div>
                 <div>
-                    <h2>{content.heading}</h2>
-                    <h4>{content.heading2}</h4>
-                    <p>{content.paragraph}</p>
+                    <h2>
+                        {content.heading}
+                    </h2>
+                    <h4>
+                        {content.heading2}
+                    </h4>
+                    <p>
+                        {content.paragraph}
+                    </p>
                     <ButtonMain
+                        isSelected={currentSubStep === EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET}
+                        isUnselected={isOptionSelected && currentSubStep !== EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET}
                         onClick={this.handleAlreadyHaveWallet}
                     >
                         {content.button}
                     </ButtonMain>
                     <ButtonMain
+                        isSelected={currentSubStep === EWhereToSendFundsSubSteps.CREATE_WALLET}
+                        isUnselected={isOptionSelected && currentSubStep !== EWhereToSendFundsSubSteps.CREATE_WALLET}
                         onClick={this.handleCreateWallet}
                     >
                         {content.button2}
                     </ButtonMain>
                 </div>
-                {this.props.state.currentSubStep > -1
+                {isOptionSelected
                     ?   <div>
                             {this.renderSubStep()}
                         </div>

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { State, EUserFlow } from '../models';
 import { NavigatorSteps, ButtonMain } from '../common';
 import { checkBalanceStepList, contributeStepList } from '../data/component-data';
-import { registerAppRoot, setState } from '../state';
+import { registerAppRoot, setState } from '../state/index';
 
 export class Main extends React.Component<any, State> {
 
@@ -13,6 +13,23 @@ export class Main extends React.Component<any, State> {
     componentWillMount() {
         registerAppRoot(this);
         setState({});
+    }
+
+    render(): JSX.Element {
+        return (
+            <div className="its-main">
+                <div>
+                    <ButtonMain
+                        onClick={this.toggleUseCase}>
+                        Toggle Use Case
+                    </ButtonMain>
+                </div>
+                <NavigatorSteps
+                    state={ this.state }
+                    steps={ this.steps() }
+                />
+            </div>
+        );
     }
 
     private toggleUseCase = () => {
@@ -37,22 +54,4 @@ export class Main extends React.Component<any, State> {
             ? contributeStepList
             : checkBalanceStepList
     };
-
-    render(): JSX.Element {
-        console.log('Main.render');
-        return (
-            <div className="its-main">
-                <div>
-                    <ButtonMain
-                        onClick={this.toggleUseCase}>
-                        Toggle Use Case
-                    </ButtonMain>
-                </div>
-                <NavigatorSteps
-                    state={ this.state }
-                    steps={ this.steps() }
-                />
-            </div>
-        );
-    }
 }

@@ -5,7 +5,8 @@ import { InputText } from '../../../common/input-text';
 import { ChangeEvent } from 'react';
 import { checkBalanceStepList } from '../../../data/component-data/check-balance';
 import { ECheckBalanceSteps, State } from '../../../models';
-import { incrementSubStep } from '../../../state';
+import { incrementSubStep } from '../../../state/index';
+import { typeWalletAddress } from '../../../state/inputs';
 
 interface ICheckWalletProps {
     state?: State
@@ -21,14 +22,18 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
         return (
             this.props.state.currentSubStep === -1
                 ?  <div>
-                        <h2>{content.heading}</h2>
-                        <p>{content.paragraph}</p>
+                        <h2>
+                            {content.heading}
+                        </h2>
+                        <p>
+                            {content.paragraph}
+                        </p>
                         <div>
                             <InputText
-                                value=""
+                                value={this.props.state.targetAddress}
                                 name={content.input.name}
                                 label={content.input.label}
-                                onChange={this.handleChange}
+                                onChange={this.handleWalletAddressChange}
                             />
                             <div className="its-check-wallet__text-button">
                                 <ButtonText
@@ -63,10 +68,15 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
         )
     }
 
+    private handleWalletAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
+        console.log(e)
+        typeWalletAddress(e.currentTarget.value);
+    };
+
     private handleNoWalletAddress = () => {};
+
     private handleContinue = () => {
         incrementSubStep();
     };
-    private handleChange = (e: ChangeEvent<HTMLInputElement>) => {console.log(e)};
 
 }

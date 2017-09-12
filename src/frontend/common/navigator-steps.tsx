@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IStep, State } from '../models';
 import { ButtonStep } from '.';
-import { setStep } from '../state';
+import { setStep } from '../state/index';
 
 interface INavigatorStepsProps {
     steps: IStep[];
@@ -15,20 +15,6 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
-    }
-
-    slideTransitionStyle() {
-        return {
-            msTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            OTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            MozTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            WebkitTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            transform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`
-        }
-    }
-
-    static handleStepNavClick(step: number) {
-        setStep(step);
     }
 
     render(): JSX.Element {
@@ -66,4 +52,19 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
             </div>
         );
     }
+
+    private slideTransitionStyle() {
+        return {
+            msTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
+            OTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
+            MozTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
+            WebkitTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
+            transform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`
+        }
+    }
+
+    static handleStepNavClick(step: number) {
+        setStep(step);
+    }
+
 }

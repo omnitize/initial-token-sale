@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { alreadyHaveWalletContent as content } from '../../../../data/text-data';
 import { InputText, InputCheckbox, ButtonMain } from '../../../../common';
-import { setSubStep, incrementStep, setSubStepMounted, typeWalletAddress, checkDoubleCheckedAddress, setState } from '../../../../state';
+import { setSubStep, incrementStep, setSubStepMounted, typeWalletAddress, checkDoubleCheckedAddress, setState
+} from '../../../../state/index';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
 
@@ -13,11 +14,38 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
 
     public constructor(props?: any, context?: any) {
         super(props, context);
-        this.handleContinue = this.handleContinue.bind(this);
     }
 
     componentDidMount() {
         setSubStepMounted(EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET)
+    }
+
+    render(): JSX.Element {
+        return (
+            <div
+                className="its-already-have-wallet --its-transition-opacity"
+                style={this.fadeTransitionStyle()}>
+                <p>
+                    {content.paragraph}
+                </p>
+                <InputText
+                    name={content.inputText.name}
+                    value={this.props.state.targetAddress}
+                    label={content.inputText.label}
+                    onChange={this.handleWalletAddressChange}
+                />
+                <InputCheckbox
+                    name={content.inputCheckbox.name}
+                    value={this.props.state.isDoubleCheckedAddress}
+                    paragraph={content.inputCheckbox.paragraph}
+                    onChange={this.handleDoubleCheckedAddressChange}
+                />
+                <ButtonMain
+                    onClick={this.handleContinue}>
+                    {content.buttonMain}
+                </ButtonMain>
+            </div>
+        );
     }
 
     private fadeTransitionStyle() {
@@ -35,40 +63,14 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
         checkDoubleCheckedAddress(e.currentTarget.checked);
     };
 
-    private handleContinue() {
+    private handleContinue = () => {
         return sendTargetAddress(this.props.state.sessionToken, this.props.state.targetAddress)
-        .then(({ fundAddresses }) => {
-            setState({ fundAddresses });
-            setSubStep(-1);
-            incrementStep();
-        });
+            .then(({ fundAddresses }) => {
+                setState({ fundAddresses });
+                setSubStep(-1);
+                incrementStep();
+            });
     };
-
-    render(): JSX.Element {
-        return (
-            <div
-                className="its-already-have-wallet --its-transition-opacity"
-                style={this.fadeTransitionStyle()}>
-                <p>{content.paragraph}</p>
-                <InputText
-                    name={content.inputText.name}
-                    value={this.props.state.targetAddress}
-                    label={content.inputText.label}
-                    onChange={this.handleWalletAddressChange}
-                />
-                <InputCheckbox
-                    name={content.inputCheckbox.name}
-                    value={this.props.state.isDoubleCheckedAddress}
-                    paragraph={content.inputCheckbox.paragraph}
-                    onChange={this.handleDoubleCheckedAddressChange}
-                />
-                <ButtonMain
-                    onClick={this.handleContinue}>
-                    {content.buttonMain} >
-                </ButtonMain>
-            </div>
-        );
-    }
 }
 
 

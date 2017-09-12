@@ -14,18 +14,6 @@ export class InputText extends React.Component<IInputTextProps, any> {
         super(props, context);
     }
 
-    renderInput() {
-        const { name, value, onChange, placeholder } = this.props;
-
-        return  <input
-                    name={name}
-                    type={"text"}
-                    value={value}
-                    onChange={onChange}
-                    placeholder={!!placeholder ? placeholder : null}
-                />
-    }
-
     render(): JSX.Element {
         return (
             !!this.props.label
@@ -34,7 +22,18 @@ export class InputText extends React.Component<IInputTextProps, any> {
                         {this.renderInput()}
                     </label>
                 :   this.renderInput()
-
         );
+    }
+
+    private renderInput() {
+        const { name, value, onChange, placeholder } = this.props;
+
+        return  <input
+            name={name}
+            type={"text"}
+            value={value}
+            onChange={onChange}
+            placeholder={!!placeholder ? placeholder : null}
+        />
     }
 }

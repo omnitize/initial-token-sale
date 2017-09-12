@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { reclaimWalletContent as content } from '../../../../data/text-data'
-import { ButtonMain } from '../../../../common/button-main';
-import { ButtonText } from '../../../../common/button-text';
-import { InputText } from '../../../../common/input-text';
+import { ButtonMain, ButtonText, InputText } from '../../../../common';
 import { ChangeEvent } from 'react';
-import { setSubStep, setSubStepMounted, incrementStep } from '../../../../state';
+import { setSubStep, setSubStepMounted, incrementStep } from '../../../../state/index';
 import { ECheckWalletSubSteps, State } from '../../../../models';
 
 interface IReclaimWalletProps {
@@ -28,8 +26,12 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
             <div
                 className="its-reclaim-wallet --its-transition-opacity"
                 style={this.fadeTransitionStyle()}>
-                <h2>{content.heading}</h2>
-                <p>{content.paragraph}</p>
+                <h2>
+                    {content.heading}
+                </h2>
+                <p>
+                    {content.paragraph}
+                </p>
                 <InputText
                     value=""
                     name={content.input.name}
@@ -40,7 +42,9 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                 <ButtonText onClick={this.handleDownloadWalletClick}>
                     {content.buttonText}
                 </ButtonText>
-                <p>{content.paragraph3}</p>
+                <p>
+                    {content.paragraph3}
+                </p>
                 <div>
                     <h4>
                         {content.heading2}
