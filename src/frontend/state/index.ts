@@ -38,3 +38,7 @@ export {
     setSubStep,
     setSubStepMounted
 } from "./navigation";
+
+export {
+    handleCaptchaSuccess
+} from "./check-balance";

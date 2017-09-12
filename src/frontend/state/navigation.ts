@@ -34,14 +34,14 @@ export function setSubStepMounted(nextSubStepMounted: number) {
     // creates enough delay to register as CSS transition
 }
 
-const maxSteps = () => {
+export const maxSteps = () => {
     const stepEnum = state.selectedUseCase === EUserFlow.CONTRIBUTE ? EContributeSteps : ECheckBalanceSteps;
     return Object.keys(stepEnum).length / 2
 };
 
-const maxSubSteps = () => {
+export const maxSubSteps = () => {
     const subStepEnum = state.selectedUseCase === EUserFlow.CONTRIBUTE ? EWhereToSendFundsSubSteps : ECheckWalletSubSteps;
     return Object.keys(subStepEnum).length / 2
 };
 
-const resetScroll = () => window.scroll(0, 0);
+export const resetScroll = () => window.scroll(0, 0);
