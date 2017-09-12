@@ -2,7 +2,7 @@ import * as React from 'react';
 import { reclaimWalletContent as content } from '../../../../data/text-data'
 import { ButtonMain, ButtonText, InputText } from '../../../../common';
 import { ChangeEvent } from 'react';
-import { setSubStep, setSubStepMounted, incrementStep } from '../../../../state/index';
+import { setSubStepMounted, reclaimWalletContinue } from '../../../../state/index';
 import { ECheckWalletSubSteps, State } from '../../../../models';
 
 interface IReclaimWalletProps {
@@ -70,8 +70,7 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
     private handleDownloadWalletClick = () => {};
 
     private handleContinueClick = () => {
-        setSubStep(-1);
-        incrementStep();
+        reclaimWalletContinue();
     };
 
     private handleMnemonicPhraseChange = (e: ChangeEvent<HTMLInputElement>) => {console.log(e)};

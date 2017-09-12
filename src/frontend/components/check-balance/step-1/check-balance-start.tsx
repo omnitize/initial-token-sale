@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ProveYouAreHuman} from '../../../common/prove-you-are-human';
-import { handleCaptchaSuccess } from '../../../state/index';
+import { checkBalanceStartCaptchaSuccess } from '../../../state/index';
 import { State } from '../../../models';
 
 interface ICheckBalanceStartProps {
@@ -22,6 +22,6 @@ export class CheckBalanceStart extends React.Component<ICheckBalanceStartProps, 
     }
 
     static handleCaptchaSuccess(sessionToken: string) {
-        handleCaptchaSuccess(sessionToken);
+        checkBalanceStartCaptchaSuccess(sessionToken);
     }
 }
