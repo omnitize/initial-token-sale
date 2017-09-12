@@ -21,7 +21,7 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
                     {content.heading}
                 </h2>
                 <div>
-                    {content.paragraphs.map((paragraph, i) =>
+                    {content.paragraphs.map((paragraph: string, i: number) =>
                         <p key={`paragraph-${i}`}>
                             {paragraph}
                         </p>)}
