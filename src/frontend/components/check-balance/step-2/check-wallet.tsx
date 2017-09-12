@@ -30,7 +30,7 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
                         </p>
                         <div>
                             <InputText
-                                value={this.props.state.walletAddress}
+                                value={this.props.state.targetAddress}
                                 name={content.input.name}
                                 label={content.input.label}
                                 onChange={this.handleWalletAddressChange}

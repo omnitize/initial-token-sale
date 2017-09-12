@@ -35,7 +35,7 @@ export class WalletHistory extends React.Component<IWalletHistoryProps, any> {
         return (
             <div>
                 <h2>{content.heading}</h2>
-                <WalletHistoryTable/>
+                <WalletHistoryTable state={this.props.state} />
                 { this.renderButtonsIfWalletCreated() }
             </div>
         );

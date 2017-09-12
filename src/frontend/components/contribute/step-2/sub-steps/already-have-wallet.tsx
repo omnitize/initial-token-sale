@@ -30,7 +30,7 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
                 </p>
                 <InputText
                     name={content.inputText.name}
-                    value={this.props.state.walletAddress}
+                    value={this.props.state.targetAddress}
                     label={content.inputText.label}
                     onChange={this.handleWalletAddressChange}
                 />
