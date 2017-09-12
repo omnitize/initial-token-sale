@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { alreadyHaveWalletContent as content } from '../../../../data/text-data';
 import { InputText, InputCheckbox, ButtonMain } from '../../../../common';
-import { setSubStep, incrementStep, setSubStepMounted, typeWalletAddress, checkDoubleCheckedAddress, setState
+import { alreadyHaveWalletContinue, setSubStepMounted, typeWalletAddress, checkDoubleCheckedAddress
 } from '../../../../state/index';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
@@ -66,9 +66,7 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
     private handleContinue = () => {
         return sendTargetAddress(this.props.state.sessionToken, this.props.state.targetAddress)
             .then(({ fundAddresses }) => {
-                setState({ fundAddresses });
-                setSubStep(-1);
-                incrementStep();
+                alreadyHaveWalletContinue(fundAddresses);
             });
     };
 }

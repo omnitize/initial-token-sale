@@ -69,7 +69,6 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
     }
 
     private handleWalletAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e)
         typeWalletAddress(e.currentTarget.value);
     };
 
