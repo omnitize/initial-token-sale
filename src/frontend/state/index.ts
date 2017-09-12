@@ -26,7 +26,7 @@ export {
 
 export {
     typeWalletAddress,
-    typePnemonicPhrase,
+    typeMnemonicPhrase,
     checkDoubleCheckedAddress,
     checkWrittenMnemonicPhrase
 } from "./inputs";

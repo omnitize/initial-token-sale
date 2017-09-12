@@ -7,7 +7,7 @@ export const typeWalletAddress = (nextAddress: string) => {
     });
 };
 
-export const typePnemonicPhrase = (nextPnemonicPhrase: string) => {
+export const typeMnemonicPhrase = (nextPnemonicPhrase: string) => {
     setState({
         targetMnemonicPhrase: nextPnemonicPhrase
     });
