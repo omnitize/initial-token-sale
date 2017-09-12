@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { WalletHistory } from '../../../common';
-import { State } from '../../../models';
+import { WalletHistory } from '../../common';
+import { State } from '../../models';
 
 interface IViewWalletHistoryProps {
     state?: State

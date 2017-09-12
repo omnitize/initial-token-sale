@@ -1,6 +1,6 @@
-export { CheckBalanceStart } from "./step-1/check-balance-start";
+export { CheckBalanceStart } from "./check-balance-start";
 
-export { CheckWallet } from "./step-2/check-wallet";
-export { ReclaimWallet } from "./step-2/sub-steps/reclaim-wallet";
+export { CheckWallet } from "./check-wallet/check-wallet";
+export { ReclaimWallet } from "./check-wallet/sub-steps/reclaim-wallet";
 
-export { ViewWalletHistory } from "./step-3/view-wallet-history";
+export { ViewWalletHistory } from "./view-wallet-history";
