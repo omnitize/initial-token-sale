@@ -20,34 +20,36 @@ export class WhereToSendFunds extends React.Component<IWhereToSendFundsProps, an
         const isOptionSelected = currentSubStep > -1;
 
         return (
-            <div>
-                <div>
-                    <h2>
-                        {content.heading}
-                    </h2>
+            <div className="its-content-section">
+                <h2>
+                    {content.heading}
+                </h2>
+                <div className="its-content-section">
                     <h4>
                         {content.heading2}
                     </h4>
                     <p>
                         {content.paragraph}
                     </p>
-                    <ButtonMain
-                        isSelected={currentSubStep === EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET}
-                        isUnselected={isOptionSelected && currentSubStep !== EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET}
-                        onClick={this.handleAlreadyHaveWallet}
-                    >
-                        {content.button}
-                    </ButtonMain>
-                    <ButtonMain
-                        isSelected={currentSubStep === EWhereToSendFundsSubSteps.CREATE_WALLET}
-                        isUnselected={isOptionSelected && currentSubStep !== EWhereToSendFundsSubSteps.CREATE_WALLET}
-                        onClick={this.handleCreateWallet}
-                    >
-                        {content.button2}
-                    </ButtonMain>
+                    <div className="its-content-section">
+                        <ButtonMain
+                            isSelected={currentSubStep === EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET}
+                            isUnselected={isOptionSelected && currentSubStep !== EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET}
+                            onClick={this.handleAlreadyHaveWallet}
+                        >
+                            {content.button}
+                        </ButtonMain>
+                        <ButtonMain
+                            isSelected={currentSubStep === EWhereToSendFundsSubSteps.CREATE_WALLET}
+                            isUnselected={isOptionSelected && currentSubStep !== EWhereToSendFundsSubSteps.CREATE_WALLET}
+                            onClick={this.handleCreateWallet}
+                        >
+                            {content.button2}
+                        </ButtonMain>
+                    </div>
                 </div>
                 {isOptionSelected
-                    ?   <div>
+                    ?   <div className="its-content-section">
                             {this.renderSubStep()}
                         </div>
                     :   null}

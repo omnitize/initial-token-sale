@@ -23,6 +23,8 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
     }
 
     render(): JSX.Element {
+        const { targetMnemonicPhrase, targetAddress } = this.props.state;
+
         return (
             <div
                 className="its-reclaim-wallet --its-transition-opacity"
@@ -38,7 +40,7 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                         {content.heading2}
                     </h4>
                     <InputText
-                        value={this.props.state.targetMnemonicPhrase}
+                        value={targetMnemonicPhrase}
                         name={content.input.name}
                         onChange={this.handleMnemonicPhraseChange}
                     />
@@ -55,7 +57,7 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                         {content.heading3}
                     </h4>
                     <span className="its-reclaim-wallet__wallet-address">
-                        {this.state.targetAddress}
+                        {targetAddress}
                     </span>
                 </div>
                 <ButtonMain onClick={this.handleContinueClick}>

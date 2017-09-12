@@ -74,11 +74,11 @@ export class State {
 
     alreadyHaveWallet: boolean = true;
 
-    targetAddress: string = '';
+    targetAddress: string = "";
 
-    targetMnemonicPhrase: string | null = null;
+    targetMnemonicPhrase: string | null = "";
     
-    targetWallet: string | null = null;
+    targetWallet: string | null = "";
 
     fundAddresses: Array<FundAddress> = [];
 

@@ -17,21 +17,25 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
     render(): JSX.Element {
         return (
             <div>
-                <h2>
-                    {content.heading}
-                </h2>
-                <div>
-                    {content.paragraphs.map((paragraph: string, i: number) =>
-                        <p key={`paragraph-${i}`}>
-                            {paragraph}
-                        </p>)}
+                <div className="its-content-section">
+                    <h2>
+                        {content.heading}
+                    </h2>
+                    <div>
+                        {content.paragraphs.map((paragraph: string, i: number) =>
+                            <p key={`paragraph-${i}`}>
+                                {paragraph}
+                            </p>)}
+                    </div>
+                    <div>
+                        { this.renderFundAddresses() }
+                    </div>
                 </div>
-                <div>
-                    { this.renderFundAddresses() }
+                <div className="its-content-section">
+                    <WalletHistory
+                        state={this.props.state}
+                    />
                 </div>
-                <WalletHistory
-                    state={this.props.state}
-                />
             </div>
         );
     }

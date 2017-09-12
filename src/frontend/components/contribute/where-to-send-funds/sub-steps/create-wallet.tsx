@@ -44,16 +44,14 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                 <p>
                     {content.paragraph}
                 </p>
-                {targetMnemonicPhrase}
+                <BackgroundHighlight>
+                    {targetMnemonicPhrase}
+                </BackgroundHighlight>
                 <p>
                     {content.paragraph2}
                 </p>
-                <p>{content.paragraph}</p>
-                <BackgroundHighlight>
-                    {this.props.state.targetMnemonicPhrase}
-                </BackgroundHighlight>
-                <p>{content.paragraph2}</p>
-                <ButtonText onClick={this.handleDownloadClick}>
+                <ButtonText
+                    onClick={this.handleDownloadClick}>
                     {content.buttonText}
                 </ButtonText>
                 <p>
@@ -62,15 +60,8 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                 <h4>
                     {content.heading}
                 </h4>
-                {targetAddress}
-                <p>
-                    {content.paragraph3}
-                </p>
-                <h4>
-                    {content.heading}
-                </h4>
                 <BackgroundHighlight>
-                    {this.props.state.targetAddress}
+                    {targetAddress}
                 </BackgroundHighlight>
                 <InputCheckbox
                     name={content.inputCheckbox.name}

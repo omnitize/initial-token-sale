@@ -8,23 +8,23 @@
 }
 
 .its-main h2 {
-    font-size: 32px;
-    margin: 10px;
+    font-size: 28px;
+    margin: 14px;
 }
 
 .its-main h4 {
-    font-size: 24px;
-    margin: 8px;
+    font-size: 20px;
+    margin: 14px;
 }
 
 .its-main p {
     font-size: 16px;
     line-height: 22px;
-    margin: 8px;
+    margin: 14px;
 }
 
 .its-main ul {
-    margin: 8px;
+    margin: 10px;
 }
 
 .its-main ul li {
@@ -40,14 +40,15 @@
 }
 
 .its-main input {
-    margin: 8px 4px;
-    width: calc(100% - 20px);
+    margin: 12px 8px;
+    width: calc(100% - 28px);
     border: 2px solid #212121;
     padding: 4px;
 }
 
 .its-main button {
     font-size: 16px;
+    margin: 10px;
     line-height: 22px;
 }
 
@@ -55,7 +56,6 @@
     display: inline-block;
     width: 60px;
     height: 60px;
-    margin: 4px;
     font-size: 24px;
     border-radius: 40px;
     background: none;
@@ -67,28 +67,37 @@
 .its-main button.its-button-main {
     display: inline-block;
     border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,.4);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,.4);
+    -o-box-shadow: inset 0 1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,.4);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,.4);
     min-width: 180px;
     max-width: 50%;
     padding: 8px 12px;
-    margin: 4px;
     background: #0091EA;
     color: #eeeeee;
     border: none;
     outline: none;
+    -webkit-transition: box-shadow 200ms;
+    -o-transition: box-shadow 200ms;
+    -moz-transition: box-shadow 200ms;
+    transition: box-shadow 200ms;
     cursor: pointer;
 }
 
-.its-main button.its-button-main.--selected {
+.its-main button.its-button-main.--selected, .its-main button.its-button-main:hover {
     -webkit-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     -moz-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     -o-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    -ms-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    -webkit-transition: box-shadow 800ms;
-    -ms-transition: box-shadow 800ms;
-    -o-transition: box-shadow 800ms;
-    -moz-transition: box-shadow 800ms;
-    transition: box-shadow 800ms;
+}
+
+.its-main button.its-button-main:active {
+    -webkit-transform: translateY(2px);
+    -ms-transform: translateY(2px);
+    -o-transform: translateY(2px);
+    -moz-transform: translateY(2px);
+    transform: translateY(2px);
 }
 
 .its-main button.its-button-main.--unselected {
@@ -113,6 +122,10 @@
 
 .its-main tr {
     line-height: 1.5;
+}
+
+.its-main .its-content-section {
+    margin: 24px 0;
 }
 
 .its-main .its-navigator-steps {
@@ -159,7 +172,6 @@
 
 .its-main .--its-transition-transform {
     -webkit-transition: transform 200ms;
-    -ms-transition: transform 200ms;
     -o-transition: transform 200ms;
     -moz-transition: transform 200ms;
     transition: transform 200ms;
@@ -167,7 +179,6 @@
 
 .its-main .--its-transition-opacity {
     -webkit-transition: opacity 200ms;
-    -ms-transition: opacity 200ms;
     -o-transition: opacity 200ms;
     -moz-transition: opacity 200ms;
     transition: opacity 200ms;
@@ -184,10 +195,13 @@
     height: 20px;
     cursor: pointer;
     position: absolute;
-    top: 4px;
-    left: 4px;
+    top: 12px;
+    left: 12px;
     background: none;
     border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,.4);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,.4);
+    -o-box-shadow: inset 0 1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,.4);
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,.4);
 }
 
