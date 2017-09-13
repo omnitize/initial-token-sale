@@ -3,6 +3,7 @@ import { walletHistoryContent as content } from '../../data/text-data';
 import { loadTransactions } from '../../server-api';
 import { State } from '../../models';
 import { setState } from '../../state';
+import { getTxStatusIcon } from './tx-status-icon';
 const dateFormat = require('dateformat');
 
 interface IWalletHistoryTableProps {
@@ -33,11 +34,15 @@ export class WalletHistoryTable extends React.Component<IWalletHistoryTableProps
         clearInterval(this.intervalId);
     }
 
+    private getMinConfirmations(currency: string) {
+        return this.props.state.clientConfig[`${currency}MinimumConfirmations`] || 0;
+    }
+
     private renderTransactions() {
         return this.props.state.transactions.map((tr, i) => (
             <tr key={`tr-${i}`}>
                 <td>{dateFormat(tr.created, 'yyyy-mm-dd HH:MM:ss')}</td>
-                <td>{tr.status} - {tr.confirmations}</td>
+                <td>{getTxStatusIcon(tr.status, tr.confirmations, this.getMinConfirmations(tr.currency))}</td>
                 <td>{tr.value}</td>
                 <td>{tr.price}</td>
                 <td>{tr.discountPerc}%</td>

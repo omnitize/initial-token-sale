@@ -1,6 +1,7 @@
 import * as Promise from 'bluebird';
 import * as express from 'express';
 import { config } from './config';
+import { clientConfig } from './client-config';
 import { query } from './database';
 import { FundAddress } from '../frontend/models';
 const fetch = require('node-fetch');
@@ -42,7 +43,7 @@ export function setupApi(app: express.Application) {
 	});
 }
 
-export function createSession(captcha: string, remoteIp: string): Promise<{ sessionToken: string }> {
+export function createSession(captcha: string, remoteIp: string): Promise<{ sessionToken: string, clientConfig: any }> {
 	var data = new FormData()
 	data.append('secret', config.recaptchaSiteSecret);
 	data.append('response', captcha);
@@ -56,7 +57,7 @@ export function createSession(captcha: string, remoteIp: string): Promise<{ sess
 		if(!response.success) throw new Error('Captcha failed: ' + JSON.stringify(response));
 		const sessionToken = base64url(crypto.randomBytes(config.sessionTokenSize));
 		return query('insert into sessions (session_id) values (?)', [ sessionToken ])
-		.then(() => { return { sessionToken }; });
+		.then(() => { return { sessionToken, clientConfig }; });
 	});
 }
 
