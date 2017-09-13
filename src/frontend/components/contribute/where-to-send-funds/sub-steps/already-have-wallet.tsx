@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { alreadyHaveWalletContent as content } from '../../../../data/text-data';
 import { InputText, InputCheckbox, ButtonMain, ValidationError } from '../../../../common';
-import { changeCheckValidationError, changeTextValidationError, alreadyHaveWalletContinue, setSubStepMounted, typeWalletAddress, checkDoubleCheckedAddress
+import { changeCheckValidationError, changeTextValidationError, alreadyHaveWalletContinue
+    , setSubStepMounted, typeWalletAddress, checkDoubleCheckedAddress
 } from '../../../../state/index';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
@@ -31,23 +32,21 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
                 <p>
                     {content.paragraph}
                 </p>
-                <InputText
-                    name={content.inputText.name}
-                    value={targetAddress}
-                    label={content.inputText.label}
-                    onChange={this.handleWalletAddressChange}
-                />
-                <ValidationError>
-                    {validationTextError}
+                <ValidationError message={validationTextError}>
+                    <InputText
+                        name={content.inputText.name}
+                        value={targetAddress}
+                        label={content.inputText.label}
+                        onChange={this.handleWalletAddressChange}
+                    />
                 </ValidationError>
-                <InputCheckbox
-                    name={content.inputCheckbox.name}
-                    value={isDoubleCheckedAddress}
-                    paragraph={content.inputCheckbox.paragraph}
-                    onChange={this.handleDoubleCheckedAddressChange}
-                />
-                <ValidationError>
-                    {validationCheckboxError}
+                <ValidationError message={validationCheckboxError}>
+                    <InputCheckbox
+                        name={content.inputCheckbox.name}
+                        value={isDoubleCheckedAddress}
+                        paragraph={content.inputCheckbox.paragraph}
+                        onChange={this.handleDoubleCheckedAddressChange}
+                    />
                 </ValidationError>
                 <ButtonMain
                     isUnselected={!isContinueValid}

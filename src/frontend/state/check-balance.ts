@@ -19,7 +19,9 @@ export const reclaimWalletContinue = () => {
 
     setState( {
         currentStep: nextStep,
-        currentSubStep: -1
+        currentSubStep: -1,
+        validationTextError: "", // reset validation
+        validationCheckboxError: "" // reset validation
     });
 
     resetScroll();

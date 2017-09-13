@@ -25,9 +25,9 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
     }
 
     render(): JSX.Element {
-        const { targetMnemonicPhrase, targetAddress, isWrittenMnemonicPhrase, isDoubleCheckedAddress
+        const { targetMnemonicPhrase, targetAddress, isWrittenMnemonicPhrase
             , validationCheckboxError } = this.props.state;
-        const isContinueValid = isDoubleCheckedAddress && targetAddress.length > 0;
+        const isContinueValid = isWrittenMnemonicPhrase;
 
         if(!this.props.state.targetWallet) {
             return (
@@ -51,11 +51,6 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                 <p>
                     {content.paragraph2}
                 </p>
-                <p>{content.paragraph}</p>
-                <BackgroundHighlight>
-                    {targetMnemonicPhrase}
-                </BackgroundHighlight>
-                <p>{content.paragraph2}</p>
                 <ButtonText onClick={this.handleDownloadClick}>
                     {content.buttonText}
                 </ButtonText>
@@ -68,14 +63,13 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                 <BackgroundHighlight>
                     {targetAddress}
                 </BackgroundHighlight>
-                <InputCheckbox
-                    name={content.inputCheckbox.name}
-                    paragraph={content.inputCheckbox.paragraph}
-                    value={isWrittenMnemonicPhrase}
-                    onChange={this.handleWrittenMnemonicPhraseChange}
-                />
-                <ValidationError>
-                    {validationCheckboxError}
+                <ValidationError message={validationCheckboxError}>
+                    <InputCheckbox
+                        name={content.inputCheckbox.name}
+                        paragraph={content.inputCheckbox.paragraph}
+                        value={isWrittenMnemonicPhrase}
+                        onChange={this.handleWrittenMnemonicPhraseChange}
+                    />
                 </ValidationError>
                 <ButtonMain
                     isUnselected={!isContinueValid}
@@ -94,7 +88,7 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
     }
 
     private handleValidationErrors = () => {
-        changeCheckValidationError(this.props.state.isDoubleCheckedAddress ? "" : "Please check checkbox");
+        changeCheckValidationError(this.props.state.isWrittenMnemonicPhrase ? "" : "Please check checkbox");
     };
 
     private handleDownloadClick = () => {

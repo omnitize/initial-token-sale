@@ -21,7 +21,9 @@ export const alreadyHaveWalletContinue = (fundAddresses: Array<FundAddress>) => 
     setState( {
         currentStep: nextStep,
         currentSubStep: -1,
-        fundAddresses: fundAddresses
+        fundAddresses: fundAddresses,
+        validationTextError: "", // reset validation
+        validationCheckboxError: "" // reset validation
     });
 
     resetScroll();
@@ -34,7 +36,9 @@ export const createWalletContinue = (fundAddresses: Array<FundAddress>) => {
     setState( {
         currentStep: nextStep,
         currentSubStep: -1,
-        fundAddresses: fundAddresses
+        fundAddresses: fundAddresses,
+        validationTextError: "", // reset validation
+        validationCheckboxError: "" // reset validation
     });
 
     resetScroll();

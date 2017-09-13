@@ -30,14 +30,13 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
                             {content.paragraph}
                         </p>
                         <div>
-                            <InputText
-                                value={targetAddress}
-                                name={content.input.name}
-                                label={content.input.label}
-                                onChange={this.handleWalletAddressChange}
-                            />
-                            <ValidationError>
-                                {validationTextError}
+                            <ValidationError message={validationTextError}>
+                                <InputText
+                                    value={targetAddress}
+                                    name={content.input.name}
+                                    label={content.input.label}
+                                    onChange={this.handleWalletAddressChange}
+                                />
                             </ValidationError>
                             <div className="its-check-wallet__text-button">
                                 <ButtonText

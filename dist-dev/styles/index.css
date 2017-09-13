@@ -245,6 +245,16 @@
     color: #eeeeee;
 }
 
-.validation-error {
+.validation-error-container {
+    position: relative;
+    padding-bottom: 22px;
+}
+
+.validation-error-text {
+    position: absolute;
+    bottom: 0;
+    font-size: 16px;
+    line-height: 22px;
+    min-height: 22px;
     color: red;
 }
