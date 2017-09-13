@@ -1,5 +1,6 @@
 .its-main {
     display: inline-block;
+    text-align: center;
     min-width: 320px;
     width: 720px;
     max-width: 720px;
@@ -34,6 +35,8 @@
     list-style-position: inside;
     list-style-type: square;
 }
+
+/*buttons*/
 
 .its-main button {
     font-size: 16px;
@@ -105,6 +108,8 @@
     cursor: pointer;
 }
 
+/*tables*/
+
 .its-main table {
     width: 100%;
 }
@@ -120,6 +125,10 @@
 }
 
 /*navigation*/
+
+.its-main .its-continue, .its-back {
+    text-align: center;
+}
 
 .its-main .its-navigator-steps {
     width: 100%;
@@ -143,6 +152,7 @@
 
 .its-main .its-navigator-steps__step {
     display: inline-block;
+    text-align: left;
     vertical-align: top;
 }
 
@@ -151,15 +161,19 @@
 }
 
 .its-main .its-wallet-history-table {
+    margin: 0 16px;
+    text-align: center;
     border: 2px solid #212121;
-    border-radius: 2px;
 }
 
-.its-main .its-prove-you-are-human {
+/*captcha*/
+
+.its-main .its-prove-you-are-human__recaptcha {
+    width: 100%;
     text-align: center;
 }
 
-.its-main .its-prove-you-are-human__recaptcha {
+.its-main .its-prove-you-are-human__recaptcha-checkbox {
     display: inline-block;
 }
 
@@ -180,6 +194,7 @@
 /*inputs */
 .its-main .its-input-text__label {
     position: relative;
+    padding-left: 18px;
     width: 100%;
     z-index: 2;
 }
@@ -237,8 +252,9 @@
     visibility: hidden;
 }
 
-.its-input-checkbox__paragraph {
+.its-main .its-input-checkbox__paragraph {
     display: inline-block;
+    padding: 6px;
 }
 
 .its-main input[type=checkbox]:checked + .its-input-checkbox__label:after {

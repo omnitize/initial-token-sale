@@ -72,11 +72,13 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                         onChange={this.handleWrittenMnemonicPhraseChange}
                     />
                 </ValidationError>
-                <ButtonMain
-                    isUnselected={!isContinueValid}
-                    onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}>
-                    {content.buttonMain}
-                </ButtonMain>
+                <div className="its-continue">
+                    <ButtonMain
+                        isUnselected={!isContinueValid}
+                        onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}>
+                        {content.buttonMain}
+                    </ButtonMain>
+                </div>
             </div>
         );
     }

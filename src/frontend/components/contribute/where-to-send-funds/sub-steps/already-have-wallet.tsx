@@ -50,11 +50,13 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
                         onChange={this.handleDoubleCheckedAddressChange}
                     />
                 </ValidationError>
-                <ButtonMain
-                    isUnselected={!isContinueValid}
-                    onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}>
-                    {content.buttonMain}
-                </ButtonMain>
+                <div className="its-continue">
+                    <ButtonMain
+                        isUnselected={!isContinueValid}
+                        onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}>
+                        {content.buttonMain}
+                    </ButtonMain>
+                </div>
             </div>
         );
     }

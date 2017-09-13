@@ -46,7 +46,7 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
                                 </ButtonText>
                             </div>
                         </div>
-                        <div>
+                        <div className="its-continue">
                             <ButtonMain
                                 isUnselected={!isContinueValid}
                                 onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}

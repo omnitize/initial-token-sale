@@ -18,12 +18,10 @@ export class Main extends React.Component<any, State> {
     render(): JSX.Element {
         return (
             <div className="its-main">
-                <div>
-                    <ButtonMain
-                        onClick={this.toggleUseCase}>
-                        Toggle Use Case
-                    </ButtonMain>
-                </div>
+                <ButtonMain
+                    onClick={this.toggleUseCase}>
+                    Toggle Use Case
+                </ButtonMain>
                 <NavigatorSteps
                     state={ this.state }
                     steps={ this.steps() }
