@@ -4,8 +4,13 @@ const ReCAPTCHA = require('react-google-recaptcha').default;
 import { config } from '../config';
 import { createSession } from '../server-api';
 
+interface ISuccessParams {
+    sessionToken: string
+    clientConfig: any
+}
+
 interface IProveYouAreHumanProps {
-    onSuccess: (sessionToken: string) => void;
+    onSuccess: (successParams: ISuccessParams) => void;
 }
 
 interface IState {}
@@ -37,9 +42,7 @@ export class ProveYouAreHuman extends React.Component<IProveYouAreHumanProps, IS
 
     private onCaptcha(value: string) {
         createSession(value)
-        .then(({ sessionToken }) => {
-            this.props.onSuccess(sessionToken);
-        })
+        .then(result => this.props.onSuccess(result))
         .catch((err) => console.log(err));
     }
 }
