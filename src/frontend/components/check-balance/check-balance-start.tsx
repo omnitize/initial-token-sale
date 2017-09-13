@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ProveYouAreHuman} from '../../../common/prove-you-are-human';
-import { handleCaptchaSuccess } from '../../../state/index';
-import { State } from '../../../models';
+import { ProveYouAreHuman} from '../../common/prove-you-are-human';
+import { handleCaptchaSuccess } from '../../state/index';
+import { State } from '../../models';
 
 interface ICheckBalanceStartProps {
     state?: State

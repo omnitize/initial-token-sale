@@ -1,7 +1,7 @@
-export { ContributeStart } from "./step-1/contribute-start";
+export { ContributeStart } from "./contribute-start";
 
-export { WhereToSendFunds } from "./step-2/where-to-send-funds";
-export { AlreadyHaveWallet } from "./step-2/sub-steps/already-have-wallet"; // sub
-export { CreateWallet } from "./step-2/sub-steps/create-wallet"; // sub
+export { WhereToSendFunds } from "./where-to-send-funds/where-to-send-funds";
+export { AlreadyHaveWallet } from "./where-to-send-funds/sub-steps/already-have-wallet"; // sub
+export { CreateWallet } from "./where-to-send-funds/sub-steps/create-wallet"; // sub
 
-export { SendFunds } from "./step-3/send-funds";
+export { SendFunds } from "./send-funds/send-funds";
