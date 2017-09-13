@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { createWalletContent as content } from '../../../../data/text-data';
 import { ButtonText, ButtonMain, InputCheckbox, ValidationError } from '../../../../common';
-import { createWalletContinue, setSubStepMounted, checkWrittenMnemonicPhrase, createWallet, changeCheckValidationError } from '../../../../state/index';
+import { createWalletContinue, setSubStepMounted, checkWrittenMnemonicPhrase, createWallet
+    , changeCheckValidationError } from '../../../../state/index';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
 import { downloadWallet } from '../../../../utils/downloadWallet';
@@ -87,8 +88,14 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
         }
     }
 
+    private checkValidationError() {
+        return this.props.state.isWrittenMnemonicPhrase
+            ? ""
+            : "Please confirm you have read and understood the above paragraph.";
+    }
+
     private handleValidationErrors = () => {
-        changeCheckValidationError(this.props.state.isWrittenMnemonicPhrase ? "" : "Please check checkbox");
+        changeCheckValidationError(this.checkValidationError());
     };
 
     private handleDownloadClick = () => {

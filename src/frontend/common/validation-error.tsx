@@ -13,7 +13,7 @@ export class ValidationError extends React.Component<IValidationErrorProps, any>
     render(): JSX.Element {
         return (
             <div>
-                <div className="validation-error-container">
+                <div className={`validation-error-container ${this.props.message.length > 0 ? "--visible" : ""}`}>
                     {this.props.children}
                     <div className="validation-error-text">
                         {this.props.message}

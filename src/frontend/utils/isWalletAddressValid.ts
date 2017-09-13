@@ -1,4 +1,4 @@
-export const validateWalletAddress = (address: string) => {
+export const isWalletAddressValid = (address: string) => {
     if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) {
         // check if it has the basic requirements of an address
         return false;

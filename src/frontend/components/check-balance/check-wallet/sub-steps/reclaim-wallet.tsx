@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { reclaimWalletContent as content } from '../../../../data/text-data'
 import { ButtonMain, ButtonText, InputText } from '../../../../common';
-import { ChangeEvent } from 'react';
 import { ECheckWalletSubSteps, State } from '../../../../models';
 import { setSubStepMounted, reclaimWalletContinue, typeMnemonicPhrase } from '../../../../state/index';
 import { downloadWallet } from '../../../../utils/downloadWallet';
@@ -82,7 +81,7 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
         reclaimWalletContinue();
     };
 
-    private handleMnemonicPhraseChange = (e: ChangeEvent<HTMLInputElement>) => {
+    private handleMnemonicPhraseChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         typeMnemonicPhrase(e.currentTarget.value)
     };
 }
