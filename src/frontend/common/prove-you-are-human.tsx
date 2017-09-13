@@ -35,7 +35,7 @@ export class ProveYouAreHuman extends React.Component<IProveYouAreHumanProps, IS
 
     private onCaptcha(value: string) {
         createSession(value)
-        .then(result => this.props.onSuccess)
+        .then(result => this.props.onSuccess(result))
         .catch((err) => console.log(err));
     }
 }

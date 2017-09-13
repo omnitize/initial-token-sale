@@ -45,7 +45,12 @@ export class Main extends React.Component<any, State> {
         setState({
             currentStep: 0,
             currentSubStep: -1,
-            currentSubStepMounted: -1
+            currentSubStepMounted: -1,
+            validationCheckboxError: "",
+            validationTextError: "",
+            targetAddress: "",
+            targetMnemonicPhrase: "",
+            targetWallet: ""
         });
     }
 

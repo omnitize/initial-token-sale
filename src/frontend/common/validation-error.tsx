@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-export class ValidationError extends React.Component<any, any> {
+interface IValidationErrorProps {
+    message: string
+}
+
+export class ValidationError extends React.Component<IValidationErrorProps, any> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
@@ -8,10 +12,13 @@ export class ValidationError extends React.Component<any, any> {
 
     render(): JSX.Element {
         return (
-            <div className="validation-error">
-                <p>
+            <div>
+                <div className={`validation-error-container ${this.props.message.length > 0 ? "--visible" : ""}`}>
                     {this.props.children}
-                </p>
+                    <div className="validation-error-text">
+                        {this.props.message}
+                    </div>
+                </div>
             </div>
         );
     }
