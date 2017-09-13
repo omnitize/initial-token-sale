@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { createWalletContent as content } from '../../../../data/text-data';
 import { ButtonText, ButtonMain, InputCheckbox, ValidationError } from '../../../../common';
-import { incrementStep, setSubStep, setSubStepMounted, checkWrittenMnemonicPhrase, createWallet
-    , setState, changeCheckValidationError } from '../../../../state';
+import { createWalletContinue, setSubStepMounted, checkWrittenMnemonicPhrase, createWallet, changeCheckValidationError } from '../../../../state/index';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
 import { downloadWallet } from '../../../../utils/downloadWallet';
@@ -46,7 +45,9 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                 <p>
                     {content.paragraph}
                 </p>
-                {targetMnemonicPhrase}
+                <BackgroundHighlight>
+                    {targetMnemonicPhrase}
+                </BackgroundHighlight>
                 <p>
                     {content.paragraph2}
                 </p>
@@ -58,13 +59,6 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                 <ButtonText onClick={this.handleDownloadClick}>
                     {content.buttonText}
                 </ButtonText>
-                <p>
-                    {content.paragraph3}
-                </p>
-                <h4>
-                    {content.heading}
-                </h4>
-                {targetAddress}
                 <p>
                     {content.paragraph3}
                 </p>
@@ -114,9 +108,7 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
     private handleContinue = () => {
         sendTargetAddress(this.props.state.sessionToken, this.props.state.targetAddress)
         .then(({ fundAddresses }) => {
-            setState({ fundAddresses });
-            setSubStep(-1);
-            incrementStep();
+            createWalletContinue(fundAddresses)
         });
     };
 }

@@ -11,6 +11,8 @@ interface IWalletHistoryTableProps {
 
 export class WalletHistoryTable extends React.Component<IWalletHistoryTableProps, any> {
 
+    intervalId: any;
+
     public constructor(props?: any, context?: any) {
         super(props, context);
         this.loadTransactions = this.loadTransactions.bind(this);
@@ -24,12 +26,16 @@ export class WalletHistoryTable extends React.Component<IWalletHistoryTableProps
 
     componentDidMount() {
         this.loadTransactions();
-        setInterval(this.loadTransactions, 1000);
+        this.intervalId = setInterval(this.loadTransactions, 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.intervalId);
     }
 
     private renderTransactions() {
-        return this.props.state.transactions.map(tr => (
-            <tr>
+        return this.props.state.transactions.map((tr, i) => (
+            <tr key={`tr-${i}`}>
                 <td>{dateFormat(tr.created, 'yyyy-mm-dd HH:MM:ss')}</td>
                 <td>{tr.status} - {tr.confirmations}</td>
                 <td>{tr.value}</td>
@@ -46,10 +52,10 @@ export class WalletHistoryTable extends React.Component<IWalletHistoryTableProps
                 <table>
                     <tbody>
                         <tr>
-                            {content.tableColumns.map((columnHeading, i) =>
-                                <th key={`${columnHeading}-${i}`}>
-                                    {columnHeading}
-                                </th>)}
+                        {content.tableColumns.map((columnHeading, i) =>
+                            <th key={`${columnHeading}-${i}`}>
+                                {columnHeading}
+                            </th>)}
                         </tr>
                         { this.renderTransactions() }
                     </tbody>

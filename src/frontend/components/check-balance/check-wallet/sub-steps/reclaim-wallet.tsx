@@ -2,8 +2,9 @@ import * as React from 'react';
 import { reclaimWalletContent as content } from '../../../../data/text-data'
 import { ButtonMain, ButtonText, InputText } from '../../../../common';
 import { ChangeEvent } from 'react';
-import { setSubStep, setSubStepMounted, incrementStep } from '../../../../state/index';
 import { ECheckWalletSubSteps, State } from '../../../../models';
+import { setSubStepMounted, reclaimWalletContinue, typeMnemonicPhrase } from '../../../../state/index';
+import { downloadWallet } from '../../../../utils/downloadWallet';
 
 interface IReclaimWalletProps {
     state?: State
@@ -22,6 +23,8 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
     }
 
     render(): JSX.Element {
+        const { targetMnemonicPhrase, targetAddress } = this.props.state;
+
         return (
             <div
                 className="its-reclaim-wallet --its-transition-opacity"
@@ -32,12 +35,16 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                 <p>
                     {content.paragraph}
                 </p>
-                <InputText
-                    value=""
-                    name={content.input.name}
-                    label={content.input.label}
-                    onChange={this.handleMnemonicPhraseChange}
-                />
+                <div>
+                    <h4>
+                        {content.heading2}
+                    </h4>
+                    <InputText
+                        value={targetMnemonicPhrase}
+                        name={content.input.name}
+                        onChange={this.handleMnemonicPhraseChange}
+                    />
+                </div>
                 <p>{content.paragraph2}</p>
                 <ButtonText onClick={this.handleDownloadWalletClick}>
                     {content.buttonText}
@@ -47,10 +54,10 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                 </p>
                 <div>
                     <h4>
-                        {content.heading2}
+                        {content.heading3}
                     </h4>
                     <span className="its-reclaim-wallet__wallet-address">
-                        {this.state.targetAddress}
+                        {targetAddress}
                     </span>
                 </div>
                 <ButtonMain onClick={this.handleContinueClick}>
@@ -67,12 +74,15 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
         }
     }
 
-    private handleDownloadWalletClick = () => {};
-
-    private handleContinueClick = () => {
-        setSubStep(-1);
-        incrementStep();
+    private handleDownloadWalletClick = () => {
+        downloadWallet(this.props.state.targetWallet, this.props.state.targetAddress);
     };
 
-    private handleMnemonicPhraseChange = (e: ChangeEvent<HTMLInputElement>) => {console.log(e)};
+    private handleContinueClick = () => {
+        reclaimWalletContinue();
+    };
+
+    private handleMnemonicPhraseChange = (e: ChangeEvent<HTMLInputElement>) => {
+        typeMnemonicPhrase(e.currentTarget.value)
+    };
 }
