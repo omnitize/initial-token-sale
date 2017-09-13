@@ -2,13 +2,14 @@ import { setState, state } from './index'
 import { maxSteps, resetScroll } from './navigation';
 import { FundAddress } from '../models';
 
-export const contributeStartCaptchaSuccess = (sessionToken: string) => {
+export const contributeStartCaptchaSuccess = ({ sessionToken: string, clientConfig: any }) => {
     const max: number = maxSteps();
     const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
 
     setState( {
         currentStep: nextStep,
-        sessionToken: sessionToken
+        sessionToken,
+        clientConfig
     });
 
     resetScroll();

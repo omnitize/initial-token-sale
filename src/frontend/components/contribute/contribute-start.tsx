@@ -12,6 +12,7 @@ export class ContributeStart extends React.Component<IContributeStartProps, any>
 
     public constructor(props?: any, context?: any) {
         super(props, context);
+        this.onCaptchaSuccess = this.onCaptchaSuccess.bind(this);
     }
 
     render(): JSX.Element {
@@ -26,13 +27,14 @@ export class ContributeStart extends React.Component<IContributeStartProps, any>
                         {listText}
                     </li>)}
                 </ul>
-                <ProveYouAreHuman onSuccess={ ContributeStart.onCaptchaSuccess } />
+                <ProveYouAreHuman onSuccess={ this.onCaptchaSuccess } />
             </div>
         );
     }
 
-    static onCaptchaSuccess(sessionToken: string) {
-        setState( { sessionToken });
+    private onCaptchaSuccess(result) {
+        if(this.props.state.sessionToken) return;
+        setState({ sessionToken: result.sessionToken, clientConfig: result.clientConfig });
         incrementStep();
     }
 }
