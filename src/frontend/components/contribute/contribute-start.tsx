@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { contributeStartContent as content } from '../../data/text-data';
 import { ProveYouAreHuman } from '../../common/prove-you-are-human';
-import { contributeStartCaptchaSuccess} from '../../state/index';
+import { setState, incrementStep } from '../../state/index';
 import { State } from '../../models';
 
 interface IContributeStartProps {
@@ -17,25 +17,22 @@ export class ContributeStart extends React.Component<IContributeStartProps, any>
     render(): JSX.Element {
         return (
             <div>
-                <div className="its-content-section">
-                    <h2>
-                        {content.heading}
-                    </h2>
-                    <ul>
-                        {content.list.map((listText: string, i: number) =>
-                            <li key={`list-${i}`}>
-                                {listText}
-                            </li>)}
-                    </ul>
-                </div>
-                <div className="its-content-section">
-                    <ProveYouAreHuman onSuccess={ ContributeStart.onCaptchaSuccess } />
-                </div>
+                <h2>
+                    {content.heading}
+                </h2>
+                <ul>
+                {content.list.map((listText, i) =>
+                    <li key={`list-${i}`}>
+                        {listText}
+                    </li>)}
+                </ul>
+                <ProveYouAreHuman onSuccess={ ContributeStart.onCaptchaSuccess } />
             </div>
         );
     }
 
     static onCaptchaSuccess(sessionToken: string) {
-        contributeStartCaptchaSuccess(sessionToken);
+        setState( { sessionToken });
+        incrementStep();
     }
 }

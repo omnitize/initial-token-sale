@@ -28,7 +28,9 @@ export {
     typeWalletAddress,
     typeMnemonicPhrase,
     checkDoubleCheckedAddress,
-    checkWrittenMnemonicPhrase
+    checkWrittenMnemonicPhrase,
+    changeTextValidationError,
+    changeCheckValidationError
 } from "./inputs";
 
 export {
