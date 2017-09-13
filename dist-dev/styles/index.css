@@ -57,12 +57,8 @@
 }
 
 .its-main button.its-button-main {
+    position: relative;
     display: inline-block;
-    border-radius: 4px;
-    -webkit-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    -moz-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    -o-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     min-width: 180px;
     max-width: 50%;
     padding: 8px 12px;
@@ -70,18 +66,37 @@
     color: #eeeeee;
     border: none;
     outline: none;
-    -webkit-transition: box-shadow 200ms;
-    -o-transition: box-shadow 200ms;
-    -moz-transition: box-shadow 200ms;
-    transition: box-shadow 200ms;
+    overflow: hidden;
     cursor: pointer;
 }
 
-.its-main button.its-button-main.--selected, .its-main button.its-button-main:hover {
-    -webkit-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    -moz-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    -o-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+.its-button-main__content {
+    position: relative;
+    z-index: 2;
+}
+
+.its-main button.its-button-main:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #0277BD;
+    transform: translateY(-100%);
+    transition: transform 200ms;
+}
+
+.its-main button.its-button-main:hover:before {
+    transform: translateY(0);
+}
+
+.its-main button.its-button-main.--selected:hover:before {
+    transform: translateY(-100%);
+}
+
+.its-main button.its-button-main.--selected {
+    background: #01579B;
 }
 
 .its-main button.its-button-main:active {
@@ -92,20 +107,20 @@
     transform: translateY(2px);
 }
 
-.its-main button.its-button-main.--unselected {
-    opacity: 0.5;
-    background: #212121;
-}
-
 .its-main button.its-button-text {
     display: inline-block;
-    border-radius: 4px;
     padding: 4px;
     color: #0091EA;
     background: none;
     border: none;
     outline: none;
+    opacity: 1;
     cursor: pointer;
+    transition: opacity 400ms;
+}
+
+.its-main button.its-button-text:hover {
+    opacity: 0.8;
 }
 
 /*tables*/

@@ -18,7 +18,9 @@ export class ButtonMain extends React.Component<IButtonMainProps, any> {
             <button
                 className={`its-button-main ${isSelected ? "--selected" : ""} ${isUnselected ? "--unselected" : ""}`}
                 onClick={onClick}>
-                {children}
+                <span className="its-button-main__content">
+                    {children}
+                </span>
             </button>
         );
     }

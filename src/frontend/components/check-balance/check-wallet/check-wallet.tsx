@@ -22,7 +22,7 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
         const isContinueValid = targetAddress.length > 0 && isWalletAddressValid(targetAddress);
         return (
             currentSubStep === -1
-                ?  <div>
+                ?  <div className="its-content-section">
                         <h2>
                             {content.heading}
                         </h2>
