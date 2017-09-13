@@ -33,7 +33,7 @@ export class InputCheckbox extends React.Component<IInputCheckboxProps, any> {
                     htmlFor={"its-input-checkbox__input"}>
                 </label>
                 <div className="its-input-checkbox__paragraph">
-                    {!!paragraph ? <p>{paragraph}</p> : null}
+                    {!!paragraph ? paragraph : null}
                 </div>
             </div>
         );

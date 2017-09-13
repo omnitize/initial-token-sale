@@ -52,8 +52,8 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
                 </ValidationError>
                 <div className="its-continue">
                     <ButtonMain
-                        isUnselected={!isContinueValid}
-                        onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}>
+                        isDisabled={!isContinueValid}
+                        onClick={isContinueValid ? this.handleContinueClick : this.handleValidationErrors}>
                         {content.buttonMain}
                     </ButtonMain>
                 </div>
@@ -96,7 +96,7 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
         checkDoubleCheckedAddress(e.currentTarget.checked);
     };
 
-    private handleContinue = () => {
+    private handleContinueClick = () => {
         return sendTargetAddress(this.props.state.sessionToken, this.props.state.targetAddress)
             .then(({ fundAddresses }) => {
                 alreadyHaveWalletContinue(fundAddresses);

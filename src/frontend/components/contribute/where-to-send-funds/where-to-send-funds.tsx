@@ -34,14 +34,12 @@ export class WhereToSendFunds extends React.Component<IWhereToSendFundsProps, an
                     <div className="its-content-section">
                         <ButtonMain
                             isSelected={currentSubStep === EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET}
-                            isUnselected={isOptionSelected && currentSubStep !== EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET}
                             onClick={this.handleAlreadyHaveWallet}
                         >
                             {content.button}
                         </ButtonMain>
                         <ButtonMain
                             isSelected={currentSubStep === EWhereToSendFundsSubSteps.CREATE_WALLET}
-                            isUnselected={isOptionSelected && currentSubStep !== EWhereToSendFundsSubSteps.CREATE_WALLET}
                             onClick={this.handleCreateWallet}
                         >
                             {content.button2}

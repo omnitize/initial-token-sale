@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { reclaimWalletContent as content } from '../../../../data/text-data'
-import { ButtonMain, ButtonText, InputText } from '../../../../common';
+import { ButtonMain, ButtonText, InputText, BackgroundHighlight } from '../../../../common';
 import { ECheckWalletSubSteps, State } from '../../../../models';
-import { setSubStepMounted, reclaimWalletContinue, typeMnemonicPhrase } from '../../../../state';
+import { setSubStepMounted, reclaimWalletContinue, typeMnemonicPhrase, changeTextValidationError } from '../../../../state';
 import { downloadWallet } from '../../../../utils';
+import {ValidationError} from '../../../../common/validation-error';
 
 interface IReclaimWalletProps {
     state?: State
@@ -22,7 +23,8 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
     }
 
     render(): JSX.Element {
-        const { targetMnemonicPhrase, targetAddress } = this.props.state;
+        const { targetMnemonicPhrase, targetAddress, validationTextError } = this.props.state;
+        const isContinueValid = targetMnemonicPhrase.length > 0;
 
         return (
             <div
@@ -34,16 +36,14 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                 <p>
                     {content.paragraph}
                 </p>
-                <div>
-                    <h4>
-                        {content.heading2}
-                    </h4>
+                <ValidationError message={validationTextError}>
                     <InputText
+                        label={content.heading2}
                         value={targetMnemonicPhrase}
                         name={content.input.name}
                         onChange={this.handleMnemonicPhraseChange}
                     />
-                </div>
+                </ValidationError>
                 <p>{content.paragraph2}</p>
                 <ButtonText onClick={this.handleDownloadWalletClick}>
                     {content.buttonText}
@@ -51,17 +51,19 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                 <p>
                     {content.paragraph3}
                 </p>
+                <h4>
+                    {content.heading3}
+                </h4>
+                <BackgroundHighlight>
+                    {targetAddress}
+                </BackgroundHighlight>
                 <div>
-                    <h4>
-                        {content.heading3}
-                    </h4>
-                    <span className="its-reclaim-wallet__wallet-address">
-                        {targetAddress}
-                    </span>
+                    <ButtonMain
+                        isDisabled={!isContinueValid}
+                        onClick={isContinueValid ? this.handleContinueClick : this.handleValidationErrors}>
+                        {content.buttonMain}
+                    </ButtonMain>
                 </div>
-                <ButtonMain onClick={this.handleContinueClick}>
-                    {content.buttonMain}
-                </ButtonMain>
             </div>
         );
     }
@@ -75,6 +77,17 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
 
     private handleDownloadWalletClick = () => {
         downloadWallet(this.props.state.targetWallet, this.props.state.targetAddress);
+    };
+
+    private textValidationError() {
+        const phrase: string = this.props.state.targetMnemonicPhrase;
+        return phrase.length > 0
+            ? ""
+            : "Mnemonic phrase field cannot be empty";
+    }
+
+    private handleValidationErrors = () => {
+        changeTextValidationError(this.textValidationError());
     };
 
     private handleContinueClick = () => {

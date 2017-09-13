@@ -74,7 +74,7 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                 </ValidationError>
                 <div className="its-continue">
                     <ButtonMain
-                        isUnselected={!isContinueValid}
+                        isDisabled={!isContinueValid}
                         onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}>
                         {content.buttonMain}
                     </ButtonMain>

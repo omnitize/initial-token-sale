@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStep, State } from '../models';
-import { ButtonStep } from '.';
-import { setStep } from '../state';
+import { IStep, State } from '../../models';
+import { MarkerStep } from './marker-step';
+import { maxSteps } from '../../state';
 
 interface INavigatorStepsProps {
     steps: IStep[];
@@ -10,7 +10,7 @@ interface INavigatorStepsProps {
 
 export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
 
-    divisionSize = 100 / this.props.steps.length;
+    divisionSize = 100 / maxSteps();
     stepWidthStyle = {width: `${this.divisionSize}%`};
 
     public constructor(props?: any, context?: any) {
@@ -19,16 +19,14 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
 
     render(): JSX.Element {
         return (
-            <div className="its-navigator-steps">
+            <div className="its-navigator-steps its-content-section">
                 <div>
-                {this.props.steps.map((_, i) =>
-                    <ButtonStep
-                        key={`step-nav-${i}`}
+                {this.props.steps.map((step, i) =>
+                    <MarkerStep
+                        key={`MarkerStep-${i}`}
+                        name={step.name}
                         index={i}
-                        selectedStep={this.props.state.currentStep}
-                        onClick={() => NavigatorSteps.handleStepNavClick(i)}>
-                        {`${i + 1}`}
-                    </ButtonStep>
+                        selectedStep={this.props.state.currentStep}/>
                     )
                 }
                 </div>
@@ -62,9 +60,4 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
             transform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`
         }
     }
-
-    static handleStepNavClick(step: number) {
-        setStep(step);
-    }
-
 }

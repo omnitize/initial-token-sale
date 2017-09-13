@@ -4,7 +4,7 @@ import { CheckBalanceStart, CheckWallet, ReclaimWallet, ViewWalletHistory } from
 
 export const checkBalanceStepList: IStep[] = [
     {
-        name: "Check Balance Start",
+        name: "Getting Started",
         component: <CheckBalanceStart/>
     },
     {
