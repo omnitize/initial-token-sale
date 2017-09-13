@@ -234,3 +234,7 @@
     background: rgba(0,145,234, 0.5);
     color: #eeeeee;
 }
+
+.validation-error {
+    color: red;
+}

@@ -13,6 +13,12 @@ export const typePnemonicPhrase = (nextPnemonicPhrase: string) => {
     });
 };
 
+export const changeTextValidationError = (nextValidationTextError: string) => {
+    setState({
+        validationTextError: nextValidationTextError
+    });
+};
+
 // c h e c k b o x
 export const checkDoubleCheckedAddress = (nextIsDoubleCheckedAddress: boolean) => {
     setState({
@@ -26,3 +32,8 @@ export const checkWrittenMnemonicPhrase = (nextIsWrittenMnemonicPhrase: boolean)
     });
 };
 
+export const changeCheckValidationError = (nextValidationCheckboxError: string) => {
+    setState({
+        validationCheckboxError: nextValidationCheckboxError
+    });
+};

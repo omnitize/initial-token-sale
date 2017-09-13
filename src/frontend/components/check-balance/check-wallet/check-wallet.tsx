@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { checkWalletContent as content } from '../../../data/text-data';
-import { ButtonMain, ButtonText } from '../../../common';
+import { ButtonMain, ButtonText, ValidationError } from '../../../common';
 import { InputText } from '../../../common/input-text';
 import { ChangeEvent } from 'react';
 import { checkBalanceStepList } from '../../../data/component-data/check-balance';
 import { ECheckBalanceSteps, State } from '../../../models';
-import { incrementSubStep } from '../../../state/index';
-import { typeWalletAddress } from '../../../state/inputs';
+import { incrementSubStep, changeTextValidationError, typeWalletAddress } from '../../../state';
 
 interface ICheckWalletProps {
     state?: State
@@ -19,8 +18,10 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
     }
 
     render(): JSX.Element {
+        const { currentSubStep, targetAddress, validationTextError } = this.props.state;
+        const isContinueValid = targetAddress.length > 0;
         return (
-            this.props.state.currentSubStep === -1
+            currentSubStep === -1
                 ?  <div>
                         <h2>
                             {content.heading}
@@ -30,11 +31,14 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
                         </p>
                         <div>
                             <InputText
-                                value={this.props.state.targetAddress}
+                                value={targetAddress}
                                 name={content.input.name}
                                 label={content.input.label}
                                 onChange={this.handleWalletAddressChange}
                             />
+                            <ValidationError>
+                                {validationTextError}
+                            </ValidationError>
                             <div className="its-check-wallet__text-button">
                                 <ButtonText
                                     onClick={this.handleNoWalletAddress}
@@ -45,7 +49,8 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
                         </div>
                         <div>
                             <ButtonMain
-                                onClick={this.handleContinue}
+                                isUnselected={!isContinueValid}
+                                onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}
                             >
                                 {content.button2}
                             </ButtonMain>
@@ -68,8 +73,11 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
         )
     }
 
+    private handleValidationErrors = () => {
+        changeTextValidationError(this.props.state.targetAddress.length > 0 ? "" : "Wallet address field cannot be empty");
+    };
+
     private handleWalletAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e)
         typeWalletAddress(e.currentTarget.value);
     };
 

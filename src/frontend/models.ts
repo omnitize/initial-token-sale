@@ -68,6 +68,9 @@ export class State {
     currentSubStep: number = -1;
     currentSubStepMounted: number = -1;
 
+    validationCheckboxError: string = "";
+    validationTextError: string = "";
+
     isDoubleCheckedAddress: boolean = false;
 
     isWrittenMnemonicPhrase: boolean = false;

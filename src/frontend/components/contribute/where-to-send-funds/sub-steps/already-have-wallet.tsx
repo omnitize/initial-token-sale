@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { alreadyHaveWalletContent as content } from '../../../../data/text-data';
-import { InputText, InputCheckbox, ButtonMain } from '../../../../common';
+import { InputText, InputCheckbox, ButtonMain, ValidationError } from '../../../../common';
 import { setSubStep, incrementStep, setSubStepMounted, typeWalletAddress, checkDoubleCheckedAddress, setState
-} from '../../../../state/index';
+    , changeCheckValidationError, changeTextValidationError
+} from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
 
@@ -21,6 +22,9 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
     }
 
     render(): JSX.Element {
+        const { targetAddress, isDoubleCheckedAddress, validationCheckboxError, validationTextError } = this.props.state;
+        const isContinueValid = isDoubleCheckedAddress && targetAddress.length > 0;
+
         return (
             <div
                 className="its-already-have-wallet --its-transition-opacity"
@@ -30,18 +34,25 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
                 </p>
                 <InputText
                     name={content.inputText.name}
-                    value={this.props.state.targetAddress}
+                    value={targetAddress}
                     label={content.inputText.label}
                     onChange={this.handleWalletAddressChange}
                 />
+                <ValidationError>
+                    {validationTextError}
+                </ValidationError>
                 <InputCheckbox
                     name={content.inputCheckbox.name}
-                    value={this.props.state.isDoubleCheckedAddress}
+                    value={isDoubleCheckedAddress}
                     paragraph={content.inputCheckbox.paragraph}
                     onChange={this.handleDoubleCheckedAddressChange}
                 />
+                <ValidationError>
+                    {validationCheckboxError}
+                </ValidationError>
                 <ButtonMain
-                    onClick={this.handleContinue}>
+                    isUnselected={!isContinueValid}
+                    onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}>
                     {content.buttonMain}
                 </ButtonMain>
             </div>
@@ -54,6 +65,12 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
             opacity: isMounted ? 1 : 0
         }
     }
+
+    private handleValidationErrors = () => {
+        const { targetAddress, isDoubleCheckedAddress } = this.props.state;
+        changeTextValidationError(targetAddress.length > 0 ? "" : "Wallet address field cannot be empty");
+        changeCheckValidationError(isDoubleCheckedAddress ? "" : "Please check checkbox");
+    };
 
     private handleWalletAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         typeWalletAddress(e.currentTarget.value);
