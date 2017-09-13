@@ -5,7 +5,7 @@ import { config } from '../config';
 import { createSession } from '../server-api';
 
 interface IProveYouAreHumanProps {
-    onSuccess: (sessionToken: string) => void;
+    onSuccess: ({ sessionToken: string, clientConfig: any }) => void;
 }
 
 interface IState {}
@@ -35,9 +35,7 @@ export class ProveYouAreHuman extends React.Component<IProveYouAreHumanProps, IS
 
     private onCaptcha(value: string) {
         createSession(value)
-        .then(({ sessionToken }) => {
-            this.props.onSuccess(sessionToken);
-        })
+        .then(result => this.props.onSuccess)
         .catch((err) => console.log(err));
     }
 }

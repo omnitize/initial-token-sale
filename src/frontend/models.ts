@@ -15,9 +15,9 @@ export enum EUserFlow {
 }
 
 export enum ETxStatus {
-    PENDING,
-    CONFIRMED,
-    PAID
+    PENDING = 'PENDING',
+    CONFIRMED = 'CONMFIRMED',
+    PAID = 'PAID'
 }
 
 export enum EContributeSteps {
@@ -62,6 +62,7 @@ export class FundAddress {
 export class State {
 
     sessionToken: string = null;
+    clientConfig: any;
 
     selectedUseCase: EUserFlow = EUserFlow.CONTRIBUTE;
     currentStep: number = 0;

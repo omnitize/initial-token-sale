@@ -12,7 +12,8 @@ export class Config {
 	mysqlSchema = process.env.MYSQL_SCHEMA || 'omnitize_dev';
 
 	etherScanApiKey = 'B22IXM9T92V6BSNFSE14ICXQJVS8NRZ7FA';
-	etherMinimumConfirmations = 6;
+	etherMinimumConfirmations = 5;
+	bitcoinMinimumConfirmations = 4;
 
 	tokenDiscountPercent = 50;	
 	tokenPriceInEther = 0.01;
