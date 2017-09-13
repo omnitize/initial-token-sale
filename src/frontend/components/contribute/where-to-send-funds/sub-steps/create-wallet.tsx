@@ -2,10 +2,10 @@ import * as React from 'react';
 import { createWalletContent as content } from '../../../../data/text-data';
 import { ButtonText, ButtonMain, InputCheckbox, ValidationError } from '../../../../common';
 import { createWalletContinue, setSubStepMounted, checkWrittenMnemonicPhrase, createWallet
-    , changeCheckValidationError } from '../../../../state/index';
+    , changeCheckValidationError } from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
-import { downloadWallet } from '../../../../utils/downloadWallet';
+import { downloadWallet } from '../../../../utils';
 import { BackgroundHighlight } from '../../../../common';
 
 interface ICreateWalletProps {

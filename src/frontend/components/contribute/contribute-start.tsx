@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { contributeStartContent as content } from '../../data/text-data';
 import { ProveYouAreHuman } from '../../common/prove-you-are-human';
-import { setState, incrementStep } from '../../state/index';
+import { setState, incrementStep } from '../../state';
 import { State } from '../../models';
 
 interface IContributeStartProps {

@@ -3,7 +3,7 @@ import { alreadyHaveWalletContent as content } from '../../../../data/text-data'
 import { InputText, InputCheckbox, ButtonMain, ValidationError } from '../../../../common';
 import { changeCheckValidationError, changeTextValidationError, alreadyHaveWalletContinue
     , setSubStepMounted, typeWalletAddress, checkDoubleCheckedAddress
-} from '../../../../state/index';
+} from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
 import { isWalletAddressValid } from '../../../../utils';
