@@ -1,20 +1,19 @@
 import { setState, state } from './index'
 import { maxSteps, resetScroll } from './navigation';
 
-export const checkBalanceStartCaptchaSuccess = ({ sessionToken: string, clientConfig: any }) => {
+export function checkBalanceStartCaptchaSuccess({ sessionToken, clientConfig }: { sessionToken: string, clientConfig: any }) {
+    if(state.sessionToken) return;
     const max: number = maxSteps();
     const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
-
     setState( {
         currentStep: nextStep,
         sessionToken,
         clientConfig
     });
-
     resetScroll();
 };
 
-export const reclaimWalletContinue = () => {
+export function reclaimWalletContinue() {
     const max: number = maxSteps();
     const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
 
