@@ -19,6 +19,7 @@ export const alreadyHaveWalletContinue = (fundAddresses: Array<FundAddress>) => 
     const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
 
     setState( {
+        isLoading: false,
         currentStep: nextStep,
         currentSubStep: -1,
         fundAddresses: fundAddresses,
@@ -34,6 +35,7 @@ export const createWalletContinue = (fundAddresses: Array<FundAddress>) => {
     const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
 
     setState( {
+        isLoading: false,
         currentStep: nextStep,
         currentSubStep: -1,
         fundAddresses: fundAddresses,

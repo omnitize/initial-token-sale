@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { createWalletContent as content } from '../../../../data/text-data';
-import { ButtonText, ButtonMain, InputCheckbox, ValidationError } from '../../../../common';
+import { ButtonText, ButtonMain, InputCheckbox, ValidationError, BackgroundHighlight, Spinner  } from '../../../../common';
 import { createWalletContinue, setSubStepMounted, setSubStepUnmounted, checkWrittenMnemonicPhrase, createWallet
-    , changeCheckValidationError } from '../../../../state';
+    , changeCheckValidationError, setState } from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
 import { downloadWallet } from '../../../../utils';
-import { BackgroundHighlight } from '../../../../common';
 
 interface ICreateWalletProps {
     state?: State
@@ -34,7 +33,7 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
 
     render(): JSX.Element {
         const { targetMnemonicPhrase, targetAddress, isWrittenMnemonicPhrase
-            , validationCheckboxError } = this.props.state;
+            , validationCheckboxError, isLoading } = this.props.state;
         const isContinueValid = isWrittenMnemonicPhrase;
 
         if(!this.props.state.targetWallet) {
@@ -80,11 +79,13 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                     />
                 </ValidationError>
                 <div className="--its-continue">
-                    <ButtonMain
-                        isDisabled={!isContinueValid}
-                        onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}>
-                        {content.buttonMain}
-                    </ButtonMain>
+                    {isLoading
+                        ?   <Spinner size={40}/>
+                        :   <ButtonMain
+                                isDisabled={!isContinueValid}
+                                onClick={isContinueValid ? this.handleContinueClick : this.handleValidationErrors}>
+                                {content.buttonMain}
+                            </ButtonMain>}
                 </div>
             </div>
         );
@@ -115,7 +116,8 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
         checkWrittenMnemonicPhrase(e.currentTarget.checked);
     };
 
-    private handleContinue = () => {
+    private handleContinueClick = () => {
+        setState({isLoading: true});
         sendTargetAddress(this.props.state.sessionToken, this.props.state.targetAddress)
         .then(({ fundAddresses }) => {
             createWalletContinue(fundAddresses)

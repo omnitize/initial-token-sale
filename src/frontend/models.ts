@@ -86,6 +86,8 @@ export class State {
     fundAddresses: Array<FundAddress> = [];
 
     transactions: Array<Transaction> = [];
+
+    isLoading: boolean = false;
 }
 
 export interface IShadeStyle {

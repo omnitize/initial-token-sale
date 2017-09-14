@@ -7,4 +7,4 @@ export { ProveYouAreHuman } from "./prove-you-are-human";
 export { BackgroundHighlight } from "./background-highlight";
 export { ValidationError } from "./validation-error";
 export { WalletHistory } from "./wallet-history/wallet-history";
-export { spinner } from './spinner';
+export { Spinner } from './spinner';

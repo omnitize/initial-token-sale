@@ -2,11 +2,13 @@ import * as React from 'react';
 import { alreadyHaveWalletContent as content } from '../../../../data/text-data';
 import { InputText, InputCheckbox, ButtonMain, ValidationError } from '../../../../common';
 import { changeCheckValidationError, changeTextValidationError, alreadyHaveWalletContinue
-    , setSubStepMounted, setSubStepUnmounted, typeWalletAddress, checkDoubleCheckedAddress
+    , setSubStepMounted, setSubStepUnmounted, typeWalletAddress, checkDoubleCheckedAddress,
+    setState
 } from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
 import { isWalletAddressValid } from '../../../../utils';
+import {Spinner} from '../../../../common/spinner';
 
 interface IAlreadyHaveWalletProps {
     state?: State
@@ -28,7 +30,7 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
 
     render(): JSX.Element {
         const { targetAddress, isDoubleCheckedAddress, validationCheckboxError
-            , validationTextError } = this.props.state;
+            , validationTextError, isLoading } = this.props.state;
         const isContinueValid = isDoubleCheckedAddress && targetAddress.length > 0 && isWalletAddressValid(targetAddress);
 
         return (
@@ -55,11 +57,13 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
                     />
                 </ValidationError>
                 <div className="--its-continue">
-                    <ButtonMain
-                        isDisabled={!isContinueValid}
-                        onClick={isContinueValid ? this.handleContinueClick : this.handleValidationErrors}>
-                        {content.buttonMain}
-                    </ButtonMain>
+                    {isLoading
+                    ?   <Spinner size={40}/>
+                    :   <ButtonMain
+                            isDisabled={!isContinueValid}
+                            onClick={isContinueValid ? this.handleContinueClick : this.handleValidationErrors}>
+                            {content.buttonMain}
+                        </ButtonMain>}
                 </div>
             </div>
         );
@@ -101,6 +105,7 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
     };
 
     private handleContinueClick = () => {
+        setState({isLoading: true});
         return sendTargetAddress(this.props.state.sessionToken, this.props.state.targetAddress)
             .then(({ fundAddresses }) => {
                 alreadyHaveWalletContinue(fundAddresses);
