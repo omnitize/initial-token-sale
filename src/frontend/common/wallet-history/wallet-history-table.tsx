@@ -2,12 +2,13 @@ import * as React from 'react';
 const dateFormat = require('dateformat');
 import { walletHistoryContent as content } from '../../data/text-data';
 import { loadTransactions } from '../../server-api';
-import { State } from '../../models';
+import { ECheckBalanceSteps, EContributeSteps, State } from '../../models';
 import { setState } from '../../state';
 import { getTxStatusIcon } from './tx-status-icon';
 import { Spinner, BackgroundHighlight } from '..';
 
 interface IWalletHistoryTableProps {
+    stepEnum: EContributeSteps | ECheckBalanceSteps
     state?: State;
 }
 
@@ -19,9 +20,12 @@ export class WalletHistoryTable extends React.Component<IWalletHistoryTableProps
         super(props, context);
     }
 
-    componentDidMount() {
-        this.handleLoadTransactions();
-        this.intervalId = setInterval(this.handleLoadTransactions, 1000);
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.state.currentStep !== this.props.state.currentStep
+        && nextProps.state.currentStep === nextProps.stepEnum) {
+            this.handleLoadTransactions();
+            this.intervalId = setInterval(this.handleLoadTransactions, 1000);
+        }
     }
 
     componentWillUnmount() {

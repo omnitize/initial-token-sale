@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { sendFundsContent as content } from '../../../data/text-data'
 import { WalletHistory, BackgroundHighlight } from '../../../common';
-import { State, FundAddress } from '../../../models';
+import { State, FundAddress, EContributeSteps } from '../../../models';
 import { CurrencyAddress } from './currency-address';
 
 interface ISendFundsProps {
@@ -40,6 +40,7 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
                 </div>
                 <div className="--its-content-section">
                     <WalletHistory
+                        stepEnum={EContributeSteps.SEND_FUNDS}
                         state={state}
                     />
                 </div>

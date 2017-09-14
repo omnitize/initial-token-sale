@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ETxStatus } from '../../models';
 
-export function getTxStatusIcon(status: ETxStatus, confirmations: number, minConfirmations: number): JSX.Element {
+export const getTxStatusIcon = (status: ETxStatus, confirmations: number, minConfirmations: number): JSX.Element => {
 	switch(status) {
 		case ETxStatus.PENDING:
 			return (
@@ -30,4 +30,4 @@ export function getTxStatusIcon(status: ETxStatus, confirmations: number, minCon
 				</div>
 			);
 	}
-}
+};
