@@ -18,15 +18,16 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
     }
 
     render(): JSX.Element {
+        const { steps, state } = this.props;
         return (
-            <div className="its-navigator-steps its-content-section">
+            <div className="its-navigator-steps --its-content-section">
                 <div>
-                {this.props.steps.map((step, i) =>
+                {steps.map((step, i) =>
                     <MarkerStep
                         key={`MarkerStep-${i}`}
                         name={step.name}
                         index={i}
-                        selectedStep={this.props.state.currentStep}/>
+                        selectedStep={state.currentStep}/>
                     )
                 }
                 </div>
@@ -34,14 +35,14 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
                     <div
                         className="its-navigator-steps__slider --its-transition-transform"
                         style={this.slideTransitionStyle()}>
-                        {this.props.steps.map((step: IStep, i: number) =>
+                        {steps.map((step: IStep, i: number) =>
                             <div key={`step-${i}`}
                                  className="its-navigator-steps__step"
                                  style={this.stepWidthStyle}>
                                 {React.cloneElement(
                                     step.component,
                                     {
-                                        state: this.props.state
+                                        state: state
                                     }
                                 )}
                             </div>)}
@@ -52,10 +53,11 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
     }
 
     private slideTransitionStyle() {
+        const x = this.props.state.currentStep * this.divisionSize;
         return {
-            WebkitTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            msTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            transform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`
+            WebkitTransform: `translateX(${-x}%)`,
+            msTransform: `translateX(${-x}%)`,
+            transform: `translateX(${-x}%)`
         }
     }
 }

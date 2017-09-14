@@ -22,7 +22,7 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
         const isContinueValid = targetAddress.length > 0 && isWalletAddressValid(targetAddress);
         return (
             currentSubStep === -1
-                ?  <div className="its-content-section">
+                ?  <div className="--its-content-section">
                         <h2>
                             {content.heading}
                         </h2>
@@ -46,7 +46,7 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
                                 </ButtonText>
                             </div>
                         </div>
-                        <div className="its-continue">
+                        <div className="--its-continue">
                             <ButtonMain
                                 isDisabled={!isContinueValid}
                                 onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}

@@ -132,15 +132,15 @@
     line-height: 1.5;
 }
 
-/*basic layout*/
+/*basic layout modifiers*/
 
-.its-main .its-content-section {
+.its-main .--its-content-section {
     margin: 24px 0;
 }
 
 /*navigation*/
 
-.its-main .its-continue, .its-back {
+.its-main .--its-continue, .--its-back {
     text-align: center;
 }
 

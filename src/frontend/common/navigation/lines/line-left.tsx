@@ -1,20 +1,13 @@
 import * as React from 'react';
 import { IShadeStyle } from '../../../models';
 
-interface IProps {
+interface ILineLeftProps {
     backgroundStyle: IShadeStyle
 }
 
-export class LineLeft extends React.Component<IProps, any> {
-
-    public constructor(props?: any, context?: any) {
-        super(props, context);
-    }
-
-    render(): JSX.Element {
-        return (
-            <div style={this.props.backgroundStyle}
-                 className="its-line-left"/>
-        );
-    }
-}
+export const LineLeft = (props: ILineLeftProps) => {
+    return (
+        <div style={props.backgroundStyle}
+             className="its-line-left"/>
+    );
+};

@@ -12,7 +12,7 @@ export function contributeStartCaptchaSuccess({ sessionToken, clientConfig }: { 
         clientConfig
     });
     resetScroll();
-};
+}
 
 export function alreadyHaveWalletContinue(fundAddresses: Array<FundAddress>) {
     const max: number = maxSteps();
@@ -27,7 +27,7 @@ export function alreadyHaveWalletContinue(fundAddresses: Array<FundAddress>) {
     });
 
     resetScroll();
-};
+}
 
 export function createWalletContinue(fundAddresses: Array<FundAddress>) {
     const max: number = maxSteps();
@@ -42,4 +42,4 @@ export function createWalletContinue(fundAddresses: Array<FundAddress>) {
     });
 
     resetScroll();
-};
+}

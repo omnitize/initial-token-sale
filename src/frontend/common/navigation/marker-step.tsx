@@ -2,13 +2,13 @@ import * as React from 'react';
 import { LineLeft, LineRight, CircleStep } from './lines';
 import { maxSteps, setStep } from '../../state';
 
-interface IButtonStepProps {
+interface IMarkerStepProps {
     index: number
     name: string
     selectedStep: number
 }
 
-export class MarkerStep extends React.Component<IButtonStepProps, any> {
+export class MarkerStep extends React.Component<IMarkerStepProps, any> {
 
     stepsNumber = maxSteps();
     divisionSize = 100 / this.stepsNumber;
@@ -48,12 +48,9 @@ export class MarkerStep extends React.Component<IButtonStepProps, any> {
         );
     }
 
-
     static handleStepNavClick(step: number) {
         setStep(step);
     }
-
-
 
     private shadeStyle(type: "background" | "color") {
         const { selectedStep, index } = this.props;

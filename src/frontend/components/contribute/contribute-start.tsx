@@ -17,7 +17,7 @@ export class ContributeStart extends React.Component<IContributeStartProps, any>
     render(): JSX.Element {
         return (
             <div>
-                <div className="its-content-section">
+                <div className="--its-content-section">
                     <h2>
                         {content.heading}
                     </h2>
@@ -28,7 +28,7 @@ export class ContributeStart extends React.Component<IContributeStartProps, any>
                             </li>)}
                     </ul>
                 </div>
-                <div className="its-content-section">
+                <div className="--its-content-section">
                     <ProveYouAreHuman onSuccess={ contributeStartCaptchaSuccess } />
                 </div>
             </div>

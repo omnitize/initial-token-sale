@@ -17,7 +17,7 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
     render(): JSX.Element {
         return (
             <div>
-                <div className="its-content-section">
+                <div className="--its-content-section">
                     <h2>
                         {content.heading}
                     </h2>
@@ -31,7 +31,7 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
                         { this.renderFundAddresses() }
                     </div>
                 </div>
-                <div className="its-content-section">
+                <div className="--its-content-section">
                     <WalletHistory
                         state={this.props.state}
                     />

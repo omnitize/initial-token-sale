@@ -72,7 +72,7 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                         onChange={this.handleWrittenMnemonicPhraseChange}
                     />
                 </ValidationError>
-                <div className="its-continue">
+                <div className="--its-continue">
                     <ButtonMain
                         isDisabled={!isContinueValid}
                         onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}>
