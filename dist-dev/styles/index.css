@@ -1,3 +1,5 @@
+/*main*/
+
 .its-main {
     display: inline-block;
     text-align: center;
@@ -37,6 +39,7 @@
 }
 
 /*buttons*/
+
 .its-main button {
     font-size: 16px;
     margin: 10px;
@@ -70,15 +73,21 @@
     top: 0;
     left: 0;
     background: #0277BD;
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
     transform: translateY(-100%);
     transition: transform 200ms;
 }
 
 .its-main button.its-button-main:hover:before {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
     transform: translateY(0);
 }
 
 .its-main button.its-button-main.--selected:hover:before {
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
     transform: translateY(-100%);
 }
 
@@ -94,8 +103,6 @@
 .its-main button.its-button-main:active {
     -webkit-transform: translateY(2px);
     -ms-transform: translateY(2px);
-    -o-transform: translateY(2px);
-    -moz-transform: translateY(2px);
     transform: translateY(2px);
 }
 
@@ -202,6 +209,8 @@
     height: 4px;
     background: #212121;
     color: #EEEEEE;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 
@@ -213,6 +222,8 @@
     height: 4px;
     background: #212121;
     color: #EEEEEE;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 
@@ -238,16 +249,10 @@
 }
 
 .its-main .--its-transition-transform {
-    -webkit-transition: transform 200ms;
-    -o-transition: transform 200ms;
-    -moz-transition: transform 200ms;
     transition: transform 200ms;
 }
 
 .its-main .--its-transition-opacity {
-    -webkit-transition: opacity 200ms;
-    -o-transition: opacity 200ms;
-    -moz-transition: opacity 200ms;
     transition: opacity 200ms;
 }
 
@@ -295,6 +300,8 @@
     border-right: none;
     background: transparent;
     opacity: 0;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
     transform: rotate(-45deg);
 }
 

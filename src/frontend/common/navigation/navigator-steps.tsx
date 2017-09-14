@@ -53,10 +53,8 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
 
     private slideTransitionStyle() {
         return {
-            msTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            OTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            MozTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
             WebkitTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
+            msTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
             transform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`
         }
     }
