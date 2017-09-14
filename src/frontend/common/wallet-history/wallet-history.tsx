@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { walletHistoryContent as content } from '../../data/text-data'
-import { ButtonMain } from '../';
+import { ButtonMain } from '..';
 import { WalletHistoryTable } from './wallet-history-table';
 import { State } from '../../models';
-import { downloadWallet } from '../../utils/downloadWallet';
+import { downloadWallet } from '../../utils';
 
 interface IWalletHistoryProps {
     state?: State;

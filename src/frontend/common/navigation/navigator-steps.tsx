@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStep, State } from '../models';
-import { ButtonStep } from '.';
-import { setStep } from '../state/index';
+import { IStep, State } from '../../models';
+import { MarkerStep } from './marker-step';
+import { maxSteps } from '../../state';
 
 interface INavigatorStepsProps {
     steps: IStep[];
@@ -10,7 +10,7 @@ interface INavigatorStepsProps {
 
 export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
 
-    divisionSize = 100 / this.props.steps.length;
+    divisionSize = 100 / maxSteps();
     stepWidthStyle = {width: `${this.divisionSize}%`};
 
     public constructor(props?: any, context?: any) {
@@ -18,17 +18,16 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
     }
 
     render(): JSX.Element {
+        const { steps, state } = this.props;
         return (
-            <div className="its-navigator-steps">
+            <div className="its-navigator-steps --its-content-section">
                 <div>
-                {this.props.steps.map((_, i) =>
-                    <ButtonStep
-                        key={`step-nav-${i}`}
+                {steps.map((step, i) =>
+                    <MarkerStep
+                        key={`MarkerStep-${i}`}
+                        name={step.name}
                         index={i}
-                        selectedStep={this.props.state.currentStep}
-                        onClick={() => NavigatorSteps.handleStepNavClick(i)}>
-                        {`${i + 1}`}
-                    </ButtonStep>
+                        selectedStep={state.currentStep}/>
                     )
                 }
                 </div>
@@ -36,14 +35,14 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
                     <div
                         className="its-navigator-steps__slider --its-transition-transform"
                         style={this.slideTransitionStyle()}>
-                        {this.props.steps.map((step: IStep, i: number) =>
+                        {steps.map((step: IStep, i: number) =>
                             <div key={`step-${i}`}
                                  className="its-navigator-steps__step"
                                  style={this.stepWidthStyle}>
                                 {React.cloneElement(
                                     step.component,
                                     {
-                                        state: this.props.state
+                                        state: state
                                     }
                                 )}
                             </div>)}
@@ -54,17 +53,11 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
     }
 
     private slideTransitionStyle() {
+        const x = this.props.state.currentStep * this.divisionSize;
         return {
-            msTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            OTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            MozTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            WebkitTransform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`,
-            transform: `translateX(${-this.props.state.currentStep * this.divisionSize}%)`
+            WebkitTransform: `translateX(${-x}%)`,
+            msTransform: `translateX(${-x}%)`,
+            transform: `translateX(${-x}%)`
         }
     }
-
-    static handleStepNavClick(step: number) {
-        setStep(step);
-    }
-
 }

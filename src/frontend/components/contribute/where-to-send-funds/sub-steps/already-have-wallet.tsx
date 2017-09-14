@@ -2,8 +2,8 @@ import * as React from 'react';
 import { alreadyHaveWalletContent as content } from '../../../../data/text-data';
 import { InputText, InputCheckbox, ButtonMain, ValidationError } from '../../../../common';
 import { changeCheckValidationError, changeTextValidationError, alreadyHaveWalletContinue
-    , setSubStepMounted, typeWalletAddress, checkDoubleCheckedAddress
-} from '../../../../state/index';
+    , setSubStepMounted, setSubStepUnmounted, typeWalletAddress, checkDoubleCheckedAddress
+} from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
 import { isWalletAddressValid } from '../../../../utils';
@@ -20,6 +20,10 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
 
     componentDidMount() {
         setSubStepMounted(EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET)
+    }
+
+    componentWillUnmount() {
+        setSubStepUnmounted();
     }
 
     render(): JSX.Element {
@@ -50,11 +54,13 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
                         onChange={this.handleDoubleCheckedAddressChange}
                     />
                 </ValidationError>
-                <ButtonMain
-                    isUnselected={!isContinueValid}
-                    onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}>
-                    {content.buttonMain}
-                </ButtonMain>
+                <div className="--its-continue">
+                    <ButtonMain
+                        isDisabled={!isContinueValid}
+                        onClick={isContinueValid ? this.handleContinueClick : this.handleValidationErrors}>
+                        {content.buttonMain}
+                    </ButtonMain>
+                </div>
             </div>
         );
     }
@@ -94,7 +100,7 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
         checkDoubleCheckedAddress(e.currentTarget.checked);
     };
 
-    private handleContinue = () => {
+    private handleContinueClick = () => {
         return sendTargetAddress(this.props.state.sessionToken, this.props.state.targetAddress)
             .then(({ fundAddresses }) => {
                 alreadyHaveWalletContinue(fundAddresses);

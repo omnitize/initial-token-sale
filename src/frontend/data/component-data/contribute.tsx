@@ -5,7 +5,7 @@ import { ContributeStart, WhereToSendFunds, AlreadyHaveWallet, CreateWallet, Sen
 
 export const contributeStepList: IStep[] = [
     {
-        name: "Contribute Start",
+        name: "Getting Started",
         component: <ContributeStart/>
     },
     {

@@ -1,9 +1,8 @@
 export { ButtonMain } from "./button-main";
-export { ButtonStep } from "./button-step";
 export { ButtonText } from "./button-text";
 export { InputCheckbox } from "./input-checkbox";
 export { InputText } from "./input-text";
-export { NavigatorSteps } from "./navigator-steps";
+export { NavigatorSteps } from "./navigation/navigator-steps";
 export { ProveYouAreHuman } from "./prove-you-are-human";
 export { BackgroundHighlight } from "./background-highlight";
 export { ValidationError } from "./validation-error";

@@ -14,4 +14,3 @@ export { CheckWallet } from "./check-balance";
 export { ReclaimWallet } from "./check-balance" // sub
 
 export { ViewWalletHistory } from "./check-balance";
-

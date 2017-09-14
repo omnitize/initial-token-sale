@@ -3,7 +3,7 @@ import { whereToSendFundsContent as content } from '../../../data/text-data'
 import { ButtonMain } from '../../../common/button-main';
 import { State, EContributeSteps, EWhereToSendFundsSubSteps } from '../../../models';
 import { contributeStepList } from '../../../data/component-data';
-import { setSubStep } from '../../../state/index';
+import { setSubStep } from '../../../state';
 
 interface IWhereToSendFundsProps {
     state?: State
@@ -20,28 +20,26 @@ export class WhereToSendFunds extends React.Component<IWhereToSendFundsProps, an
         const isOptionSelected = currentSubStep > -1;
 
         return (
-            <div className="its-content-section">
+            <div className="--its-content-section">
                 <h2>
                     {content.heading}
                 </h2>
-                <div className="its-content-section">
+                <div className="--its-content-section">
                     <h4>
                         {content.heading2}
                     </h4>
                     <p>
                         {content.paragraph}
                     </p>
-                    <div className="its-content-section">
+                    <div className="--its-content-section">
                         <ButtonMain
                             isSelected={currentSubStep === EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET}
-                            isUnselected={isOptionSelected && currentSubStep !== EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET}
                             onClick={this.handleAlreadyHaveWallet}
                         >
                             {content.button}
                         </ButtonMain>
                         <ButtonMain
                             isSelected={currentSubStep === EWhereToSendFundsSubSteps.CREATE_WALLET}
-                            isUnselected={isOptionSelected && currentSubStep !== EWhereToSendFundsSubSteps.CREATE_WALLET}
                             onClick={this.handleCreateWallet}
                         >
                             {content.button2}
@@ -49,7 +47,7 @@ export class WhereToSendFunds extends React.Component<IWhereToSendFundsProps, an
                     </div>
                 </div>
                 {isOptionSelected
-                    ?   <div className="its-content-section">
+                    ?   <div className="--its-content-section">
                             {this.renderSubStep()}
                         </div>
                     :   null}

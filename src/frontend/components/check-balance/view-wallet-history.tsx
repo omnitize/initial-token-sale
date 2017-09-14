@@ -14,7 +14,7 @@ export class ViewWalletHistory extends React.Component<IViewWalletHistoryProps, 
 
     render(): JSX.Element {
         return (
-            <div>
+            <div className="--its-content-section">
                 <WalletHistory
                     state={this.props.state}
                 />
