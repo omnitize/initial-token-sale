@@ -15,13 +15,8 @@ export class CheckBalanceStart extends React.Component<ICheckBalanceStartProps, 
 
     render(): JSX.Element {
         return (
-<<<<<<< HEAD
             <div className="its-content-section">
-                <ProveYouAreHuman onSuccess={ CheckBalanceStart.handleCaptchaSuccess }/>
-=======
-            <div>
                 <ProveYouAreHuman onSuccess={ checkBalanceStartCaptchaSuccess }/>
->>>>>>> master
             </div>
         );
     }
