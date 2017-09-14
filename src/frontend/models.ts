@@ -1,6 +1,5 @@
-export interface IUseCase {
-    name: string
-    steps: IStep[]
+export interface IDictionary<T> {
+    [key: string]: T
 }
 
 export interface IStep {

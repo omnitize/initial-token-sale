@@ -51,5 +51,4 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
                 />
         );
     }
-
 }

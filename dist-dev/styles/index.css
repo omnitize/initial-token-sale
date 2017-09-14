@@ -257,14 +257,14 @@
 }
 
 /*inputs */
-.its-main .its-input-text__label {
+.its-main .its-input-text {
     position: relative;
     padding: 12px 0 0 18px;
     width: 100%;
     z-index: 2;
 }
 
-.its-main .its-input-text {
+.its-main .its-input-text__input {
     width: calc(100% - 36px);
     border: 2px solid #212121;
     padding: 4px;

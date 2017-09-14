@@ -89,7 +89,9 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
         typeWalletAddress(e.currentTarget.value);
     };
 
-    private handleNoWalletAddress = () => {};
+    private handleNoWalletAddress = () => {
+        // TODO ask what this should do - create wallet?
+    };
 
     private handleContinue = () => {
         incrementSubStep();
