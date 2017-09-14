@@ -386,3 +386,26 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+
+.its-currency-address__inner {
+    display: table-cell;
+    width: 100%;
+}
+
+.its-currency-address__logo {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+}
+
+.its-currency-address__price {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.its-currency-address__address {
+    display: inline-block;
+    vertical-align: middle;
+}

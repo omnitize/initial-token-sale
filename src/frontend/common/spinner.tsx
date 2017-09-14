@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { spinnerPath } from '../data/image-data/spinnerPath';
+import { spinnerPath } from '../data/image-data';
 
 interface ISpinnerProps {
     size: number
