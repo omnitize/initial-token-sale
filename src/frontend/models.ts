@@ -92,3 +92,8 @@ export class State {
 export interface IShadeStyle {
     [type: string]: string
 }
+
+export interface ICaptchaSuccessParams {
+    sessionToken: string
+    clientConfig: any
+}

@@ -1,20 +1,20 @@
 import { setState, state } from './index'
 import { maxSteps, resetScroll } from './navigation';
-import { FundAddress } from '../models';
+import { FundAddress, ICaptchaSuccessParams } from '../models';
 
-export function contributeStartCaptchaSuccess({ sessionToken, clientConfig }: { sessionToken: string, clientConfig: string }) {
+export const contributeStartCaptchaSuccess = (captchaSuccessParams: ICaptchaSuccessParams) => {
     if(state.sessionToken) return;
     const max: number = maxSteps();
     const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
     setState( {
         currentStep: nextStep,
-        sessionToken,
-        clientConfig
+        sessionToken: captchaSuccessParams.sessionToken,
+        clientConfig: captchaSuccessParams.clientConfig
     });
     resetScroll();
-}
+};
 
-export function alreadyHaveWalletContinue(fundAddresses: Array<FundAddress>) {
+export const alreadyHaveWalletContinue = (fundAddresses: Array<FundAddress>) => {
     const max: number = maxSteps();
     const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
 
@@ -27,9 +27,9 @@ export function alreadyHaveWalletContinue(fundAddresses: Array<FundAddress>) {
     });
 
     resetScroll();
-}
+};
 
-export function createWalletContinue(fundAddresses: Array<FundAddress>) {
+export const createWalletContinue = (fundAddresses: Array<FundAddress>) => {
     const max: number = maxSteps();
     const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
 
@@ -42,4 +42,4 @@ export function createWalletContinue(fundAddresses: Array<FundAddress>) {
     });
 
     resetScroll();
-}
+};

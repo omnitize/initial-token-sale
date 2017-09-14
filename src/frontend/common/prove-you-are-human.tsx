@@ -3,14 +3,11 @@ import { proveYouAreHumanContent as content } from '../data/text-data';
 const ReCAPTCHA = require('react-google-recaptcha').default;
 import { config } from '../config';
 import { createSession } from '../server-api';
+import { ICaptchaSuccessParams } from '../models';
 
-interface ISuccessParams {
-    sessionToken: string
-    clientConfig: any
-}
 
 interface IProveYouAreHumanProps {
-    onSuccess: (successParams: ISuccessParams) => void;
+    onSuccess: (successParams: ICaptchaSuccessParams) => void;
 }
 
 interface IState {}
@@ -19,7 +16,6 @@ export class ProveYouAreHuman extends React.Component<IProveYouAreHumanProps, IS
 
     public constructor(props?: any, context?: any) {
         super(props, context);
-        this.onCaptcha = this.onCaptcha.bind(this);
     }
 
     render(): JSX.Element {
@@ -32,7 +28,7 @@ export class ProveYouAreHuman extends React.Component<IProveYouAreHumanProps, IS
                         <ReCAPTCHA
                             ref="recaptcha"
                             sitekey={ config.recaptchaSiteKey }
-                            onChange={ this.onCaptcha }
+                            onChange={ this.handleCaptcha }
                         />
                     </div>
                 </div>
@@ -40,7 +36,7 @@ export class ProveYouAreHuman extends React.Component<IProveYouAreHumanProps, IS
         );
     }
 
-    private onCaptcha(value: string) {
+    private handleCaptcha = (value: string) => {
         createSession(value)
         .then(result => this.props.onSuccess(result))
         .catch((err) => console.log(err));
