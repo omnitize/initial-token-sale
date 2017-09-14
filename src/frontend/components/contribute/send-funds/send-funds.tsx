@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { sendFundsContent as content } from '../../../data/text-data'
-import { WalletHistory } from '../../../common';
+import { WalletHistory, BackgroundHighlight } from '../../../common';
 import { State, FundAddress } from '../../../models';
 import { CurrencyAddress } from './currency-address';
 
@@ -15,6 +15,7 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
     }
 
     render(): JSX.Element {
+        const { state } = this.props;
         return (
             <div>
                 <div className="--its-content-section">
@@ -27,13 +28,19 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
                                 {paragraph}
                             </p>)}
                     </div>
-                    <div>
-                        { this.renderFundAddresses() }
-                    </div>
+                    {state.fundAddresses
+                        ?   state.fundAddresses.length === 0
+                            ?   <BackgroundHighlight>
+                                    {"No fund addresses to display at this point."}
+                                </BackgroundHighlight>
+                            :   <div>
+                                    { this.renderFundAddresses() }
+                                </div>
+                        :   null}
                 </div>
                 <div className="--its-content-section">
                     <WalletHistory
-                        state={this.props.state}
+                        state={state}
                     />
                 </div>
             </div>
@@ -44,7 +51,7 @@ export class SendFunds extends React.Component<ISendFundsProps, any> {
         return this.props.state.fundAddresses.map(
             (fa: FundAddress, i: number) =>
                 <CurrencyAddress
-                    key={`fa-${i}`}
+                    key={`CurrencyAddress-${i}`}
                     currency={fa.currency}
                     price={fa.price}
                     address={fa.address}
