@@ -1,5 +1,7 @@
 import { setState, state } from './index'
 
+let timeoutId: any;
+
 import {
     EContributeSteps, ECheckBalanceSteps, EUserFlow, EWhereToSendFundsSubSteps,
     ECheckWalletSubSteps
@@ -30,8 +32,12 @@ export const setSubStep = (nextSubStep: number) => {
 };
 
 export const setSubStepMounted = (nextSubStepMounted: number) => {
-    setTimeout(() => setState({ currentSubStepMounted: nextSubStepMounted }), 0);
+    timeoutId = setTimeout(() => setState({ currentSubStepMounted: nextSubStepMounted }), 0);
     // creates enough delay to register as CSS transition
+};
+
+export const setSubStepUnmounted = () => {
+    clearTimeout(timeoutId);
 };
 
 export const maxSteps = () => {

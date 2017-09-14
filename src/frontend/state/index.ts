@@ -39,6 +39,7 @@ export {
     incrementSubStep,
     setSubStep,
     setSubStepMounted,
+    setSubStepUnmounted,
     maxSteps,
     maxSubSteps
 } from "./navigation";

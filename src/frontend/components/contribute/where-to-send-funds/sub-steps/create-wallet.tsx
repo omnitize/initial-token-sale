@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createWalletContent as content } from '../../../../data/text-data';
 import { ButtonText, ButtonMain, InputCheckbox, ValidationError } from '../../../../common';
-import { createWalletContinue, setSubStepMounted, checkWrittenMnemonicPhrase, createWallet
+import { createWalletContinue, setSubStepMounted, setSubStepUnmounted, checkWrittenMnemonicPhrase, createWallet
     , changeCheckValidationError } from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
@@ -14,6 +14,8 @@ interface ICreateWalletProps {
 
 export class CreateWallet extends React.Component<ICreateWalletProps, any> {
 
+    createWalletTimeoutId: any;
+
     public constructor(props?: any, context?: any) {
         super(props, context);
     }
@@ -21,8 +23,13 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
     componentDidMount() {
         setSubStepMounted(EWhereToSendFundsSubSteps.CREATE_WALLET);
         if(!this.props.state.targetWallet) {
-            setTimeout(createWallet, 100);
+            this.createWalletTimeoutId = setTimeout(createWallet, 100);
         }
+    }
+
+    componentWillUnmount(){
+        setSubStepUnmounted();
+        clearTimeout(this.createWalletTimeoutId);
     }
 
     render(): JSX.Element {

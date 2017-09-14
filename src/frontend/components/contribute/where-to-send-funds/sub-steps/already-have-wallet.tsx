@@ -2,7 +2,7 @@ import * as React from 'react';
 import { alreadyHaveWalletContent as content } from '../../../../data/text-data';
 import { InputText, InputCheckbox, ButtonMain, ValidationError } from '../../../../common';
 import { changeCheckValidationError, changeTextValidationError, alreadyHaveWalletContinue
-    , setSubStepMounted, typeWalletAddress, checkDoubleCheckedAddress
+    , setSubStepMounted, setSubStepUnmounted, typeWalletAddress, checkDoubleCheckedAddress
 } from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
@@ -20,6 +20,10 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
 
     componentDidMount() {
         setSubStepMounted(EWhereToSendFundsSubSteps.ALREADY_HAVE_WALLET)
+    }
+
+    componentWillUnmount() {
+        setSubStepUnmounted();
     }
 
     render(): JSX.Element {

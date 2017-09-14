@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { reclaimWalletContent as content } from '../../../../data/text-data'
-import { ButtonMain, ButtonText, InputText, BackgroundHighlight } from '../../../../common';
+import { ButtonMain, ButtonText, InputText, BackgroundHighlight, ValidationError } from '../../../../common';
 import { ECheckWalletSubSteps, State } from '../../../../models';
-import { setSubStepMounted, reclaimWalletContinue, typeMnemonicPhrase, changeTextValidationError } from '../../../../state';
+import { setSubStepMounted, setSubStepUnmounted, reclaimWalletContinue, typeMnemonicPhrase
+    , changeTextValidationError } from '../../../../state';
 import { downloadWallet } from '../../../../utils';
-import {ValidationError} from '../../../../common/validation-error';
 
 interface IReclaimWalletProps {
     state?: State
@@ -12,14 +12,16 @@ interface IReclaimWalletProps {
 
 export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
 
-    walletAddress = "xxxx";
-
     public constructor(props?: any, context?: any) {
         super(props, context);
     }
 
     componentDidMount() {
         setSubStepMounted(ECheckWalletSubSteps.RECLAIM_WALLET)
+    }
+
+    componentWillUnmount() {
+        setSubStepUnmounted();
     }
 
     render(): JSX.Element {
