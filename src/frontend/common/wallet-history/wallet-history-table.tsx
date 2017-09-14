@@ -75,7 +75,10 @@ export class WalletHistoryTable extends React.Component<IWalletHistoryTableProps
         } else {
             setState({isLoading: true});
             loadTransactions(this.props.state.sessionToken, this.props.state.targetAddress)
-                .then(({ transactions }) => setState({ transactions, isLoading: false }));
+                .then(({ transactions }) => {
+                    setState({ transactions, isLoading: false })
+                    clearInterval(this.intervalId);
+                });
         }
     };
 
