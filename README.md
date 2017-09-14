@@ -32,3 +32,14 @@ $ npm run build
 $ npm run build
 (Back-end)
 ```
+
+## Design
+
+default colors
+
+blue: #0091EA
+blue-1: #0277BD
+blue-2: #01579B
+green: #00C853
+white: #EEEEEE
+black: #212121

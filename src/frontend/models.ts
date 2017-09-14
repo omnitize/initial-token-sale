@@ -88,3 +88,7 @@ export class State {
 
     transactions: Array<Transaction> = [];
 }
+
+export interface IShadeStyle {
+    [type: string]: string
+}

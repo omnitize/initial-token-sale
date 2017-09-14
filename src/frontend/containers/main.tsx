@@ -2,7 +2,7 @@ import * as React from 'react';
 import { State, EUserFlow } from '../models';
 import { NavigatorSteps, ButtonMain } from '../common';
 import { checkBalanceStepList, contributeStepList } from '../data/component-data';
-import { registerAppRoot, setState } from '../state/index';
+import { registerAppRoot, setState } from '../state';
 
 export class Main extends React.Component<any, State> {
 
@@ -18,12 +18,10 @@ export class Main extends React.Component<any, State> {
     render(): JSX.Element {
         return (
             <div className="its-main">
-                <div>
-                    <ButtonMain
-                        onClick={this.toggleUseCase}>
-                        Toggle Use Case
-                    </ButtonMain>
-                </div>
+                <ButtonMain
+                    onClick={this.toggleUseCase}>
+                    Toggle Use Case
+                </ButtonMain>
                 <NavigatorSteps
                     state={ this.state }
                     steps={ this.steps() }
