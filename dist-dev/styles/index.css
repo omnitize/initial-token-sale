@@ -140,12 +140,66 @@
 
 /*navigation*/
 
-.its-main .--its-continue, .--its-back {
+.its-main .--its-continue {
     text-align: center;
 }
 
 .its-main .its-navigator-steps {
     width: 100%;
+}
+
+.its-navigator-steps__header {
+    position: relative;
+}
+
+.its-navigator-steps__header__back-button {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    z-index: 4;
+}
+
+.its-back-button {
+    display: table-cell;
+    border: none;
+    outline: none;
+    background: none;
+    opacity: 1;
+    color: #0091EA;
+    cursor: pointer;
+}
+
+.its-back-button:hover {
+    opacity: 0.7;
+}
+
+.its-back-button.--disabled {
+    color: #212121;
+    opacity: 0.5;
+}
+
+.its-back-button__arrow {
+    position: absolute;
+    display: inline-block;
+    left: -4px;
+    width: 18px;
+    height: 18px;
+    border-bottom: 2px solid #0091EA;
+    border-left: 2px solid #0091EA;
+    transform: rotate(45deg);
+}
+
+.its-back-button.--disabled {
+    border-bottom: 2px solid #212121;
+    border-left: 2px solid #212121;
+    opacity: 0.5;
+}
+
+.its-back-button__text {
+    display: inline-block;
+    font-size: 12px;
+    vertical-align: top;
 }
 
 .its-main .its-navigator-steps__inner {

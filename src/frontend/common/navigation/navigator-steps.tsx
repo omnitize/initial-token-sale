@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IStep, State } from '../../models';
 import { MarkerStep } from './marker-step';
 import { maxSteps } from '../../state';
+import {BackButton} from './back-button';
 
 interface INavigatorStepsProps {
     steps: IStep[];
@@ -21,15 +22,18 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
         const { steps, state } = this.props;
         return (
             <div className="its-navigator-steps --its-content-section">
-                <div>
-                {steps.map((step, i) =>
-                    <MarkerStep
-                        key={`MarkerStep-${i}`}
-                        name={step.name}
-                        index={i}
-                        selectedStep={state.currentStep}/>
-                    )
-                }
+                <div className="its-navigator-steps__header">
+                    <div className="its-navigator-steps__header__back-button">
+                        <BackButton/>
+                    </div>
+                    {steps.map((step, i) =>
+                        <MarkerStep
+                            key={`MarkerStep-${i}`}
+                            name={step.name}
+                            index={i}
+                            selectedStep={state.currentStep}/>
+                        )
+                    }
                 </div>
                 <div className="its-navigator-steps__inner">
                     <div
