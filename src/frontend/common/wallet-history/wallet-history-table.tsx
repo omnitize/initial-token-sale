@@ -3,7 +3,7 @@ const dateFormat = require('dateformat');
 import { walletHistoryContent as content } from '../../data/text-data';
 import { loadTransactions } from '../../server-api';
 import { ECheckBalanceSteps, EContributeSteps, State } from '../../models';
-import { setState } from '../../state';
+import { setNextState } from '../../state';
 import { getTxStatusIcon } from './tx-status-icon';
 import { Spinner, BackgroundHighlight } from '..';
 
@@ -77,10 +77,10 @@ export class WalletHistoryTable extends React.Component<IWalletHistoryTableProps
         if(!this.props.state.targetAddress || !this.props.state.sessionToken) {
             return;
         } else {
-            setState({isLoading: true});
+            setNextState({isLoading: true});
             loadTransactions(this.props.state.sessionToken, this.props.state.targetAddress)
                 .then(({ transactions }) => {
-                    setState({ transactions, isLoading: false })
+                    setNextState({ transactions, isLoading: false })
                     clearInterval(this.intervalId);
                 });
         }

@@ -1,4 +1,4 @@
-import { setState, state } from './index'
+import { setNextState, state } from './index'
 import { maxSteps, resetScroll } from './navigation';
 import { FundAddress, ICaptchaSuccessParams } from '../models';
 
@@ -6,7 +6,7 @@ export const contributeStartCaptchaSuccess = (captchaSuccessParams: ICaptchaSucc
     if(state.sessionToken) return;
     const max: number = maxSteps();
     const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
-    setState( {
+    setNextState( {
         isHistory: true,
         currentStep: nextStep,
         sessionToken: captchaSuccessParams.sessionToken,
@@ -19,7 +19,7 @@ export const alreadyHaveWalletContinue = (fundAddresses: Array<FundAddress>) => 
     const max: number = maxSteps();
     const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
 
-    setState( {
+    setNextState( {
         isHistory: true,
         isLoading: false,
         currentStep: nextStep,
@@ -36,7 +36,7 @@ export const createWalletContinue = (fundAddresses: Array<FundAddress>) => {
     const max: number = maxSteps();
     const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
 
-    setState( {
+    setNextState( {
         isHistory: true,
         isLoading: false,
         currentStep: nextStep,

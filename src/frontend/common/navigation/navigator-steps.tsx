@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStep, State } from '../../models';
 import { MarkerStep } from './marker-step';
 import { maxSteps } from '../../state';
-import {BackButton} from './back-button';
+import { ForwardButton, BackButton } from './history-buttons';
 
 interface INavigatorStepsProps {
     steps: IStep[];
@@ -36,6 +36,11 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
                             selectedStep={state.currentStep}/>
                         )
                     }
+                    <div className="its-navigator-steps__header__forward-button">
+                        <ForwardButton
+                            state={state}
+                        />
+                    </div>
                 </div>
                 <div className="its-navigator-steps__inner">
                     <div

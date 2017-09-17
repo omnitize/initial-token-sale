@@ -89,7 +89,10 @@ export class State {
 
     isLoading: boolean = false;
 
+    isBackHistory: boolean = false;
+
     isHistory: boolean = false;
+
 }
 
 export interface IShadeStyle {

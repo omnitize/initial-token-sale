@@ -13,20 +13,27 @@ type Partial<T> = {
     [P in keyof T]?: T[P];
 }
 
-export function setState(nextState: Partial<State>) {
-    const prevState: State = state;
-    console.log('setState', state, nextState);
-    Object.assign(state, nextState);
-    appRoot.setState(state);
-    updateHistory(prevState, nextState, state);
+export function setNextState(stateUpdate: Partial<State>) {
+    console.log('setNextState', state, stateUpdate);
+    const nextState = Object.assign(state, stateUpdate);
+    updateHistory(nextState, stateUpdate);
+    appRoot.setState(nextState);
 }
 
-function updateHistory(prevState, nextState, state) {
-    if (prevState.currentStep !== nextState.currentStep) {
-        window.history.pushState(state, `step-${nextState.currentStep}`, `/`);
-    } else if (prevState.currentSubStep !== nextState.currentSubStep) {
-        window.history.pushState(state, `sub-step-${nextState.currentSubStep}`, `/`);
+function updateHistory(nextState, stateUpdate) {
+    if ("currentStep" in stateUpdate) {
+        console.log("pushing");
+        window.history.pushState(nextState, `step-${stateUpdate.currentStep}`, `/`);
+    } else if ("currentSubStep" in stateUpdate) {
+        console.log("pushing");
+        window.history.pushState(nextState, `sub-step-${stateUpdate.currentSubStep}`, `/`);
     }
+}
+
+export function setStateFromHistory(stateUpdate: Partial<State>) {
+    console.log('setNextState', state, stateUpdate);
+    const nextState = Object.assign(state, stateUpdate);
+    appRoot.setState(nextState);
 }
 
 export {
@@ -44,7 +51,8 @@ export {
 } from "./inputs";
 
 export {
-    incrementStep,
+    goBackInPage,
+    goForwardInPage,
     setStep,
     incrementSubStep,
     setSubStep,

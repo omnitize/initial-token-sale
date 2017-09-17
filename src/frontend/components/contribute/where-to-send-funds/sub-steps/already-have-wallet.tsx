@@ -3,7 +3,7 @@ import { alreadyHaveWalletContent as content } from '../../../../data/text-data'
 import { InputText, InputCheckbox, ButtonMain, ValidationError } from '../../../../common';
 import { changeCheckValidationError, changeTextValidationError, alreadyHaveWalletContinue
     , setSubStepMounted, setSubStepUnmounted, typeWalletAddress, checkDoubleCheckedAddress,
-    setState
+    setNextState
 } from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
@@ -105,7 +105,7 @@ export class AlreadyHaveWallet extends React.Component<IAlreadyHaveWalletProps, 
     };
 
     private handleContinueClick = () => {
-        setState({isLoading: true});
+        setNextState({isLoading: true});
         return sendTargetAddress(this.props.state.sessionToken, this.props.state.targetAddress)
             .then(({ fundAddresses }) => {
                 alreadyHaveWalletContinue(fundAddresses);

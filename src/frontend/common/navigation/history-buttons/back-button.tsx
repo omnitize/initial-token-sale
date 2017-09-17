@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { State } from '../../models';
-import { goBackInPage } from '../../state/navigation';
+import { State } from '../../../models';
+import { goBackInPage } from '../../../state';
 
 interface IProps {
     state: State;
