@@ -1,6 +1,10 @@
 import * as React from 'react';
+import { State } from '../../models';
+import { goBackInPage } from '../../state/navigation';
 
-interface IProps {}
+interface IProps {
+    state: State;
+}
 
 export class BackButton extends React.Component<IProps, any> {
 
@@ -9,9 +13,12 @@ export class BackButton extends React.Component<IProps, any> {
     }
 
     render(): JSX.Element {
+        const isDisabled = !this.props.state.isHistory;
         return (
-            <button className="its-back-button">
-                <div className="its-back-button__arrow"/>
+            <button
+                className={`its-back-button ${isDisabled ? "--disabled" : ""}`}
+                onClick={isDisabled ? null : goBackInPage}>
+                <div className={`its-back-button__arrow ${isDisabled ? "--disabled" : ""}`}/>
                 <span className="its-back-button__text">
                     back
                 </span>

@@ -3,11 +3,17 @@ import { State, EUserFlow } from '../models';
 import { NavigatorSteps, ButtonMain } from '../common';
 import { checkBalanceStepList, contributeStepList } from '../data/component-data';
 import { registerAppRoot, setState } from '../state';
+import { goBack } from '../state/navigation';
 
 export class Main extends React.Component<any, State> {
 
     public constructor(props?: any, context?: any) {
         super(props, context);
+    }
+
+    componentDidMount() {
+        window.history.pushState(new State, `initial-state`, `/`);
+        window.addEventListener("popstate", goBack);
     }
 
     componentWillMount() {

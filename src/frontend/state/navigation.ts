@@ -1,4 +1,4 @@
-import { setState, state } from './index'
+import { setState, state} from './index'
 
 let timeoutId: any;
 
@@ -7,7 +7,20 @@ import {
     ECheckWalletSubSteps
 } from '../models';
 
+// b a c k
+
+export const goBackInPage = () => {
+    if (window && window.history.state)  {
+        window.history.back();
+    }
+};
+
+export const goBack = (e: PopStateEvent) => {
+    setState(e.state);
+};
+
 // s t e p s
+
 export const incrementStep = () => {
     const max = maxSteps();
     const nextStep = state.currentStep === max ? state.currentStep : state.currentStep + 1;
@@ -16,10 +29,14 @@ export const incrementStep = () => {
 
 export const setStep = (nextStep: number) => {
     resetScroll();
-    setState({ currentStep: nextStep });
+    setState({
+        isHistory: true,
+        currentStep: nextStep
+    });
 };
 
 // s u b - s t e p s
+
 export const incrementSubStep = () => {
     const max = maxSubSteps();
     const nextSubStep = state.currentSubStep === max ? state.currentSubStep : state.currentSubStep + 1;
@@ -28,7 +45,10 @@ export const incrementSubStep = () => {
 
 export const setSubStep = (nextSubStep: number) => {
     resetScroll();
-    setState({ currentSubStep: nextSubStep });
+    setState({
+        isHistory: true,
+        currentSubStep: nextSubStep
+    });
 };
 
 export const setSubStepMounted = (nextSubStepMounted: number) => {

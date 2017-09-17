@@ -13,10 +13,20 @@ type Partial<T> = {
     [P in keyof T]?: T[P];
 }
 
-export function setState(newState: Partial<State>) {
-    console.log('setState', state, newState);
-    Object.assign(state, newState);
+export function setState(nextState: Partial<State>) {
+    const prevState: State = state;
+    console.log('setState', state, nextState);
+    Object.assign(state, nextState);
     appRoot.setState(state);
+    updateHistory(prevState, nextState, state);
+}
+
+function updateHistory(prevState, nextState, state) {
+    if (prevState.currentStep !== nextState.currentStep) {
+        window.history.pushState(state, `step-${nextState.currentStep}`, `/`);
+    } else if (prevState.currentSubStep !== nextState.currentSubStep) {
+        window.history.pushState(state, `sub-step-${nextState.currentSubStep}`, `/`);
+    }
 }
 
 export {

@@ -7,6 +7,7 @@ export const contributeStartCaptchaSuccess = (captchaSuccessParams: ICaptchaSucc
     const max: number = maxSteps();
     const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
     setState( {
+        isHistory: true,
         currentStep: nextStep,
         sessionToken: captchaSuccessParams.sessionToken,
         clientConfig: captchaSuccessParams.clientConfig
@@ -19,6 +20,7 @@ export const alreadyHaveWalletContinue = (fundAddresses: Array<FundAddress>) => 
     const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
 
     setState( {
+        isHistory: true,
         isLoading: false,
         currentStep: nextStep,
         currentSubStep: -1,
@@ -35,6 +37,7 @@ export const createWalletContinue = (fundAddresses: Array<FundAddress>) => {
     const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
 
     setState( {
+        isHistory: true,
         isLoading: false,
         currentStep: nextStep,
         currentSubStep: -1,

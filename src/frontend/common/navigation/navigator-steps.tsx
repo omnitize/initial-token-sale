@@ -24,7 +24,9 @@ export class NavigatorSteps extends React.Component<INavigatorStepsProps, any> {
             <div className="its-navigator-steps --its-content-section">
                 <div className="its-navigator-steps__header">
                     <div className="its-navigator-steps__header__back-button">
-                        <BackButton/>
+                        <BackButton
+                            state={state}
+                        />
                     </div>
                     {steps.map((step, i) =>
                         <MarkerStep

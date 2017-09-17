@@ -177,6 +177,7 @@
 .its-back-button.--disabled {
     color: #212121;
     opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .its-back-button__arrow {
@@ -190,7 +191,7 @@
     transform: rotate(45deg);
 }
 
-.its-back-button.--disabled {
+.its-back-button__arrow.--disabled {
     border-bottom: 2px solid #212121;
     border-left: 2px solid #212121;
     opacity: 0.5;

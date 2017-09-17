@@ -7,6 +7,7 @@ export const checkBalanceStartCaptchaSuccess = (captchaSuccessParams: ICaptchaSu
     const max: number = maxSteps();
     const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
     setState( {
+        isHistory: true,
         currentStep: nextStep,
         sessionToken: captchaSuccessParams.sessionToken,
         clientConfig: captchaSuccessParams.clientConfig
@@ -19,6 +20,7 @@ export const reclaimWalletContinue = () => {
     const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
 
     setState( {
+        isHistory: true,
         currentStep: nextStep,
         currentSubStep: -1,
         validationTextError: "", // reset validation
