@@ -1,12 +1,13 @@
-import { setState, state } from './index'
+import { setNextState, state } from './index'
 import { maxSteps, resetScroll } from './navigation';
 import { ICaptchaSuccessParams } from '../models';
 
 export const checkBalanceStartCaptchaSuccess = (captchaSuccessParams: ICaptchaSuccessParams) => {
     if(state.sessionToken) return;
     const max: number = maxSteps();
-    const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
-    setState( {
+    const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
+    setNextState( {
+        isHistory: true,
         currentStep: nextStep,
         sessionToken: captchaSuccessParams.sessionToken,
         clientConfig: captchaSuccessParams.clientConfig
@@ -16,9 +17,10 @@ export const checkBalanceStartCaptchaSuccess = (captchaSuccessParams: ICaptchaSu
 
 export const reclaimWalletContinue = () => {
     const max: number = maxSteps();
-    const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
+    const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
 
-    setState( {
+    setNextState( {
+        isHistory: true,
         currentStep: nextStep,
         currentSubStep: -1,
         validationTextError: "", // reset validation
