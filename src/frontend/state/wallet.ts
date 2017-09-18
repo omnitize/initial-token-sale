@@ -2,7 +2,7 @@ const bip39 = require('bip39');
 const hdkey = require('ethereumjs-wallet/hdkey');
 import { setNextState } from './index'
 
-export const createWallet = (mnemonicPhrase?: string) => {
+export function createWallet(mnemonicPhrase?: string) {
     if(!mnemonicPhrase) {
         mnemonicPhrase = bip39.generateMnemonic();
     }
@@ -14,8 +14,8 @@ export const createWallet = (mnemonicPhrase?: string) => {
         targetMnemonicPhrase: mnemonicPhrase,
         targetWallet: v3String
     });
-};
+}
 
-export const checkMnemonic = (mnemonicPhrase: string): boolean => {
+export function checkMnemonic(mnemonicPhrase: string): boolean {
     return bip39.validateMnemonic(mnemonicPhrase);
-};
+}

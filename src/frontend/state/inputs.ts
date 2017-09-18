@@ -1,43 +1,43 @@
 import { setNextState } from './index'
 
 // t e x t
-export const typeWalletAddress = (nextAddress: string) => {
+export function typeWalletAddress(nextAddress: string) {
     setNextState({
         targetAddress: nextAddress,
         validationTextError: ""
     });
-};
+}
 
-export const typeMnemonicPhrase = (nextPnemonicPhrase: string) => {
+export function typeMnemonicPhrase(nextPnemonicPhrase: string) {
     setNextState({
         targetMnemonicPhrase: nextPnemonicPhrase,
         validationTextError: ""
     });
-};
+}
 
-export const changeTextValidationError = (nextValidationTextError: string) => {
+export function changeTextValidationError(nextValidationTextError: string) {
     setNextState({
         validationTextError: nextValidationTextError
     });
-};
+}
 
 // c h e c k b o x
-export const checkDoubleCheckedAddress = (nextIsDoubleCheckedAddress: boolean) => {
+export function checkDoubleCheckedAddress(nextIsDoubleCheckedAddress: boolean) {
     setNextState({
         isDoubleCheckedAddress: nextIsDoubleCheckedAddress,
         validationCheckboxError: ""
     });
-};
+}
 
-export const checkWrittenMnemonicPhrase = (nextIsWrittenMnemonicPhrase: boolean) => {
+export function checkWrittenMnemonicPhrase(nextIsWrittenMnemonicPhrase: boolean) {
     setNextState({
         isWrittenMnemonicPhrase: nextIsWrittenMnemonicPhrase,
         validationCheckboxError: ""
     });
-};
+}
 
-export const changeCheckValidationError = (nextValidationCheckboxError: string) => {
+export function changeCheckValidationError(nextValidationCheckboxError: string) {
     setNextState({
         validationCheckboxError: nextValidationCheckboxError
     });
-};
+}

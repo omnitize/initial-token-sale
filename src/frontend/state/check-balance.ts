@@ -2,7 +2,7 @@ import { setNextState, state } from './index'
 import { maxSteps, resetScroll } from './navigation';
 import { ICaptchaSuccessParams } from '../models';
 
-export const checkBalanceStartCaptchaSuccess = (captchaSuccessParams: ICaptchaSuccessParams) => {
+export function checkBalanceStartCaptchaSuccess(captchaSuccessParams: ICaptchaSuccessParams) {
     if(state.sessionToken) return;
     const max: number = maxSteps();
     const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
@@ -13,9 +13,9 @@ export const checkBalanceStartCaptchaSuccess = (captchaSuccessParams: ICaptchaSu
         clientConfig: captchaSuccessParams.clientConfig
     });
     resetScroll();
-};
+}
 
-export const reclaimWalletContinue = () => {
+export function reclaimWalletContinue() {
     const max: number = maxSteps();
     const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
 
@@ -28,4 +28,4 @@ export const reclaimWalletContinue = () => {
     });
 
     resetScroll();
-};
+}
