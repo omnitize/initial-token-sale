@@ -58,7 +58,7 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                     </ButtonMain>
                 </div>
                 <p>{content.paragraph2}</p>
-                <ButtonText onClick={this.handleDownloadWalletClick}>
+                <ButtonText onClick={isContinueValid ? this.handleDownloadWalletClick : this.handleContinueValidationError}>
                     {content.buttonText}
                 </ButtonText>
                 <p>
