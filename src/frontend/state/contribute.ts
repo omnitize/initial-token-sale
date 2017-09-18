@@ -1,13 +1,12 @@
-import { setNextState, state } from './index'
+import { setState, state } from './index'
 import { maxSteps, resetScroll } from './navigation';
 import { FundAddress, ICaptchaSuccessParams } from '../models';
 
 export const contributeStartCaptchaSuccess = (captchaSuccessParams: ICaptchaSuccessParams) => {
     if(state.sessionToken) return;
     const max: number = maxSteps();
-    const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
-    setNextState( {
-        isHistory: true,
+    const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
+    setState( {
         currentStep: nextStep,
         sessionToken: captchaSuccessParams.sessionToken,
         clientConfig: captchaSuccessParams.clientConfig
@@ -17,10 +16,9 @@ export const contributeStartCaptchaSuccess = (captchaSuccessParams: ICaptchaSucc
 
 export const alreadyHaveWalletContinue = (fundAddresses: Array<FundAddress>) => {
     const max: number = maxSteps();
-    const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
+    const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
 
-    setNextState( {
-        isHistory: true,
+    setState( {
         isLoading: false,
         currentStep: nextStep,
         currentSubStep: -1,
@@ -34,10 +32,9 @@ export const alreadyHaveWalletContinue = (fundAddresses: Array<FundAddress>) => 
 
 export const createWalletContinue = (fundAddresses: Array<FundAddress>) => {
     const max: number = maxSteps();
-    const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
+    const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
 
-    setNextState( {
-        isHistory: true,
+    setState( {
         isLoading: false,
         currentStep: nextStep,
         currentSubStep: -1,

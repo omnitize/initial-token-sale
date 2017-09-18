@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { vendorLogos } from '../../../data/image-data';
-import { BackgroundHighlight } from '../../../common';
+import { vendorLogos } from '../../../data/image-data/vendorLogos';
 
 interface ICurrencyAddressProps {
     currency: string;
@@ -17,21 +16,9 @@ export class CurrencyAddress extends React.Component<ICurrencyAddressProps, any>
     render(): JSX.Element {
         return (
             <div>
-                <div className="its-currency-address__inner">
-                    <div className="its-currency-address__logo">
-                        {vendorLogos[this.props.currency]}
-                    </div>
-                    <div className="its-currency-address__price">
-                        <BackgroundHighlight>
-                            ({this.props.price} per token)
-                        </BackgroundHighlight>
-                    </div>
-                    <div className="its-currency-address__address">
-                        <BackgroundHighlight>
-                            {this.props.address}
-                        </BackgroundHighlight>
-                    </div>
-                </div>
+                {vendorLogos[this.props.currency]}
+                ({this.props.price} per token)
+                {this.props.address}
             </div>
         );
     }

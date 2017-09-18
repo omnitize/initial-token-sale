@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LineLeft, LineRight, CircleStep } from './lines';
-import { maxSteps } from '../../state';
+import { maxSteps, setStep } from '../../state';
 
 interface IMarkerStepProps {
     index: number
@@ -27,7 +27,8 @@ export class MarkerStep extends React.Component<IMarkerStepProps, any> {
                     <CircleStep
                         index={index}
                         selectedStep={this.props.selectedStep}
-                        backgroundStyle={this.shadeStyle("background")}/>
+                        backgroundStyle={this.shadeStyle("background")}
+                        onClick={() => MarkerStep.handleStepNavClick(index)}/>
                     {(index === 0)
                         ? null
                         : <LineLeft
@@ -45,6 +46,10 @@ export class MarkerStep extends React.Component<IMarkerStepProps, any> {
                 </div>
             </div>
         );
+    }
+
+    static handleStepNavClick(step: number) {
+        setStep(step);
     }
 
     private shadeStyle(type: "background" | "color") {

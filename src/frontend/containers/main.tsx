@@ -2,8 +2,7 @@ import * as React from 'react';
 import { State, EUserFlow } from '../models';
 import { NavigatorSteps, ButtonMain } from '../common';
 import { checkBalanceStepList, contributeStepList } from '../data/component-data';
-import { registerAppRoot, setNextState } from '../state';
-import { navigateHistory } from '../state/navigation';
+import { registerAppRoot, setState } from '../state';
 
 export class Main extends React.Component<any, State> {
 
@@ -11,18 +10,9 @@ export class Main extends React.Component<any, State> {
         super(props, context);
     }
 
-    componentDidMount() {
-        window.history.pushState(new State, `initial-state`, `/`);
-        window.addEventListener("popstate", navigateHistory);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("popstate", navigateHistory);
-    }
-
     componentWillMount() {
         registerAppRoot(this);
-        setNextState({});
+        setState({});
     }
 
     render(): JSX.Element {
@@ -41,7 +31,7 @@ export class Main extends React.Component<any, State> {
     }
 
     private toggleUseCase = () => {
-        setNextState({
+        setState({
             selectedUseCase: this.state.selectedUseCase === EUserFlow.CONTRIBUTE
                 ? EUserFlow.CHECK_BALANCE
                 : EUserFlow.CONTRIBUTE
@@ -50,7 +40,7 @@ export class Main extends React.Component<any, State> {
     };
 
     static reset() {
-        setNextState({
+        setState({
             currentStep: 0,
             currentSubStep: -1,
             currentSubStepMounted: -1,

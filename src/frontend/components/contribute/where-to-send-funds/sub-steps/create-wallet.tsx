@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createWalletContent as content } from '../../../../data/text-data';
 import { ButtonText, ButtonMain, InputCheckbox, ValidationError, BackgroundHighlight, Spinner  } from '../../../../common';
 import { createWalletContinue, setSubStepMounted, setSubStepUnmounted, checkWrittenMnemonicPhrase, createWallet
-    , changeCheckValidationError, setNextState } from '../../../../state';
+    , changeCheckValidationError, setState } from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
 import { downloadWallet } from '../../../../utils';
@@ -117,7 +117,7 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
     };
 
     private handleContinueClick = () => {
-        setNextState({isLoading: true});
+        setState({isLoading: true});
         sendTargetAddress(this.props.state.sessionToken, this.props.state.targetAddress)
         .then(({ fundAddresses }) => {
             createWalletContinue(fundAddresses)

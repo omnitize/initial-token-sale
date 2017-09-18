@@ -88,11 +88,6 @@ export class State {
     transactions: Array<Transaction> = [];
 
     isLoading: boolean = false;
-
-    isBackHistory: boolean = false;
-
-    isHistory: boolean = false;
-
 }
 
 export interface IShadeStyle {

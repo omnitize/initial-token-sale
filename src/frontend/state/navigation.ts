@@ -1,4 +1,4 @@
-import { setNextState, setStateFromHistory, state } from './index'
+import { setState, state } from './index'
 
 let timeoutId: any;
 
@@ -7,29 +7,7 @@ import {
     ECheckWalletSubSteps
 } from '../models';
 
-// n a v i g a t e  h i s t o r y
-
-export const goBackInPage = () => {
-    if (window && window.history.state)  {
-        window.history.back();
-    }
-};
-
-export const goForwardInPage = () => {
-    if (window && window.history.state)  {
-        window.history.forward();
-    }
-};
-
-export const navigateHistory = (e: PopStateEvent) => {
-    const isBackHistory = {
-        isBackHistory: e.state.currentStep < state.currentStep || e.state.currentSubStep <= state.currentSubStep
-    };
-    setStateFromHistory(Object.assign(e.state, isBackHistory));
-};
-
 // s t e p s
-
 export const incrementStep = () => {
     const max = maxSteps();
     const nextStep = state.currentStep === max ? state.currentStep : state.currentStep + 1;
@@ -38,14 +16,10 @@ export const incrementStep = () => {
 
 export const setStep = (nextStep: number) => {
     resetScroll();
-    setNextState({
-        isHistory: true,
-        currentStep: nextStep
-    });
+    setState({ currentStep: nextStep });
 };
 
 // s u b - s t e p s
-
 export const incrementSubStep = () => {
     const max = maxSubSteps();
     const nextSubStep = state.currentSubStep === max ? state.currentSubStep : state.currentSubStep + 1;
@@ -54,14 +28,11 @@ export const incrementSubStep = () => {
 
 export const setSubStep = (nextSubStep: number) => {
     resetScroll();
-    setNextState({
-        isHistory: true,
-        currentSubStep: nextSubStep
-    });
+    setState({ currentSubStep: nextSubStep });
 };
 
 export const setSubStepMounted = (nextSubStepMounted: number) => {
-    timeoutId = setTimeout(() => setNextState({ currentSubStepMounted: nextSubStepMounted }), 0);
+    timeoutId = setTimeout(() => setState({ currentSubStepMounted: nextSubStepMounted }), 0);
     // creates enough delay to register as CSS transition
 };
 

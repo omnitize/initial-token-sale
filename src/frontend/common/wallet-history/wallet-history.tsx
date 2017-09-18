@@ -2,11 +2,10 @@ import * as React from 'react';
 import { walletHistoryContent as content } from '../../data/text-data'
 import { ButtonMain } from '..';
 import { WalletHistoryTable } from './wallet-history-table';
-import { ECheckBalanceSteps, EContributeSteps, State } from '../../models';
+import { State } from '../../models';
 import { downloadWallet } from '../../utils';
 
 interface IWalletHistoryProps {
-    stepEnum: EContributeSteps | ECheckBalanceSteps
     state?: State;
 }
 
@@ -36,10 +35,7 @@ export class WalletHistory extends React.Component<IWalletHistoryProps, any> {
         return (
             <div>
                 <h2>{content.heading}</h2>
-                <WalletHistoryTable
-                    stepEnum={this.props.stepEnum}
-                    state={this.props.state}
-                />
+                <WalletHistoryTable state={this.props.state} />
                 { this.renderButtonsIfWalletCreated() }
             </div>
         );
