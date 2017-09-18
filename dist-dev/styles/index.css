@@ -368,6 +368,7 @@
 
 .its-main .its-prove-you-are-human__recaptcha-checkbox {
     display: inline-block;
+    cursor: pointer;
 }
 
 .its-main .--its-transition-transform {
@@ -452,6 +453,7 @@
 }
 
 .its-main .background-highlight {
+    position: relative;
     width: calc(100% - 32px);
     padding: 8px 12px;
     margin: 4px;

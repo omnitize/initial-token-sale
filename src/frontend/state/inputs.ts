@@ -21,6 +21,12 @@ export function changeTextValidationError(nextValidationTextError: string) {
     });
 }
 
+export function changeTextValidationError2(nextValidationTextError: string) {
+    setNextState({
+        validationTextError2: nextValidationTextError
+    });
+}
+
 // c h e c k b o x
 export function checkDoubleCheckedAddress(nextIsDoubleCheckedAddress: boolean) {
     setNextState({

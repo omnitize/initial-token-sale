@@ -4,7 +4,7 @@ import { ButtonMain, ButtonText, ValidationError } from '../../../common';
 import { InputText } from '../../../common/input-text';
 import { checkBalanceStepList } from '../../../data/component-data';
 import { ECheckBalanceSteps, State } from '../../../models';
-import { incrementSubStep, changeTextValidationError, typeWalletAddress } from '../../../state';
+import { incrementStep, incrementSubStep, changeTextValidationError, typeWalletAddress } from '../../../state';
 import { isWalletAddressValid } from '../../../utils';
 
 interface ICheckWalletProps {
@@ -90,11 +90,10 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
     };
 
     private handleNoWalletAddress = () => {
-        // TODO ask what this should do - create wallet?
-    };
-
-    private handleContinue = () => {
         incrementSubStep();
     };
 
+    private handleContinue = () => {
+        incrementStep();
+    };
 }

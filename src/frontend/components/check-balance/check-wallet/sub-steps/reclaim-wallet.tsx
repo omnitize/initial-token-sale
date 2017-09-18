@@ -3,7 +3,7 @@ import { reclaimWalletContent as content } from '../../../../data/text-data'
 import { ButtonMain, ButtonText, InputText, BackgroundHighlight, ValidationError } from '../../../../common';
 import { ECheckWalletSubSteps, State } from '../../../../models';
 import { setSubStepMounted, setSubStepUnmounted, reclaimWalletContinue, typeMnemonicPhrase
-    , changeTextValidationError } from '../../../../state';
+    , changeTextValidationError, changeTextValidationError2, createWallet } from '../../../../state';
 import { downloadWallet } from '../../../../utils';
 
 interface IReclaimWalletProps {
@@ -25,8 +25,10 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
     }
 
     render(): JSX.Element {
-        const { targetMnemonicPhrase, targetAddress, validationTextError } = this.props.state;
-        const isContinueValid = targetMnemonicPhrase.length > 0;
+        const { targetMnemonicPhrase, targetAddress, validationTextError
+            , validationTextError2 } = this.props.state;
+        const isLookUpWalletValid = targetMnemonicPhrase.length > 0;
+        const isContinueValid = targetAddress && targetAddress.length > 0;
 
         return (
             <div
@@ -46,6 +48,15 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                         onChange={this.handleMnemonicPhraseChange}
                     />
                 </ValidationError>
+                <div className="--its-continue">
+                    <ButtonMain
+                        isDisabled={!isLookUpWalletValid}
+                        onClick={isLookUpWalletValid
+                            ? this.handleLookUpClick
+                            : this.handleLookUpWalletValidationError}>
+                        {content.buttonMain}
+                    </ButtonMain>
+                </div>
                 <p>{content.paragraph2}</p>
                 <ButtonText onClick={this.handleDownloadWalletClick}>
                     {content.buttonText}
@@ -56,14 +67,20 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                 <h4>
                     {content.heading3}
                 </h4>
-                <BackgroundHighlight>
-                    {targetAddress}
-                </BackgroundHighlight>
-                <div>
+                <ValidationError message={validationTextError2}>
+                    {(targetAddress && targetAddress.length > 0)
+                        ?   <BackgroundHighlight>
+                                {targetAddress}
+                            </BackgroundHighlight>
+                        :   <BackgroundHighlight>
+                                {"Address not available. Please use a mnemonic phrase to look up address."}
+                            </BackgroundHighlight>}
+                </ValidationError>
+                <div className="--its-continue">
                     <ButtonMain
                         isDisabled={!isContinueValid}
-                        onClick={isContinueValid ? this.handleContinueClick : this.handleValidationErrors}>
-                        {content.buttonMain}
+                        onClick={isContinueValid ? this.handleContinueClick : this.handleContinueValidationError}>
+                        {content.buttonMain2}
                     </ButtonMain>
                 </div>
             </div>
@@ -81,15 +98,30 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
         downloadWallet(this.props.state.targetWallet, this.props.state.targetAddress);
     };
 
-    private textValidationError() {
+    private textLookUpWalletError() {
         const phrase: string = this.props.state.targetMnemonicPhrase;
         return phrase.length > 0
             ? ""
             : "Mnemonic phrase field cannot be empty";
     }
 
-    private handleValidationErrors = () => {
-        changeTextValidationError(this.textValidationError());
+    private textContinueError() {
+        const phrase: string = this.props.state.targetAddress;
+        return phrase.length > 0
+            ? ""
+            : "No wallet specified.";
+    }
+
+    private handleLookUpWalletValidationError = () => {
+        changeTextValidationError(this.textLookUpWalletError());
+    };
+
+    private handleContinueValidationError = () => {
+        changeTextValidationError2(this.textContinueError());
+    };
+
+    private handleLookUpClick = () => {
+        createWallet(this.props.state.targetMnemonicPhrase);
     };
 
     private handleContinueClick = () => {

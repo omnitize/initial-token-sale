@@ -70,6 +70,7 @@ export class State {
 
     validationCheckboxError: string = "";
     validationTextError: string = "";
+    validationTextError2: string = "";
 
     isDoubleCheckedAddress: boolean = false;
 
