@@ -19,7 +19,7 @@ export class InputText extends React.Component<IInputTextProps, any> {
 
         return (
             <label
-                className="its-input-text__label"
+                className="its-input-text"
                 htmlFor={name}>
                 {label}
                 {this.renderInput()}
@@ -31,12 +31,12 @@ export class InputText extends React.Component<IInputTextProps, any> {
         const { name, value, onChange, placeholder } = this.props;
 
         return  <input
-            className="its-input-text"
-            name={name}
-            type={"text"}
-            value={value}
-            onChange={onChange}
-            placeholder={!!placeholder ? placeholder : null}
-        />
+                    className="its-input-text__input"
+                    name={name}
+                    type={"text"}
+                    value={value}
+                    onChange={onChange}
+                    placeholder={!!placeholder ? placeholder : null}
+                />
     }
 }

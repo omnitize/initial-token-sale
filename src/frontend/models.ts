@@ -1,6 +1,5 @@
-export interface IUseCase {
-    name: string
-    steps: IStep[]
+export interface IDictionary<T> {
+    [key: string]: T
 }
 
 export interface IStep {
@@ -87,4 +86,20 @@ export class State {
     fundAddresses: Array<FundAddress> = [];
 
     transactions: Array<Transaction> = [];
+
+    isLoading: boolean = false;
+
+    isBackHistory: boolean = false;
+
+    isHistory: boolean = false;
+
+}
+
+export interface IShadeStyle {
+    [type: string]: string
+}
+
+export interface ICaptchaSuccessParams {
+    sessionToken: string
+    clientConfig: any
 }

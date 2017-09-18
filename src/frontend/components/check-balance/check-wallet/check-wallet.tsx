@@ -22,7 +22,7 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
         const isContinueValid = targetAddress.length > 0 && isWalletAddressValid(targetAddress);
         return (
             currentSubStep === -1
-                ?  <div>
+                ?  <div className="--its-content-section">
                         <h2>
                             {content.heading}
                         </h2>
@@ -46,9 +46,9 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
                                 </ButtonText>
                             </div>
                         </div>
-                        <div>
+                        <div className="--its-continue">
                             <ButtonMain
-                                isUnselected={!isContinueValid}
+                                isDisabled={!isContinueValid}
                                 onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}
                             >
                                 {content.button2}
@@ -89,7 +89,9 @@ export class CheckWallet extends React.Component<ICheckWalletProps, any> {
         typeWalletAddress(e.currentTarget.value);
     };
 
-    private handleNoWalletAddress = () => {};
+    private handleNoWalletAddress = () => {
+        // TODO ask what this should do - create wallet?
+    };
 
     private handleContinue = () => {
         incrementSubStep();

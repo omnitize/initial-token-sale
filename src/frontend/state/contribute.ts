@@ -1,24 +1,27 @@
-import { setState, state } from './index'
+import { setNextState, state } from './index'
 import { maxSteps, resetScroll } from './navigation';
-import { FundAddress } from '../models';
+import { FundAddress, ICaptchaSuccessParams } from '../models';
 
-export function contributeStartCaptchaSuccess({ sessionToken, clientConfig }: { sessionToken: string, clientConfig: string }) {
+export const contributeStartCaptchaSuccess = (captchaSuccessParams: ICaptchaSuccessParams) => {
     if(state.sessionToken) return;
     const max: number = maxSteps();
-    const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
-    setState( {
+    const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
+    setNextState( {
+        isHistory: true,
         currentStep: nextStep,
-        sessionToken,
-        clientConfig
+        sessionToken: captchaSuccessParams.sessionToken,
+        clientConfig: captchaSuccessParams.clientConfig
     });
     resetScroll();
 };
 
-export function alreadyHaveWalletContinue(fundAddresses: Array<FundAddress>) {
+export const alreadyHaveWalletContinue = (fundAddresses: Array<FundAddress>) => {
     const max: number = maxSteps();
-    const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
+    const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
 
-    setState( {
+    setNextState( {
+        isHistory: true,
+        isLoading: false,
         currentStep: nextStep,
         currentSubStep: -1,
         fundAddresses: fundAddresses,
@@ -29,11 +32,13 @@ export function alreadyHaveWalletContinue(fundAddresses: Array<FundAddress>) {
     resetScroll();
 };
 
-export function createWalletContinue(fundAddresses: Array<FundAddress>) {
+export const createWalletContinue = (fundAddresses: Array<FundAddress>) => {
     const max: number = maxSteps();
-    const nextStep: number = state.currentStep === max ? state.currentStep : state.currentStep + 1;
+    const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;
 
-    setState( {
+    setNextState( {
+        isHistory: true,
+        isLoading: false,
         currentStep: nextStep,
         currentSubStep: -1,
         fundAddresses: fundAddresses,

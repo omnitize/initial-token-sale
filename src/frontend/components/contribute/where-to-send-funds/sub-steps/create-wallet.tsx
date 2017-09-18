@@ -1,18 +1,19 @@
 import * as React from 'react';
 import { createWalletContent as content } from '../../../../data/text-data';
-import { ButtonText, ButtonMain, InputCheckbox, ValidationError } from '../../../../common';
-import { createWalletContinue, setSubStepMounted, checkWrittenMnemonicPhrase, createWallet
-    , changeCheckValidationError } from '../../../../state/index';
+import { ButtonText, ButtonMain, InputCheckbox, ValidationError, BackgroundHighlight, Spinner  } from '../../../../common';
+import { createWalletContinue, setSubStepMounted, setSubStepUnmounted, checkWrittenMnemonicPhrase, createWallet
+    , changeCheckValidationError, setNextState } from '../../../../state';
 import { EWhereToSendFundsSubSteps, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
-import { downloadWallet } from '../../../../utils/downloadWallet';
-import { BackgroundHighlight } from '../../../../common';
+import { downloadWallet } from '../../../../utils';
 
 interface ICreateWalletProps {
     state?: State
 }
 
 export class CreateWallet extends React.Component<ICreateWalletProps, any> {
+
+    createWalletTimeoutId: any;
 
     public constructor(props?: any, context?: any) {
         super(props, context);
@@ -21,13 +22,18 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
     componentDidMount() {
         setSubStepMounted(EWhereToSendFundsSubSteps.CREATE_WALLET);
         if(!this.props.state.targetWallet) {
-            setTimeout(createWallet, 100);
+            this.createWalletTimeoutId = setTimeout(createWallet, 100);
         }
+    }
+
+    componentWillUnmount(){
+        setSubStepUnmounted();
+        clearTimeout(this.createWalletTimeoutId);
     }
 
     render(): JSX.Element {
         const { targetMnemonicPhrase, targetAddress, isWrittenMnemonicPhrase
-            , validationCheckboxError } = this.props.state;
+            , validationCheckboxError, isLoading } = this.props.state;
         const isContinueValid = isWrittenMnemonicPhrase;
 
         if(!this.props.state.targetWallet) {
@@ -72,11 +78,15 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
                         onChange={this.handleWrittenMnemonicPhraseChange}
                     />
                 </ValidationError>
-                <ButtonMain
-                    isUnselected={!isContinueValid}
-                    onClick={isContinueValid ? this.handleContinue : this.handleValidationErrors}>
-                    {content.buttonMain}
-                </ButtonMain>
+                <div className="--its-continue">
+                    {isLoading
+                        ?   <Spinner size={40}/>
+                        :   <ButtonMain
+                                isDisabled={!isContinueValid}
+                                onClick={isContinueValid ? this.handleContinueClick : this.handleValidationErrors}>
+                                {content.buttonMain}
+                            </ButtonMain>}
+                </div>
             </div>
         );
     }
@@ -106,7 +116,8 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
         checkWrittenMnemonicPhrase(e.currentTarget.checked);
     };
 
-    private handleContinue = () => {
+    private handleContinueClick = () => {
+        setNextState({isLoading: true});
         sendTargetAddress(this.props.state.sessionToken, this.props.state.targetAddress)
         .then(({ fundAddresses }) => {
             createWalletContinue(fundAddresses)

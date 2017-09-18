@@ -1,43 +1,43 @@
-import { setState } from './index'
+import { setNextState } from './index'
 
 // t e x t
 export const typeWalletAddress = (nextAddress: string) => {
-    setState({
+    setNextState({
         targetAddress: nextAddress,
         validationTextError: ""
     });
 };
 
 export const typeMnemonicPhrase = (nextPnemonicPhrase: string) => {
-    setState({
+    setNextState({
         targetMnemonicPhrase: nextPnemonicPhrase,
         validationTextError: ""
     });
 };
 
 export const changeTextValidationError = (nextValidationTextError: string) => {
-    setState({
+    setNextState({
         validationTextError: nextValidationTextError
     });
 };
 
 // c h e c k b o x
 export const checkDoubleCheckedAddress = (nextIsDoubleCheckedAddress: boolean) => {
-    setState({
+    setNextState({
         isDoubleCheckedAddress: nextIsDoubleCheckedAddress,
         validationCheckboxError: ""
     });
 };
 
 export const checkWrittenMnemonicPhrase = (nextIsWrittenMnemonicPhrase: boolean) => {
-    setState({
+    setNextState({
         isWrittenMnemonicPhrase: nextIsWrittenMnemonicPhrase,
         validationCheckboxError: ""
     });
 };
 
 export const changeCheckValidationError = (nextValidationCheckboxError: string) => {
-    setState({
+    setNextState({
         validationCheckboxError: nextValidationCheckboxError
     });
 };

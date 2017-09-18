@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { WalletHistory } from '../../common';
-import { State } from '../../models';
+import { ECheckBalanceSteps, State } from '../../models';
 
 interface IViewWalletHistoryProps {
     state?: State
@@ -14,8 +14,9 @@ export class ViewWalletHistory extends React.Component<IViewWalletHistoryProps, 
 
     render(): JSX.Element {
         return (
-            <div>
+            <div className="--its-content-section">
                 <WalletHistory
+                    stepEnum={ECheckBalanceSteps.VIEW_WALLET_HISTORY}
                     state={this.props.state}
                 />
             </div>
