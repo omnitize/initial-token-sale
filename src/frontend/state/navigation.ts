@@ -40,7 +40,9 @@ export function setStep(nextStep: number) {
     resetScroll();
     setNextState({
         isHistory: true,
-        currentStep: nextStep
+        currentStep: nextStep,
+        validationTextError: "", // reset validation
+        validationCheckboxError: "" // reset validation
     });
 }
 
@@ -56,7 +58,9 @@ export function setSubStep(nextSubStep: number) {
     resetScroll();
     setNextState({
         isHistory: true,
-        currentSubStep: nextSubStep
+        currentSubStep: nextSubStep,
+        validationTextError: "", // reset validation
+        validationCheckboxError: "" // reset validation
     });
 }
 

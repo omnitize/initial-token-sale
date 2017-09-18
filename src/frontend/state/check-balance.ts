@@ -15,6 +15,7 @@ export function checkBalanceStartCaptchaSuccess(captchaSuccessParams: ICaptchaSu
     resetScroll();
 }
 
+
 export function reclaimWalletContinue() {
     const max: number = maxSteps();
     const nextStep: number = state.currentStep === (max - 1) ? state.currentStep : state.currentStep + 1;

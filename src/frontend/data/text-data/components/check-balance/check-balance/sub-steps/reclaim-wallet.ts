@@ -10,5 +10,6 @@ export const reclaimWalletContent = {
     buttonText:  "Download my wallet as a file",
     paragraph3: "You can also copy your wallet's address and save it for future use. No need to keep your address secret, knowing it only allows checking the wallet's balance, but doesn't allow stealing from it.",
     heading3: "Your wallet's address:",
-    buttonMain2: "Continue"
+    buttonMain2: "Continue",
+    pleaseWait: "This may take a few moments, please wait patiently..."
 };

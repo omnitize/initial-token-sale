@@ -35,11 +35,6 @@ export function setStateFromHistory(stateUpdate: Partial<State>) {
 }
 
 export {
-    createWallet,
-    checkMnemonic
-} from "./wallet";
-
-export {
     typeWalletAddress,
     typeMnemonicPhrase,
     checkDoubleCheckedAddress,

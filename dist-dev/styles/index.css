@@ -359,6 +359,10 @@
     border: 2px solid #212121;
 }
 
+.its-create-wallet__please-wait {
+    color: #212121
+}
+
 /*captcha*/
 
 .its-main .its-prove-you-are-human__recaptcha {
@@ -418,7 +422,7 @@
     position: absolute;
     top: 4px;
     left: 4px;
-    border: 3px solid #000000;
+    border: 3px solid #212121;
     border-top: none;
     border-right: none;
     background: transparent;

@@ -104,3 +104,9 @@ export interface ICaptchaSuccessParams {
     sessionToken: string
     clientConfig: any
 }
+
+export interface IWalletInfo {
+    targetAddress: string
+    targetMnemonicPhrase: string
+    targetWallet: string
+}
