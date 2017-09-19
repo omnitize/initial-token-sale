@@ -153,7 +153,6 @@
     position: relative;
 }
 
-
 .its-main .its-navigator-steps__inner {
     position: relative;
     width: 100%;
@@ -189,6 +188,15 @@
     font-size: 12px;
     line-height: 14px;
     margin: 4px 0;
+    color: rgba(33,33,33, 0.5);
+}
+
+.its-main .its-marker-step-name.--selected {
+    color: rgb(0, 108, 157);
+}
+
+.its-main .its-marker-step-name.--completed {
+    color: rgb(0, 194, 178);
 }
 
 .its-main .its-circle-step {
@@ -197,10 +205,18 @@
     height: 60px;
     font-size: 24px;
     border-radius: 40px;
-    background: #131e21;
+    background: rgba(33,33,33, 0.5);
     color: #FFFFFF;
     outline: none;
     cursor: pointer;
+}
+
+.its-main .its-circle-step.--selected {
+    background: rgb(0, 108, 157);
+}
+
+.its-main .its-circle-step.--completed {
+    background: rgb(0, 194, 178);
 }
 
 .its-main .its-circle-step-text {
@@ -213,11 +229,19 @@
     left: 0;
     width: calc(50% - 30px);
     height: 4px;
-    background: #131e21;
+    background: rgba(33,33,33, 0.5);
     color: #FFFFFF;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+}
+
+.its-main .its-line-left.--selected {
+    background: rgb(0, 108, 157);
+}
+
+.its-main .its-line-left.--completed {
+    background: rgb(0, 194, 178);
 }
 
 .its-main .its-line-right {
@@ -226,11 +250,19 @@
     left: calc(50% + 30px);
     width: calc(50% - 30px);
     height: 4px;
-    background: #131e21;
+    background: rgba(33,33,33, 0.5);
     color: #FFFFFF;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+}
+
+.its-main .its-line-right.--selected {
+    background: rgb(0, 108, 157);
+}
+
+.its-main .its-line-right.--completed {
+    background: rgb(0, 194, 178);
 }
 
 /*back*/

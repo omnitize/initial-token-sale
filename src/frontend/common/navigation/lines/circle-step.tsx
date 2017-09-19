@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { IShadeStyle } from '../../../models';
 
 interface ICircleStepProps {
     index: number
     selectedStep: number
-    backgroundStyle: IShadeStyle
+    stepClass: string
 }
 
 export class CircleStep extends React.Component<ICircleStepProps, any> {
@@ -16,8 +15,7 @@ export class CircleStep extends React.Component<ICircleStepProps, any> {
     render(): JSX.Element {
         return (
             <div
-                className="its-circle-step"
-                style={this.props.backgroundStyle}>
+                className={`its-circle-step ${this.props.stepClass}`}>
                 <div className="its-circle-step-text">
                     {`${this.props.index + 1}`}
                 </div>
