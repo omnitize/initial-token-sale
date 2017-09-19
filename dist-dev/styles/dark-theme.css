@@ -122,3 +122,7 @@
     border-top: none;
     border-right: none;
 }
+
+.its-main.--dark .validation-error-container:before {
+    background: #19282c;
+}
