@@ -2,3 +2,104 @@
     background: #131e21;
     color: #FFFFFF;
 }
+
+/*buttons*/
+
+.its-main.--dark button.its-button-main.--disabled {
+    background: #FFFFFF;
+    color: #131e21;
+    opacity: 0.5;
+}
+
+.its-main.--dark .its-back-button__arrow.--disabled {
+    border-bottom: 2px solid #FFFFFF;
+    border-left: 2px solid #FFFFFF;
+}
+
+.its-main.--dark .its-back-button.--disabled {
+    color: #FFFFFF;
+    opacity: 0.5;
+}
+
+.its-main.--dark .its-forward-button__arrow.--disabled {
+    border-top: 2px solid #FFFFFF;
+    border-right: 2px solid #FFFFFF;
+}
+
+.its-main.--dark .its-forward-button.--disabled {
+    color: #FFFFFF;
+    opacity: 0.5;
+}
+
+/*navigation*/
+
+.its-main.--dark .its-marker-step-name {
+    color: rgba(255,255,255, 0.5);
+}
+
+.its-main.--dark .its-marker-step-name.--selected {
+    color: rgb(0, 108, 157);
+}
+
+.its-main.--dark .its-marker-step-name.--completed {
+    color: rgb(0, 194, 178);
+}
+
+
+.its-main.--dark .its-circle-step {
+    background: rgba(255,255,255, 0.5);
+    color: #131e21;
+}
+
+.its-main.--dark .its-circle-step.--selected {
+    background: rgb(0, 108, 157);
+}
+
+.its-main.--dark .its-circle-step.--completed {
+    background: rgb(0, 194, 178);
+}
+
+.its-main.--dark .its-circle-step-text {
+    margin-top: 14px;
+}
+
+.its-main.--dark .its-line-left {
+    background: rgba(255,255,255, 0.5);
+    color: #131e21;
+}
+
+.its-main.--dark .its-line-left.--selected {
+    background: rgb(0, 108, 157);
+}
+
+.its-main.--dark .its-line-left.--completed {
+    background: rgb(0, 194, 178);
+}
+
+.its-main.--dark .its-line-right {
+    background: rgba(255,255,255, 0.5);
+    color: #131e21;
+}
+
+.its-main.--dark .its-line-right.--selected {
+    background: rgb(0, 108, 157);
+}
+
+.its-main.--dark .its-line-right.--completed {
+    background: rgb(0, 194, 178);
+}
+
+/*wallet*/
+
+.its-main.--dark .its-wallet-history-table {
+    border: 2px solid #FFFFFF;
+}
+
+.its-main.--dark .its-create-wallet__please-wait {
+    color: #FFFFFF
+}
+
+.its-main.--dark .its-tx-status-icon__inner {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
