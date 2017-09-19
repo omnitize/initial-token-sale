@@ -94,6 +94,7 @@ export class State {
 
     isHistory: boolean = false;
 
+    isDarkTheme: boolean = false;
 }
 
 export interface IShadeStyle {

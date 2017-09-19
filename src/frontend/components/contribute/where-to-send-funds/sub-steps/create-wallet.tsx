@@ -3,7 +3,7 @@ import { createWalletContent as content } from '../../../../data/text-data';
 import { ButtonText, ButtonMain, InputCheckbox, ValidationError, BackgroundHighlight, Spinner  } from '../../../../common';
 import { createWalletContinue, setSubStepMounted, setSubStepUnmounted, checkWrittenMnemonicPhrase
     , changeCheckValidationError, setNextState } from '../../../../state';
-import {EWhereToSendFundsSubSteps, IWalletInfo, State} from '../../../../models';
+import { EWhereToSendFundsSubSteps, IWalletInfo, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
 import { downloadWallet, createWallet } from '../../../../utils';
 
