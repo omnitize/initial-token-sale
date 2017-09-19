@@ -103,3 +103,22 @@
     -webkit-filter: invert(100%);
     filter: invert(100%);
 }
+
+/*inputs*/
+
+.its-main.--dark .its-input-text__input {
+    background: #131e21;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+
+.its-main.--dark .its-input-checkbox__label {
+    background: #131e21;
+    border: 2px solid #FFFFFF;
+}
+
+.its-main.--dark .its-input-checkbox__label:before {
+    border: 3px solid #FFFFFF;
+    border-top: none;
+    border-right: none;
+}

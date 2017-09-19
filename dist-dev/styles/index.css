@@ -426,10 +426,10 @@
 
 .its-main .its-input-text__input {
     width: calc(100% - 36px);
+    background: #FFFFFF;
     border: 2px solid #131e21;
     padding: 4px;
     margin: 0 12px 18px 12px;
-    background: #FFFFFF;
 }
 
 .its-main .its-input-checkbox {
