@@ -77,11 +77,11 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                         <ValidationError message={validationTextError2}>
                             {(targetAddress && targetAddress.length > 0)
                                 ?   <BackgroundHighlight>
-                                    {targetAddress}
-                                </BackgroundHighlight>
+                                        {targetAddress}
+                                    </BackgroundHighlight>
                                 :   <BackgroundHighlight>
-                                    {"Address not available. Please use a mnemonic phrase to look up address."}
-                                </BackgroundHighlight>}
+                                        {"Address not available. Please use a mnemonic phrase to look up address."}
+                                    </BackgroundHighlight>}
                         </ValidationError>
                         <div className="--its-continue">
                             <ButtonMain
@@ -131,7 +131,8 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
         setNextState({isLoading: true});
         this.lookUpWalletTimeerId = setTimeout(() => {
             createWallet(this.props.state.targetMnemonicPhrase)
-                .then((walletObject: IWalletInfo) => setNextState({...walletObject, isLoading: false}))
+                .then((walletObject: IWalletInfo) =>
+                    setNextState({...walletObject, isLoading: false, validationTextError2: ""}))
                 .catch((err) => {
                     setNextState({isLoading: false});
                     console.error(err);

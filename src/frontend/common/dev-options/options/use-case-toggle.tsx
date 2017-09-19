@@ -26,7 +26,7 @@ export class UseCaseToggle extends React.Component<IUseCaseToggleProps, any> {
 
     private toggleUseCase = () => {
         setNextState({
-            selectedUseCase: this.state.selectedUseCase === EUserFlow.CONTRIBUTE
+            selectedUseCase: this.props.state.selectedUseCase === EUserFlow.CONTRIBUTE
                 ? EUserFlow.CHECK_BALANCE
                 : EUserFlow.CONTRIBUTE
         });

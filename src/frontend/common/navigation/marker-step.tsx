@@ -51,9 +51,9 @@ export class MarkerStep extends React.Component<IMarkerStepProps, any> {
         const { selectedStep, index } = this.props;
         return {
             [type]: selectedStep === index
-                ? "#0091EA"
+                ? "rgb(0, 108, 157)"
                 : selectedStep > index
-                    ? "#00C853"
+                    ? "rgb(0, 194, 178)"
                     : "rgba(33,33,33, 0.5)"
         }
     }

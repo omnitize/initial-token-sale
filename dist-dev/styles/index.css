@@ -7,8 +7,8 @@
     width: 720px;
     max-width: 720px;
     padding: 40px;
-    color: #212121;
-    background: #EEEEEE;
+    color: #131e21;
+    background: #FFFFFF;
 }
 
 .its-main h2 {
@@ -53,8 +53,8 @@
     min-width: 180px;
     max-width: 50%;
     padding: 8px 12px;
-    background: #0091EA;
-    color: #EEEEEE;
+    background: rgb(0, 108, 157);
+    color: #FFFFFF;
     border: none;
     outline: none;
     overflow: hidden;
@@ -73,7 +73,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #0277BD;
+    background: rgba(0, 108, 157, 0.5);
     -webkit-transform: translateY(-100%);
     -ms-transform: translateY(-100%);
     transform: translateY(-100%);
@@ -93,11 +93,11 @@
 }
 
 .its-main button.its-button-main.--selected {
-    background: #01579B;
+    background: rgb(0, 137, 155);
 }
 
 .its-main button.its-button-main.--disabled {
-    background: #212121;
+    background: #131e21;
     opacity: 0.5;
 }
 
@@ -110,7 +110,7 @@
 .its-main button.its-button-text {
     display: inline-block;
     padding: 4px;
-    color: #0091EA;
+    color: rgb(0, 108, 157);
     background: none;
     border: none;
     outline: none;
@@ -197,8 +197,8 @@
     height: 60px;
     font-size: 24px;
     border-radius: 40px;
-    background: #212121;
-    color: #EEEEEE;
+    background: #131e21;
+    color: #FFFFFF;
     outline: none;
     cursor: pointer;
 }
@@ -213,8 +213,8 @@
     left: 0;
     width: calc(50% - 30px);
     height: 4px;
-    background: #212121;
-    color: #EEEEEE;
+    background: #131e21;
+    color: #FFFFFF;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -226,8 +226,8 @@
     left: calc(50% + 30px);
     width: calc(50% - 30px);
     height: 4px;
-    background: #212121;
-    color: #EEEEEE;
+    background: #131e21;
+    color: #FFFFFF;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -251,7 +251,7 @@
     outline: none;
     background: none;
     opacity: 1;
-    color: #0091EA;
+    color: rgb(0, 108, 157);
     cursor: pointer;
 }
 
@@ -260,7 +260,7 @@
 }
 
 .its-back-button.--disabled {
-    color: #212121;
+    color: #131e21;
     opacity: 0.5;
     cursor: not-allowed;
 }
@@ -271,16 +271,16 @@
     left: -4px;
     width: 18px;
     height: 18px;
-    border-bottom: 2px solid #0091EA;
-    border-left: 2px solid #0091EA;
+    border-bottom: 2px solid rgb(0, 108, 157);
+    border-left: 2px solid rgb(0, 108, 157);
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
 
 .its-back-button__arrow.--disabled {
-    border-bottom: 2px solid #212121;
-    border-left: 2px solid #212121;
+    border-bottom: 2px solid #131e21;
+    border-left: 2px solid #131e21;
     opacity: 0.5;
 }
 
@@ -308,7 +308,7 @@
     outline: none;
     background: none;
     opacity: 1;
-    color: #0091EA;
+    color: rgb(0, 108, 157);
     cursor: pointer;
 }
 
@@ -317,7 +317,7 @@
 }
 
 .its-forward-button.--disabled {
-    color: #212121;
+    color: #131e21;
     opacity: 0.5;
     cursor: not-allowed;
 }
@@ -328,16 +328,16 @@
     right: -4px;
     width: 18px;
     height: 18px;
-    border-top: 2px solid #0091EA;
-    border-right: 2px solid #0091EA;
+    border-top: 2px solid rgb(0, 108, 157);
+    border-right: 2px solid rgb(0, 108, 157);
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
 
 .its-forward-button__arrow.--disabled {
-    border-top: 2px solid #212121;
-    border-right: 2px solid #212121;
+    border-top: 2px solid #131e21;
+    border-right: 2px solid #131e21;
     opacity: 0.5;
 }
 
@@ -357,11 +357,11 @@
     margin: 0 16px;
     padding-top: 6px;
     text-align: center;
-    border: 2px solid #212121;
+    border: 2px solid #131e21;
 }
 
 .its-create-wallet__please-wait {
-    color: #212121
+    color: #131e21
 }
 
 /*captcha*/
@@ -394,10 +394,10 @@
 
 .its-main .its-input-text__input {
     width: calc(100% - 36px);
-    border: 2px solid #212121;
+    border: 2px solid #131e21;
     padding: 4px;
     margin: 0 12px 18px 12px;
-    background: #EEEEEE;
+    background: #FFFFFF;
 }
 
 .its-main .its-input-checkbox {
@@ -412,8 +412,8 @@
     position: absolute;
     top: 0;
     left: 12px;
-    background: #EEEEEE;
-    border: 2px solid #212121;
+    background: #FFFFFF;
+    border: 2px solid #131e21;
 }
 
 .its-main .its-input-checkbox__label:after {
@@ -423,7 +423,7 @@
     position: absolute;
     top: 4px;
     left: 4px;
-    border: 3px solid #212121;
+    border: 3px solid #131e21;
     border-top: none;
     border-right: none;
     background: transparent;
@@ -462,8 +462,8 @@
     width: calc(100% - 32px);
     padding: 8px 12px;
     margin: 4px;
-    background: rgba(0,145,234, 0.5);
-    color: #EEEEEE;
+    background: rgba(0, 108, 157, 0.5);
+    color: #FFFFFF;
 }
 
 .its-main .validation-error-container {
