@@ -27,34 +27,31 @@ export class MarkerStep extends React.Component<IMarkerStepProps, any> {
                     <CircleStep
                         index={index}
                         selectedStep={this.props.selectedStep}
-                        backgroundStyle={this.shadeStyle("background")}/>
+                        stepClass={this.stepClass()}/>
                     {(index === 0)
                         ? null
                         : <LineLeft
-                            backgroundStyle={this.shadeStyle("background")}
+                            stepClass={this.stepClass()}
                           />}
                     {(index === this.stepsNumber - 1)
                         ? null
                         : <LineRight
-                            backgroundStyle={this.shadeStyle("background")}
+                            stepClass={this.stepClass()}
                           />}
                 </div>
-                <div style={this.shadeStyle("color")}
-                     className="its-marker-step-name">
+                <div className={`its-marker-step-name ${this.stepClass()}`}>
                     {name}
                 </div>
             </div>
         );
     }
 
-    private shadeStyle(type: "background" | "color") {
+    private stepClass() {
         const { selectedStep, index } = this.props;
-        return {
-            [type]: selectedStep === index
-                ? "#0091EA"
+        return selectedStep === index
+                ? "--selected"
                 : selectedStep > index
-                    ? "#00C853"
-                    : "rgba(33,33,33, 0.5)"
-        }
+                    ? "--completed"
+                    : ""
     }
 }

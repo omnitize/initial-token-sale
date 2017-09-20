@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { createWalletContent as content } from '../../../../data/text-data';
 import { ButtonText, ButtonMain, InputCheckbox, ValidationError, BackgroundHighlight, Spinner  } from '../../../../common';
-import { createWalletContinue, setSubStepMounted, setSubStepUnmounted, checkWrittenMnemonicPhrase, createWallet
+import { createWalletContinue, setSubStepMounted, setSubStepUnmounted, checkWrittenMnemonicPhrase
     , changeCheckValidationError, setNextState } from '../../../../state';
-import { EWhereToSendFundsSubSteps, State } from '../../../../models';
+import { EWhereToSendFundsSubSteps, IWalletInfo, State } from '../../../../models';
 import { sendTargetAddress } from '../../../../server-api';
-import { downloadWallet } from '../../../../utils';
+import { downloadWallet, createWallet } from '../../../../utils';
 
 interface ICreateWalletProps {
     state?: State
@@ -13,7 +13,7 @@ interface ICreateWalletProps {
 
 export class CreateWallet extends React.Component<ICreateWalletProps, any> {
 
-    createWalletTimeoutId: any;
+    createWalletTimeerId: any;
 
     public constructor(props?: any, context?: any) {
         super(props, context);
@@ -22,13 +22,18 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
     componentDidMount() {
         setSubStepMounted(EWhereToSendFundsSubSteps.CREATE_WALLET);
         if(!this.props.state.targetWallet) {
-            this.createWalletTimeoutId = setTimeout(createWallet, 100);
+            this.createWalletTimeerId = setTimeout(() => {
+                createWallet()
+                    .then((walletInfo: IWalletInfo) => setNextState(walletInfo))
+                    .catch((err) => console.error(err));
+            }, 100);
+            // delay so that "please wait" message had time to render
         }
     }
 
     componentWillUnmount(){
         setSubStepUnmounted();
-        clearTimeout(this.createWalletTimeoutId);
+        clearTimeout(this.createWalletTimeerId);
     }
 
     render(): JSX.Element {
@@ -36,58 +41,53 @@ export class CreateWallet extends React.Component<ICreateWalletProps, any> {
             , validationCheckboxError, isLoading } = this.props.state;
         const isContinueValid = isWrittenMnemonicPhrase;
 
-        if(!this.props.state.targetWallet) {
-            return (
-                <div
-                    className="its-create-wallet --its-transition-opacity"
-                    style={this.fadeTransitionStyle()}>
-                    <p>{content.pleaseWait}</p>
-                </div>
-            );
-        }
         return (
-            <div
-                className="its-create-wallet --its-transition-opacity"
-                style={this.fadeTransitionStyle()}>
-                <p>
-                    {content.paragraph}
-                </p>
-                <BackgroundHighlight>
-                    {targetMnemonicPhrase}
-                </BackgroundHighlight>
-                <p>
-                    {content.paragraph2}
-                </p>
-                <ButtonText onClick={this.handleDownloadClick}>
-                    {content.buttonText}
-                </ButtonText>
-                <p>
-                    {content.paragraph3}
-                </p>
-                <h4>
-                    {content.heading}
-                </h4>
-                <BackgroundHighlight>
-                    {targetAddress}
-                </BackgroundHighlight>
-                <ValidationError message={validationCheckboxError}>
-                    <InputCheckbox
-                        name={content.inputCheckbox.name}
-                        paragraph={content.inputCheckbox.paragraph}
-                        value={isWrittenMnemonicPhrase}
-                        onChange={this.handleWrittenMnemonicPhraseChange}
-                    />
-                </ValidationError>
-                <div className="--its-continue">
-                    {isLoading
-                        ?   <Spinner size={40}/>
-                        :   <ButtonMain
-                                isDisabled={!isContinueValid}
-                                onClick={isContinueValid ? this.handleContinueClick : this.handleValidationErrors}>
-                                {content.buttonMain}
-                            </ButtonMain>}
-                </div>
-            </div>
+            this.props.state.targetWallet
+                ?   (<div
+                        className="its-create-wallet --its-transition-opacity"
+                        style={this.fadeTransitionStyle()}>
+                        <p>
+                            {content.paragraph}
+                        </p>
+                        <BackgroundHighlight>
+                            {targetMnemonicPhrase}
+                        </BackgroundHighlight>
+                        <p>
+                            {content.paragraph2}
+                        </p>
+                        <ButtonText onClick={this.handleDownloadClick}>
+                            {content.buttonText}
+                        </ButtonText>
+                        <p>
+                            {content.paragraph3}
+                        </p>
+                        <h4>
+                            {content.heading}
+                        </h4>
+                        <BackgroundHighlight>
+                            {targetAddress}
+                        </BackgroundHighlight>
+                        <ValidationError message={validationCheckboxError}>
+                            <InputCheckbox
+                                name={content.inputCheckbox.name}
+                                paragraph={content.inputCheckbox.paragraph}
+                                value={isWrittenMnemonicPhrase}
+                                onChange={this.handleWrittenMnemonicPhraseChange}
+                            />
+                        </ValidationError>
+                        <div className="--its-continue">
+                            {isLoading
+                                ?   <Spinner size={40}/>
+                                :   <ButtonMain
+                                        isDisabled={!isContinueValid}
+                                        onClick={isContinueValid ? this.handleContinueClick : this.handleValidationErrors}>
+                                        {content.buttonMain}
+                                    </ButtonMain>}
+                        </div>
+                    </div>)
+                :   (<div style={this.fadeTransitionStyle()}>
+                        <p className="its-create-wallet__please-wait">{content.pleaseWait}</p>
+                    </div>)
         );
     }
 

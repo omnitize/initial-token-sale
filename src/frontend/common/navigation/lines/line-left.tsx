@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { IShadeStyle } from '../../../models';
 
 interface ILineLeftProps {
-    backgroundStyle: IShadeStyle
+    stepClass: string
 }
 
 export const LineLeft = (props: ILineLeftProps) => {
     return (
-        <div style={props.backgroundStyle}
-             className="its-line-left"/>
+        <div className={`its-line-left ${props.stepClass}`}/>
     );
 };

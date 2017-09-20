@@ -1,4 +1,4 @@
-export const downloadWallet = ( wallet: string, address: string ) => {
+export function downloadWallet( wallet: string, address: string ) {
     let element = document.createElement('a');
     element.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(wallet)}`);
     element.setAttribute('download', `UTC-${address}`);
@@ -6,4 +6,4 @@ export const downloadWallet = ( wallet: string, address: string ) => {
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-};
+}

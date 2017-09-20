@@ -7,7 +7,8 @@
     width: 720px;
     max-width: 720px;
     padding: 40px;
-    background: #EEEEEE;
+    color: #131e21;
+    background: #FFFFFF;
 }
 
 .its-main h2 {
@@ -52,8 +53,8 @@
     min-width: 180px;
     max-width: 50%;
     padding: 8px 12px;
-    background: #0091EA;
-    color: #EEEEEE;
+    background: rgb(0, 108, 157);
+    color: #FFFFFF;
     border: none;
     outline: none;
     overflow: hidden;
@@ -65,51 +66,51 @@
     z-index: 2;
 }
 
-.its-main button.its-button-main:before {
+.its-main button.its-button-main:after {
     content: '';
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    background: #0277BD;
-    -webkit-transform: translateY(-100%);
-    -ms-transform: translateY(-100%);
-    transform: translateY(-100%);
+    background: rgba(0, 194, 178, 0.5);
+    -webkit-transform: translate3d(0px, -100%, 0px);
+    -ms-transform: translate3d(0px, -100%, 0px);
+    transform: translate3d(0px, -100%, 0px);
     transition: transform 200ms;
 }
 
-.its-main button.its-button-main:hover:before {
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
+.its-main button.its-button-main:hover:after {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -ms-transform: translate3d(0px, 0px, 0px);
+    transform: translate3d(0px, 0px, 0px);
 }
 
-.its-main button.its-button-main.--selected:hover:before {
-    -webkit-transform: translateY(-100%);
-    -ms-transform: translateY(-100%);
-    transform: translateY(-100%);
+.its-main button.its-button-main.--selected:hover:after {
+    -webkit-transform: translate3d(0px, -100%, 0px);
+    -ms-transform: translate3d(0px, -100%, 0px);
+    transform: translate3d(0px, -100%, 0px);
 }
 
 .its-main button.its-button-main.--selected {
-    background: #01579B;
+    background: rgb(0, 137, 155);
 }
 
 .its-main button.its-button-main.--disabled {
-    background: #212121;
+    background: #131e21;
     opacity: 0.5;
 }
 
 .its-main button.its-button-main:active {
-    -webkit-transform: translateY(2px);
-    -ms-transform: translateY(2px);
-    transform: translateY(2px);
+    -webkit-transform: translate3d(0px, 2px, 0px);
+    -ms-transform: translate3d(0px, 2px, 0px);
+    transform: translate3d(0px, 2px, 0px);
 }
 
 .its-main button.its-button-text {
     display: inline-block;
     padding: 4px;
-    color: #0091EA;
+    color: rgb(0, 108, 157);
     background: none;
     border: none;
     outline: none;
@@ -152,7 +153,6 @@
     position: relative;
 }
 
-
 .its-main .its-navigator-steps__inner {
     position: relative;
     width: 100%;
@@ -188,6 +188,19 @@
     font-size: 12px;
     line-height: 14px;
     margin: 4px 0;
+    color: rgba(33,33,33, 0.5);
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -ms-transform: translate3d(0px, 0px, 0px);
+    transform: translate3d(0px, 0px, 0px);
+    /*transforms here are to remove flicker from changing context*/
+}
+
+.its-main .its-marker-step-name.--selected {
+    color: rgb(0, 108, 157);
+}
+
+.its-main .its-marker-step-name.--completed {
+    color: rgb(0, 194, 178);
 }
 
 .its-main .its-circle-step {
@@ -196,10 +209,18 @@
     height: 60px;
     font-size: 24px;
     border-radius: 40px;
-    background: #212121;
-    color: #EEEEEE;
+    background: rgba(33,33,33, 0.5);
+    color: #FFFFFF;
     outline: none;
     cursor: pointer;
+}
+
+.its-main .its-circle-step.--selected {
+    background: rgb(0, 108, 157);
+}
+
+.its-main .its-circle-step.--completed {
+    background: rgb(0, 194, 178);
 }
 
 .its-main .its-circle-step-text {
@@ -212,11 +233,19 @@
     left: 0;
     width: calc(50% - 30px);
     height: 4px;
-    background: #212121;
-    color: #EEEEEE;
+    background: rgba(33,33,33, 0.5);
+    color: #FFFFFF;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+}
+
+.its-main .its-line-left.--selected {
+    background: rgb(0, 108, 157);
+}
+
+.its-main .its-line-left.--completed {
+    background: rgb(0, 194, 178);
 }
 
 .its-main .its-line-right {
@@ -225,16 +254,24 @@
     left: calc(50% + 30px);
     width: calc(50% - 30px);
     height: 4px;
-    background: #212121;
-    color: #EEEEEE;
+    background: rgba(33,33,33, 0.5);
+    color: #FFFFFF;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 
+.its-main .its-line-right.--selected {
+    background: rgb(0, 108, 157);
+}
+
+.its-main .its-line-right.--completed {
+    background: rgb(0, 194, 178);
+}
+
 /*back*/
 
-.its-navigator-steps__header__back-button {
+.its-main .its-navigator-steps__header__back-button {
     position: absolute;
     top: 50%;
     left: 12px;
@@ -244,54 +281,58 @@
     z-index: 4;
 }
 
-.its-back-button {
+.its-main .its-back-button {
     display: table-cell;
     border: none;
     outline: none;
     background: none;
     opacity: 1;
-    color: #0091EA;
+    color: rgb(0, 108, 157);
     cursor: pointer;
 }
 
-.its-back-button:hover {
+.its-main .its-back-button:hover {
     opacity: 0.7;
 }
 
-.its-back-button.--disabled {
-    color: #212121;
+.its-main .its-back-button.--disabled {
+    color: #131e21;
     opacity: 0.5;
     cursor: not-allowed;
 }
 
-.its-back-button__arrow {
+.its-main .its-back-button__arrow {
     position: absolute;
     display: inline-block;
     left: -4px;
     width: 18px;
     height: 18px;
-    border-bottom: 2px solid #0091EA;
-    border-left: 2px solid #0091EA;
+    border-bottom: 2px solid rgb(0, 108, 157);
+    border-left: 2px solid rgb(0, 108, 157);
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
 
-.its-back-button__arrow.--disabled {
-    border-bottom: 2px solid #212121;
-    border-left: 2px solid #212121;
+.its-main .its-back-button__arrow.--disabled {
+    border-bottom: 2px solid #131e21;
+    border-left: 2px solid #131e21;
     opacity: 0.5;
 }
 
-.its-back-button__text {
+.its-main .its-back-button__text {
     display: inline-block;
     font-size: 12px;
     vertical-align: top;
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -ms-transform: translate3d(0px, 0px, 0px);
+    transform: translate3d(0px, 0px, 0px);
+    /*transforms here are to remove flicker from changing context*/
 }
 
 /*forward*/
 
-.its-navigator-steps__header__forward-button {
+.its-main .its-navigator-steps__header__forward-button {
     position: absolute;
     top: 50%;
     right: 12px;
@@ -301,49 +342,53 @@
     z-index: 4;
 }
 
-.its-forward-button {
+.its-main .its-forward-button {
     display: table-cell;
     border: none;
     outline: none;
     background: none;
     opacity: 1;
-    color: #0091EA;
+    color: rgb(0, 108, 157);
     cursor: pointer;
 }
 
-.its-forward-button:hover {
+.its-main .its-forward-button:hover {
     opacity: 0.7;
 }
 
-.its-forward-button.--disabled {
-    color: #212121;
+.its-main .its-forward-button.--disabled {
+    color: #131e21;
     opacity: 0.5;
     cursor: not-allowed;
 }
 
-.its-forward-button__arrow {
+.its-main .its-forward-button__arrow {
     position: absolute;
     display: inline-block;
     right: -4px;
     width: 18px;
     height: 18px;
-    border-top: 2px solid #0091EA;
-    border-right: 2px solid #0091EA;
+    border-top: 2px solid rgb(0, 108, 157);
+    border-right: 2px solid rgb(0, 108, 157);
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
 
-.its-forward-button__arrow.--disabled {
-    border-top: 2px solid #212121;
-    border-right: 2px solid #212121;
+.its-main .its-forward-button__arrow.--disabled {
+    border-top: 2px solid #131e21;
+    border-right: 2px solid #131e21;
     opacity: 0.5;
 }
 
-.its-forward-button__text {
+.its-main .its-forward-button__text {
     display: inline-block;
     font-size: 12px;
     vertical-align: top;
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -ms-transform: translate3d(0px, 0px, 0px);
+    transform: translate3d(0px, 0px, 0px);
+    /*transforms here are to remove flicker from changing context*/
 }
 
 /*wallet*/
@@ -356,7 +401,11 @@
     margin: 0 16px;
     padding-top: 6px;
     text-align: center;
-    border: 2px solid #212121;
+    border: 2px solid #131e21;
+}
+
+.its-main .its-create-wallet__please-wait {
+    color: #131e21
 }
 
 /*captcha*/
@@ -368,6 +417,7 @@
 
 .its-main .its-prove-you-are-human__recaptcha-checkbox {
     display: inline-block;
+    cursor: pointer;
 }
 
 .its-main .--its-transition-transform {
@@ -388,10 +438,10 @@
 
 .its-main .its-input-text__input {
     width: calc(100% - 36px);
-    border: 2px solid #212121;
+    background: #FFFFFF;
+    border: 2px solid #131e21;
     padding: 4px;
     margin: 0 12px 18px 12px;
-    background: #EEEEEE;
 }
 
 .its-main .its-input-checkbox {
@@ -406,18 +456,18 @@
     position: absolute;
     top: 0;
     left: 12px;
-    background: #EEEEEE;
-    border: 2px solid #212121;
+    background: #FFFFFF;
+    border: 2px solid #131e21;
 }
 
-.its-main .its-input-checkbox__label:after {
+.its-main .its-input-checkbox__label:before {
     content: '';
     width: 9px;
     height: 5px;
     position: absolute;
     top: 4px;
     left: 4px;
-    border: 3px solid #000000;
+    border: 3px solid #131e21;
     border-top: none;
     border-right: none;
     background: transparent;
@@ -427,7 +477,7 @@
     transform: rotate(-45deg);
 }
 
-.its-main .its-input-checkbox__label:hover:after {
+.its-main .its-input-checkbox__label:hover:before {
     opacity: 0.3;
 }
 
@@ -447,16 +497,17 @@
     padding: 0 18px 12px;
 }
 
-.its-main input[type=checkbox]:checked + .its-input-checkbox__label:after {
+.its-main input[type=checkbox]:checked + .its-input-checkbox__label:before {
     opacity: 1;
 }
 
 .its-main .background-highlight {
+    position: relative;
     width: calc(100% - 32px);
     padding: 8px 12px;
     margin: 4px;
-    background: rgba(0,145,234, 0.5);
-    color: #EEEEEE;
+    background: rgba(0, 194, 178, 0.5);
+    color: #FFFFFF;
 }
 
 .its-main .validation-error-container {
@@ -491,9 +542,13 @@
     line-height: 14px;
     min-height: 14px;
     color: #E53935;
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -ms-transform: translate3d(0px, 0px, 0px);
+    transform: translate3d(0px, 0px, 0px);
+    /*transforms here are to remove flicker from changing context*/
 }
 
-.its-spinner {
+.its-main .its-spinner {
     position: relative;
     display: inline-block;
     min-width: 180px;
@@ -501,7 +556,7 @@
     padding: 8px 12px;
 }
 
-.its-spinner__image {
+.its-main .its-spinner__image {
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -509,12 +564,12 @@
     transform: translateY(-50%);
 }
 
-.its-currency-address__inner {
+.its-main .its-currency-address__inner {
     display: table-cell;
     width: 100%;
 }
 
-.its-currency-address__logo {
+.its-main .its-currency-address__logo {
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: scale(0.5);
@@ -522,12 +577,25 @@
     transform: scale(0.5);
 }
 
-.its-currency-address__price {
+.its-main .its-currency-address__price {
     display: inline-block;
     vertical-align: middle;
 }
 
-.its-currency-address__address {
+.its-main .its-currency-address__address {
     display: inline-block;
     vertical-align: middle;
+}
+
+/*icons*/
+
+.its-main .its-tx-status-icon {
+    text-align: center;
+    display: block;
+    height: 38px;
+}
+
+.its-main .its-tx-status-icon__inner {
+    width: 24px;
+    height: 24px;
 }

@@ -70,6 +70,7 @@ export class State {
 
     validationCheckboxError: string = "";
     validationTextError: string = "";
+    validationTextError2: string = "";
 
     isDoubleCheckedAddress: boolean = false;
 
@@ -93,13 +94,16 @@ export class State {
 
     isHistory: boolean = false;
 
-}
-
-export interface IShadeStyle {
-    [type: string]: string
+    isDarkTheme: boolean = false;
 }
 
 export interface ICaptchaSuccessParams {
     sessionToken: string
     clientConfig: any
+}
+
+export interface IWalletInfo {
+    targetAddress: string
+    targetMnemonicPhrase: string
+    targetWallet: string
 }

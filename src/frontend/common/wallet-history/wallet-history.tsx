@@ -46,6 +46,9 @@ export class WalletHistory extends React.Component<IWalletHistoryProps, any> {
     }
 
     private handlePrintWallet = () => {
+        if (window) {
+            window.print();
+        }
     };
 
     private handleDownloadClick = () => {
