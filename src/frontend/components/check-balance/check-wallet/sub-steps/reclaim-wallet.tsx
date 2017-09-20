@@ -58,6 +58,7 @@ export class ReclaimWallet extends React.Component<IReclaimWalletProps, any> {
                         <div className="--its-continue">
                             <ButtonMain
                                 isDisabled={!isLookUpWalletValid}
+                                isSelected={isContinueValid}
                                 onClick={isLookUpWalletValid
                                     ? this.handleLookUpClick
                                     : this.handleLookUpWalletValidationError}>
