@@ -22,10 +22,8 @@ export function setNextState(stateUpdate: Partial<State>) {
 
 function updateHistory(nextState, stateUpdate) {
     if ("currentStep" in stateUpdate) {
-        console.log("pushing");
         window.history.pushState(nextState, `step-${stateUpdate.currentStep}`, `/`);
     } else if ("currentSubStep" in stateUpdate) {
-        console.log("pushing");
         window.history.pushState(nextState, `sub-step-${stateUpdate.currentSubStep}`, `/`);
     }
 }
@@ -37,16 +35,12 @@ export function setStateFromHistory(stateUpdate: Partial<State>) {
 }
 
 export {
-    createWallet,
-    checkMnemonic
-} from "./wallet";
-
-export {
     typeWalletAddress,
     typeMnemonicPhrase,
     checkDoubleCheckedAddress,
     checkWrittenMnemonicPhrase,
     changeTextValidationError,
+    changeTextValidationError2,
     changeCheckValidationError
 } from "./inputs";
 
@@ -54,6 +48,7 @@ export {
     goBackInPage,
     goForwardInPage,
     setStep,
+    incrementStep,
     incrementSubStep,
     setSubStep,
     setSubStepMounted,

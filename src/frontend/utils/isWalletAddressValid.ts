@@ -1,4 +1,4 @@
-export const isWalletAddressValid = (address: string) => {
+export function isWalletAddressValid( address: string ) {
     if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) {
         // check if it has the basic requirements of an address
         return false;
@@ -6,4 +6,4 @@ export const isWalletAddressValid = (address: string) => {
         // If it's all small caps or all all caps, return true
         return true;
     }
-};
+}
