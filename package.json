@@ -39,7 +39,8 @@
     "react": "15.6.1",
     "react-async-script": "0.9.1",
     "react-dom": "15.6.1",
-    "react-google-recaptcha": "0.9.7"
+    "react-google-recaptcha": "0.9.7",
+    "sync-exec": "^0.6.2"
   },
   "devDependencies": {
     "awesome-typescript-loader": "3.2.3",
