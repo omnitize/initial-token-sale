@@ -25,7 +25,7 @@ export function navigateHistory(e: PopStateEvent) {
     const isBackHistory = {
         isBackHistory: e.state.currentStep < state.currentStep || e.state.currentSubStep <= state.currentSubStep
     };
-    setStateFromHistory(Object.assign(e.state, isBackHistory));
+    setStateFromHistory({...e.state, isBackHistory});
 }
 
 // s t e p s

@@ -15,9 +15,9 @@ type Partial<T> = {
 
 export function setNextState(stateUpdate: Partial<State>) {
     console.log('setNextState', state, stateUpdate);
-    const nextState = Object.assign(state, stateUpdate);
-    updateHistory(nextState, stateUpdate);
-    appRoot.setState(nextState);
+    state = {...state, ...stateUpdate};
+    updateHistory(state, stateUpdate);
+    appRoot.setState(state);
 }
 
 function updateHistory(nextState, stateUpdate) {
@@ -29,9 +29,9 @@ function updateHistory(nextState, stateUpdate) {
 }
 
 export function setStateFromHistory(stateUpdate: Partial<State>) {
-    console.log('setNextState', state, stateUpdate);
-    const nextState = Object.assign(state, stateUpdate);
-    appRoot.setState(nextState);
+    console.log('setNextStateFromHistory', state, stateUpdate);
+    state = {...state, ...stateUpdate};
+    appRoot.setState(state);
 }
 
 export {
